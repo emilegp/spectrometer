@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   width="210mm"
+   height="297mm"
+   viewBox="0 0 210 297"
+   version="1.1"
+   id="svg165529"
+   inkscape:version="1.1.2 (0a00cf5339, 2022-02-04)"
+   sodipodi:docname="math_beta.svg"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <sodipodi:namedview
+     id="namedview165531"
+     pagecolor="#d2d2d2"
+     bordercolor="#ffffff"
+     borderopacity="1"
+     inkscape:pageshadow="0"
+     inkscape:pageopacity="0"
+     inkscape:pagecheckerboard="false"
+     inkscape:document-units="mm"
+     showgrid="true"
+     inkscape:zoom="1.1117845"
+     inkscape:cx="366.97759"
+     inkscape:cy="283.32829"
+     inkscape:current-layer="layer1"
+     showguides="false">
+    <inkscape:grid
+       type="xygrid"
+       id="grid165533" />
+  </sodipodi:namedview>
+  <defs
+     id="defs165526">
+    <marker
+       style="overflow:visible"
+       id="marker167837"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleOutM"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.4)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path167835" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleInM"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleInM"
+       inkscape:isstock="true">
+      <path
+         transform="scale(-0.4)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path4324" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutM"
+       refX="0.0"
+       refY="0.0"
+       orient="auto"
+       inkscape:stockid="TriangleOutM"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.4)"
+         style="fill-rule:evenodd;fill:context-stroke;stroke:context-stroke;stroke-width:1.0pt"
+         d="M 5.77,0.0 L -2.88,5.0 L -2.88,-5.0 L 5.77,0.0 z "
+         id="path4333" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutM-0"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutM"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path4333-6" />
+    </marker>
+    <marker
+       style="overflow:visible"
+       id="TriangleOutM-0-2"
+       refX="0"
+       refY="0"
+       orient="auto"
+       inkscape:stockid="TriangleOutM"
+       inkscape:isstock="true">
+      <path
+         transform="scale(0.4)"
+         style="fill:context-stroke;fill-rule:evenodd;stroke:context-stroke;stroke-width:1pt"
+         d="M 5.77,0 -2.88,5 V -5 Z"
+         id="path4333-6-0" />
+    </marker>
+  </defs>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1">
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.08236px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 13.11131,104.75005 H 197.11344"
+       id="path165589"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.08236px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 45.582268,104.75005 V 39.808119"
+       id="path165807"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.08236px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 164.64247,104.75005 V 39.808123"
+       id="path165807-3"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.08236px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1"
+       d="M 45.582272,104.75005 164.64247,39.808123"
+       id="path166337"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.08407;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.08407, 1.08407;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 17.440771,56.043605 45.582272,39.808123"
+       id="path166337-6"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.08407;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:1.08407, 1.08407;stroke-dashoffset:0;stroke-opacity:1"
+       d="M 164.64247,104.75005 192.78395,88.514567"
+       id="path166337-6-1"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:#5e5e5e;fill-opacity:0;fill-rule:evenodd;stroke:#000000;stroke-width:0.265;stroke-miterlimit:4;stroke-dasharray:none;stroke-dashoffset:0;stroke-opacity:1"
+       id="path167057"
+       d="m 64.792506,94.771427 a 21.647308,21.647308 0 0 1 2.436759,9.861113"
+       sodipodi:type="arc"
+       sodipodi:arc-type="arc"
+       sodipodi:start="5.8041043"
+       sodipodi:end="6.2777566"
+       sodipodi:ry="21.647308"
+       sodipodi:rx="21.647308"
+       sodipodi:cy="104.75005"
+       sodipodi:cx="45.582275"
+       sodipodi:open="true"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.674986;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="m 45.582268,110.16188 v 10.82364"
+       id="path167813"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.674986;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutM)"
+       d="M 45.582268,115.5737 H 113.77129"
+       id="path167815"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.674986;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutM-0)"
+       d="M 99.700553,28.984467 H 135.41861"
+       id="path167815-3"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:1.08236px;stroke-linecap:butt;stroke-linejoin:miter;stroke-opacity:1;marker-start:url(#TriangleInM);marker-end:url(#marker167837)"
+       d="M 137.58333,101.50295 V 58.208333"
+       id="path167825"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.674986;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 45.582268,37.643392 V 23.572638"
+       id="path168091"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.674986;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1"
+       d="M 137.58333,50.631776 V 23.572638"
+       id="path168093"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <text
+       xml:space="preserve"
+       style="font-size:11.5453px;line-height:1.25;font-family:sans-serif;stroke-width:1.08236"
+       x="63.517357"
+       y="102.54015"
+       id="text176251"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189"><tspan
+         sodipodi:role="line"
+         id="tspan176249"
+         style="stroke-width:1.08236"
+         x="63.517357"
+         y="102.54015">	θ</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11.5453px;line-height:1.25;font-family:sans-serif;stroke-width:1.08236"
+       x="139.58351"
+       y="83.896454"
+       id="text177683"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189"><tspan
+         sodipodi:role="line"
+         id="tspan177681"
+         style="stroke-width:1.08236"
+         x="139.58351"
+         y="83.896454">δ(x)</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11.5453px;line-height:1.25;font-family:sans-serif;stroke-width:1.08236"
+       x="117.00126"
+       y="115.5737"
+       id="text179777"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189"><tspan
+         sodipodi:role="line"
+         id="tspan179775"
+         style="stroke-width:1.08236"
+         x="117.00126"
+         y="115.5737">x</tspan></text>
+    <text
+       xml:space="preserve"
+       style="font-size:11.5453px;line-height:1.25;font-family:sans-serif;stroke-width:1.08236"
+       x="85.454323"
+       y="31.818794"
+       id="text187969"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189"><tspan
+         sodipodi:role="line"
+         id="tspan187967"
+         style="stroke-width:1.08236"
+         x="85.454323"
+         y="31.818794">λ</tspan></text>
+    <path
+       style="fill:none;stroke:#000000;stroke-width:0.674986;stroke-linecap:butt;stroke-linejoin:miter;stroke-miterlimit:4;stroke-dasharray:none;stroke-opacity:1;marker-end:url(#TriangleOutM-0-2)"
+       d="M 83.465063,28.984467 H 47.747"
+       id="path167815-3-6"
+       sodipodi:nodetypes="cc"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189" />
+    <text
+       xml:space="preserve"
+       style="font-size:8.65893px;line-height:1.25;font-family:sans-serif;stroke-width:1.08236"
+       x="92.135406"
+       y="34.476681"
+       id="text33356"
+       inkscape:export-filename="/home/emilegp/Documents/PHS3910/mandat_2/spectrometer/figures/beta.png"
+       inkscape:export-xdpi="138.04189"
+       inkscape:export-ydpi="138.04189"><tspan
+         sodipodi:role="line"
+         id="tspan33354"
+         style="font-size:8.65893px;stroke-width:1.08236"
+         x="92.135406"
+         y="34.476681">b</tspan></text>
+  </g>
+</svg>
