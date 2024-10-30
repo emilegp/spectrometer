@@ -59,6 +59,7 @@
 \setlength{\parindent}{0pt}
 \newcolumntype{Y}[1]{>{\Centering\hspace{0pt}\hsize=#1\hsize}X}
 \newcommand{\inlinecode}{\normalfont\texttt}
+\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 \usepackage{enumitem}
 \setlist[itemize]{label=\textbullet}
 
@@ -91,6 +92,12 @@ PHS3910 -- Techniques expérimentales et instrumentation\\
 yap yap
 
 \section{Méthodes \label{methodes}}
+Le système optique du spectromètre est schématisé dans la figure \ref{4f}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{4f.png}
+    \caption{Schéma simplifié du spectromètre avec toutes ses composantes. \label{4f}}
+\end{figure}
 Le parcours d'un faisceau passant à travers le spectromètre a été simulé à l'aide 
 de l'optique de Fourier. Le champ initial a été modélisé par une fonction rectangle en deux dimensions,
 afin de modéliser la forme du champ après avoir traversé une fente. Celui-ci peut donc être décrit par:
@@ -105,29 +112,36 @@ la première lentille a donc pu être déterminé:
 où $f_1$ est la longueur focale de la lentille. Le réseau de diffraction blazé modifie la forme du champ, ce qui a pu être
 modélisé à l'aide d'un masque:
 \[M(x_1,y_1)=(comb(\frac{x_1}{\Lambda})\ast rect(\frac{x_1}{\Lambda})e^{i\beta x})rect(\frac{x_1}{N\Lambda}).\]
-Le champ devient donc:
-\[U_1(x_1,y_1)\propto sinc(\frac{y_1b}{\lambda f_1})\ast sinc(\frac{x_1a}{\lambda f_1}) M(x_1,y_1).\]
-Le champ à la sortie de la deuxième lentille revient à faire la transformée de Fourier
+Ici, la forme du champ n'est pas limitée par la grandeur du réseau de diffraction, mais par les dimensions
+de la fente; le terme $rect(x_1/N\Lambda)$ peut être négligé. Le champ à la sortie de la deuxième lentille revient à faire la transformée de Fourier
 de $U_1(x_1,y_1)$:
-\footnotesize \begin{align*}
-    U_2(x_2,y_2)\propto&\ \mathscr{F}\left\{sinc(\frac{y_1b}{\lambda f_1})\ast sinc(\frac{x_1a}{\lambda f_1})M(x_1,y_1)\right\}(\frac{x_2}{\lambda f_2},\frac{y_2}{\lambda f_2})\\
+\begin{align*}
+    U_2\propto&\ \mathscr{F}\left\{sinc(\frac{y_1b}{\lambda f_1})\ast sinc(\frac{x_1a}{\lambda f_1})M\right\}(\frac{x_2}{\lambda f_2},\frac{y_2}{\lambda f_2})\\
     \propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})\\
-    &\ sinc(\frac{x_2 \Lambda}{\lambda f_2})\ast \delta(2\pi(x_2-\frac{\beta}{2\pi}))\ast sinc(\frac{x_2 N\Lambda}{\lambda f_2})
+    &\ sinc(\frac{x_2 \Lambda}{\lambda f_2})\ast \delta(2\pi(x_2-\frac{\beta}{2\pi}))\\
+    \propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})\\
+    &\ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi}))
 \end{align*}
-\normalsize Le terme $sinc(\frac{x_2 \Lambda}{\lambda f_2})\ast \delta(2\pi(x_2-\frac{\beta}{2\pi}))$ est réduit à une fonction sinc décalée, soit $sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi}))$. 
 Pour évaluer le terme $rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})$, la fonction comb est remplacée par sa définition:
-\footnotesize\begin{align*}
+\begin{align*}
     rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})&=rect(\frac{y_2 f_1}{b f_2})\ast\sum_{\infty}\delta(x_2-\frac{n\lambda f_2}{\Lambda})\\
     &=\sum_{\infty}rect(\frac{f_1}{a f_2}(x_2-\frac{n\lambda f_2}{\Lambda})).
 \end{align*}
-\normalsize En rassemblant tous les termes, on obtient:
+En rassemblant tous les termes, on obtient:
 \begin{align*}
     U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})\sum_{\infty}rect(\frac{f_1}{a f_2}(x_2-\frac{n\lambda f_2}{\Lambda}))\\
-    & \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi}))\ast sinc(\frac{x_2 N\Lambda}{\lambda f_2}).
+    & \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi})).
 \end{align*}
 On sait que $\beta x = \phi$, où $\phi$ est le décalage de phase entre deux faisceaux à la sortie du réseau de diffraction.
 La différence de parcours $\delta(x)$ est directement reliée au décalage de phase par $\phi=2\pi\delta(x)/\lambda$, où $\delta(x)=2tan\theta x$.
-Ce résultat est illustré dans la figure \ref{}. En faisant l'approximation des petits angles $tan\theta\approx\theta$, on retrouve:
+Ce résultat est illustré dans la figure \ref{beta}. 
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.2]{beta.png}
+    \caption{Représentation de la différence de parcours de deux faisceaux sur un réseau de diffraction
+    blazé. Ici, $\lambda_B$ correspond à la longueur d'onde de Blaze. \label{beta}}
+\end{figure}
+En faisant l'approximation des petits angles $tan\theta\approx\theta$, on retrouve:
 \begin{align*}
    \beta x &=\frac{2\pi\delta(x)}{\lambda} \approx\frac{4\pi\theta x}{\lambda}\\
    \beta&\approx \frac{4\pi\theta}{\lambda}
@@ -137,7 +151,17 @@ On a donc finalement:
 \begin{align*}
    \beta&\approx \frac{2\pi\lambda_B}{\lambda\Lambda}.
 \end{align*}
-
+En remplaçant dans la fonction $sinc$, on a $sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda_B f_2}{\Lambda}))$. En comparant cette
+fonction $sinc$ avec la fonction $rect$ en $x$, on peut remarquer que le terme $n=1$ de la somme s'aligne parfaitement 
+avec la fonction $sinc$ lorsque $\lambda=\lambda_B$, où $\lambda_B$ est la longueur d'onde de Blaze. Par conséquent, on considère que pour des longueurs d'onde proches
+de $\lambda_B$, l'ordre $n=1$ est aussi suffisament aligné à la fonction $sinc$. La forme de $sinc$ nous permet d'éliminer tous les autres termes $n\neq1$, et on obtient:
+\begin{align*}
+    U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{f_1}{a f_2}(x_2-\frac{\lambda f_2}{\Lambda}))\\
+    & \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2}{\Lambda})).
+\end{align*}
+Les largeurs du $sinc$ et du $rect$ en $x$ sont proportionnelles à $\lambda f_2/\Lambda$ et $af_2/f_1$, respectivement, ce qui nous
+permet de traiter $sinc\approx1$ parce que l'ordre de grandeur (pour les contraintes du projet) de $\lambda/\Lambda$ est de $\approx10^{-1}$ alors que celui de $a/f_1$ est
+de $\approx10^{-2}$.
 \section{Résultats \label{resultats}}
 yap yap
 
