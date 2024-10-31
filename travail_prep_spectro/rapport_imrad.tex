@@ -177,7 +177,7 @@ On a donc:
 \begin{align*}
    \beta&\approx \frac{2\pi\lambda_B}{\lambda\Lambda}.
 \end{align*}
-En remplaçant dans la fonction $sinc$, on a $sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda_B f_2}{\Lambda}))$. En comparant cette
+En remplaçant ce terme dans la fonction $sinc$, on a $sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda_B f_2}{\Lambda}))$. En comparant cette
 fonction $sinc$ avec la fonction $rect$ en $x$, on a pu remarquer que le terme $n=1$ de la somme s'aligne parfaitement 
 avec la fonction $sinc$ lorsque $\lambda=\lambda_B$, où $\lambda_B$ est la longueur d'onde de Blaze. Par conséquent, on considère que pour des longueurs d'onde proches
 de $\lambda_B$, l'ordre $n=1$ est aussi suffisament aligné à la fonction $sinc$. La forme de $sinc$ nous a permis d'éliminer tous les autres termes $n\neq1$, et on a obtenu:
@@ -195,7 +195,7 @@ Une contrainte du projet consiste à ce que la largeur du spectre d'ordre 1 capt
 soit d'une largeur équivalente ou légèrement inférieure à la largeur de la caméra. Mathématiquement, ceci correspond à
 $x(\lambda_{bleu})-x(\lambda_{rouge})\leq D_{cam}$. On a pu approximer que $x(\lambda)$ correspond au terme de décalage
 de la fonction $rect$ en $x$. Les dimensions de la caméra utilisée pour le spectromètre sont de 1280 x 1024 pixels, chacun étant un carré de
-$5.2\ \mu m$ côté. La zone sensible de la caméra est donc de 6.656 x 5.323 mm. Par conséquent, il a été nécessaire d'optimiser la relation suivante
+$5.2\ \mu m$ côté. La zone sensible de la caméra est donc de 6.656 x 5.323 mm \textcolor{red}{reference}. Par conséquent, il a été nécessaire d'optimiser la relation suivante
 en fonction des lentilles disponibles (25, 30, 50 ou 100 mm de longueur focale):
 \begin{align*}
     \frac{f_2}{\Lambda}(\lambda_{bleu}-\lambda_{rouge})\leq 6.656\ mm.
