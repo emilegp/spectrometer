@@ -13,7 +13,8 @@
 \usepackage{soul}
 \usepackage[utf8]{inputenc}
 \usepackage[export]{adjustbox}
-\usepackage{mathrsfs,amsmath} 
+\usepackage{caption}
+\usepackage{mathrsfs, amsmath}
 \usepackage{amssymb}
 \usepackage{float}
 \usepackage{csquotes}
@@ -26,7 +27,15 @@
 \usepackage{multirow}
 \usepackage[hidelinks]{hyperref}
 \usepackage{abstract}
+\usepackage{subcaption}
 \usepackage{tabularx}
+
+% \renewcommand{\abstractnamefont}{\normalfont\bfseries}
+% \renewcommand{\abstracttextfont}{\normalfont\itshape}
+\usepackage{titlesec}
+% \titleformat{\section}{\large\bfseries}{\thesection}{1em}{}
+% \titleformat{\subsection}{\normalsize\bfseries}{\thesubsection}{1em}{}
+% \titleformat{\subsubsection}{\normalsize\bfseries}{\thesubsubsection}{1em}{}
 
 \usepackage{xcolor}
 \definecolor{codegreen}{rgb}{0,0.6,0}
@@ -53,13 +62,30 @@
 }
 \lstset{style=mystyle}
 
+\usepackage[most]{tcolorbox}
+\newtcolorbox{note}[1][]{
+  enhanced jigsaw,
+  borderline west={2pt}{0pt}{black},
+  sharp corners,
+  boxrule=0pt, 
+  fonttitle={\large\bfseries},
+  coltitle={black},
+  title={Note:\ },
+  attach title to upper,
+  #1
+}
+
 
 %----------------------------------------------------
 
 \setlength{\parindent}{0pt}
+\DeclareCaptionLabelFormat{mycaptionlabel}{#1 #2}
+\captionsetup[figure]{labelsep=colon}
+\captionsetup{labelformat=mycaptionlabel}
+\captionsetup[figure]{name={Figure }}
+\captionsetup[table]{name=Tableau}
 \newcolumntype{Y}[1]{>{\Centering\hspace{0pt}\hsize=#1\hsize}X}
 \newcommand{\inlinecode}{\normalfont\texttt}
-\newcommand\scalemath[2]{\scalebox{#1}{\mbox{\ensuremath{\displaystyle #2}}}}
 \usepackage{enumitem}
 \setlist[itemize]{label=\textbullet}
 
@@ -95,7 +121,7 @@ yap yap
 Le système optique du spectromètre est schématisé dans la figure \ref{4f}.
 \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.2]{4f.png}
+    \includegraphics[scale=0.4]{4f.png}
     \caption{Schéma simplifié du spectromètre avec toutes ses composantes. \label{4f}}
 \end{figure}
 Le parcours d'un faisceau passant à travers le spectromètre a été simulé à l'aide 
@@ -113,21 +139,21 @@ où $f_1$ est la longueur focale de la lentille. Le réseau de diffraction blaz�
 modélisé à l'aide d'un masque:
 \[M(x_1,y_1)=(comb(\frac{x_1}{\Lambda})\ast rect(\frac{x_1}{\Lambda})e^{i\beta x})rect(\frac{x_1}{N\Lambda}).\]
 Ici, la forme du champ n'est pas limitée par la grandeur du réseau de diffraction, mais par les dimensions
-de la fente; le terme $rect(x_1/N\Lambda)$ peut être négligé. Le champ à la sortie de la deuxième lentille revient à faire la transformée de Fourier
+de la fente; le terme $rect(x_1/N\Lambda)$ a pu être négligé. Le champ à la sortie de la deuxième lentille revient à effectuer la transformée de Fourier
 de $U_1(x_1,y_1)$:
 \begin{align*}
     U_2\propto&\ \mathscr{F}\left\{sinc(\frac{y_1b}{\lambda f_1})\ast sinc(\frac{x_1a}{\lambda f_1})M\right\}(\frac{x_2}{\lambda f_2},\frac{y_2}{\lambda f_2})\\
     \propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})\\
     &\ sinc(\frac{x_2 \Lambda}{\lambda f_2})\ast \delta(2\pi(x_2-\frac{\beta}{2\pi}))\\
     \propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})\\
-    &\ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi}))
+    &\ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi})).
 \end{align*}
-Pour évaluer le terme $rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})$, la fonction comb est remplacée par sa définition:
+Pour évaluer le terme $rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})$, la fonction $comb$ a été remplacée par sa définition:
 \begin{align*}
     rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})&=rect(\frac{y_2 f_1}{b f_2})\ast\sum_{\infty}\delta(x_2-\frac{n\lambda f_2}{\Lambda})\\
     &=\sum_{\infty}rect(\frac{f_1}{a f_2}(x_2-\frac{n\lambda f_2}{\Lambda})).
 \end{align*}
-En rassemblant tous les termes, on obtient:
+En rassemblant tous les termes, on a obtenu:
 \begin{align*}
     U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})\sum_{\infty}rect(\frac{f_1}{a f_2}(x_2-\frac{n\lambda f_2}{\Lambda}))\\
     & \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi})).
@@ -146,24 +172,69 @@ En faisant l'approximation des petits angles $tan\theta\approx\theta$, on retrou
    \beta x &=\frac{2\pi\delta(x)}{\lambda} \approx\frac{4\pi\theta x}{\lambda}\\
    \beta&\approx \frac{4\pi\theta}{\lambda}
 \end{align*} 
-Avec l'équation de Bragg pour la diffraction, et en choisissant l'ordre $m=1$, on trouve que $2\Lambda sin\theta=\lambda_B \rightarrow \theta\approx\lambda_B/2\Lambda$.
-On a donc finalement:
+Avec l'équation de Bragg pour la diffraction, et en choisissant l'ordre $m=1$, on a trouvé que $2\Lambda sin\theta=\lambda_B \rightarrow \theta\approx\lambda_B/2\Lambda$.
+On a donc:
 \begin{align*}
    \beta&\approx \frac{2\pi\lambda_B}{\lambda\Lambda}.
 \end{align*}
 En remplaçant dans la fonction $sinc$, on a $sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda_B f_2}{\Lambda}))$. En comparant cette
-fonction $sinc$ avec la fonction $rect$ en $x$, on peut remarquer que le terme $n=1$ de la somme s'aligne parfaitement 
+fonction $sinc$ avec la fonction $rect$ en $x$, on a pu remarquer que le terme $n=1$ de la somme s'aligne parfaitement 
 avec la fonction $sinc$ lorsque $\lambda=\lambda_B$, où $\lambda_B$ est la longueur d'onde de Blaze. Par conséquent, on considère que pour des longueurs d'onde proches
-de $\lambda_B$, l'ordre $n=1$ est aussi suffisament aligné à la fonction $sinc$. La forme de $sinc$ nous permet d'éliminer tous les autres termes $n\neq1$, et on obtient:
+de $\lambda_B$, l'ordre $n=1$ est aussi suffisament aligné à la fonction $sinc$. La forme de $sinc$ nous a permis d'éliminer tous les autres termes $n\neq1$, et on a obtenu:
 \begin{align*}
     U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{f_1}{a f_2}(x_2-\frac{\lambda f_2}{\Lambda}))\\
     & \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2}{\Lambda})).
 \end{align*}
 Les largeurs du $sinc$ et du $rect$ en $x$ sont proportionnelles à $\lambda f_2/\Lambda$ et $af_2/f_1$, respectivement, ce qui nous
-permet de traiter $sinc\approx1$ parce que l'ordre de grandeur (pour les contraintes du projet) de $\lambda/\Lambda$ est de $\approx10^{-1}$ alors que celui de $a/f_1$ est
-de $\approx10^{-2}$.
+a permis de traiter $sinc\approx1$ parce que l'ordre de grandeur (pour les contraintes du projet) de $\lambda/\Lambda$ est de $\approx10^{-1}$ alors que celui de $a/f_1$ est
+de $\approx10^{-2}$. La forme finale de $U_2(x_2,y_2)$ est:
+\begin{align*}
+    U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{f_1}{a f_2}(x_2-\frac{\lambda f_2}{\Lambda})).
+\end{align*}
+Une contrainte du projet consiste à ce que la largeur du spectre d'ordre 1 capté par la caméra
+soit d'une largeur équivalente ou légèrement inférieure à la largeur de la caméra. Mathématiquement, ceci correspond à
+$x(\lambda_{bleu})-x(\lambda_{rouge})\leq D_{cam}$. On a pu approximer que $x(\lambda)$ correspond au terme de décalage
+de la fonction $rect$ en $x$. Les dimensions de la caméra utilisée pour le spectromètre sont de 1280 x 1024 pixels, chacun étant un carré de
+$5.2\ \mu m$ côté. La zone sensible de la caméra est donc de 6.656 x 5.323 mm. Par conséquent, il a été nécessaire d'optimiser la relation suivante
+en fonction des lentilles disponibles (25, 30, 50 ou 100 mm de longueur focale):
+\begin{align*}
+    \frac{f_2}{\Lambda}(\lambda_{bleu}-\lambda_{rouge})\leq 6.656\ mm.
+\end{align*}
+Ayant une valeur de $f_2$ déterminée, la résolution du spectromètre a pu ensuite être optimisée. La résolution a été trouvée en
+considérant que deux longueurs d'onde voisines, $\lambda_1$ et $\lambda_2$, se touchent à une valeur de $x$ qui correspond à:
+\begin{align*}
+    x=\frac{a f_2}{2f_1}+\frac{\lambda_1 f_2}{\Lambda}&=-\frac{a f_2}{2f_1}+\frac{\lambda_2 f_2}{\Lambda}\\
+    \frac{af_2}{f_1}&=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\\
+    \delta_{\lambda}&=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
+\end{align*}
 \section{Résultats \label{resultats}}
-yap yap
+En considérant $\lambda_{bleu}=380\ nm$ et $\lambda_{rouge}=780\ nm$, les largeurs des spectres obtenues sont présentées
+dans le tableau \ref{largeur_spectre}.
+\begin{table}[H]
+    \caption{Résultats des largeurs de spectres pour des lentilles ayant des longueurs focales
+    $f_2$ de 25, 30, 50 ou 100 mm. Le réseau de diffraction a 600 lignes/mm, ce qui correspond à un pas de réseau
+    de $\Lambda=1/600$ mm \textcolor{red}{rajouter citation fiche tech réseau diffraction}.}    
+    \centering
+    \begin{tabular}{c|c|c|c}
+    $\Lambda$ (mm) & $f_2$ (mm) & $D_{spectre}$ (mm) & $\Delta_D$ \\
+    \hline
+    \hline
+    \multirow{4}{*}{1/600} & 25 & 6 & -0.656 \\
+    & 30 & 7.20 & 0.544 \\
+    & 50 & 12 & 5.344 \\
+    & 100 & 24 & 17.344\\
+    \hline
+    \end{tabular}
+    \label{largeur_spectre}
+  \end{table}
+La résolution a été déterminée pour des valeurs de $a$ allant de 0 à 3 mm et pour les lentilles
+disponibles. Les résultats sont présentés dans la figure \ref{res}.
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{Resolution.png}
+    \caption{Résolution du spectromètre en fonction de la largeur de la fente $a$ et la longueur focale $f_1$
+    de la lentille \label{res}}
+\end{figure}
 
 \section{Discussion}
 yap yap
