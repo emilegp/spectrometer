@@ -236,13 +236,19 @@ la position et la forme de l'image. Par la suite, la fonction $wavelength\_to\_r
 de la longueur d'onde envoyé. Ainsi, il est possible de visualiser l'emplacement, la forme et la couleur de l'image.    
 
 Pour déterminer à quel angle positionner le réseau de diffraction pour 
-obtenir un axe optique diffracté à 90$^{\circ}$ et , l'équation SUIVANTE est utilisée \textcolor{red}{reference}:
-\begin{align}
+obtenir un axe optique diffracté à 90$^{\circ}$ et , l'équation \ref{GratingEq} a été utilisée \textcolor{red}{reference}:
+
+\begin{align}\label{GratingEq}
     G m \lambda &= \sin(\theta_i) + \sin(\theta')
 \end{align}
+
 Où G est le nombre de miroirs par mm, m est l'ordre de diffraction, $\lambda$ est la longueur d'onde,
-$\theta_i \ge 0$ est l'angle incident et $\theta' \le 0$ l'angle diffracté. Avec la condition 
-$\theta_i-\theta'=90$, m=1, $G=600mm^{-1}$, on peut obtenir les angles d'incidence 
+$\theta_i \ge 0$ est l'angle incident et $\theta' \le 0$ l'angle diffracté. Avec m=1 et $G=600mm^{-1}$, 
+on a obtenu les relations entre l'angle d'incidence et l'angle du rayon diffracté pour les deux longueurs 
+d'onde extrêmes. Avec la condition $\theta_i-\theta'=90$ et en minimisant la différence entre les angles 
+de sortie, on a obtenu l'angle d'incidence optimal qui détermine le positionnement du réseau de diffraction.
+L'angle entre la longueur d'onde centrale et l'onde incidente ainsi que la longueur d'onde diffractée 
+exactement sur l'axe optique ont pu être determinées une fois l'angle d'incidence obtenu.
 
 
 
@@ -285,6 +291,16 @@ disponibles. Les résultats sont présentés dans la figure \ref{res}.
     \label{arc-en-ciel}
 \end{figure}
 
+
+L'angle d'incidence sur le réseau de diffraction obtenu avec l'équation \ref{GratingEq}
+est $60,3{^\circ}$. Les rayons rouge et bleus diffractés ont un angle de sortie du réseau
+de diffraction de $74,4{^\circ}$ et $46,3{^\circ}$ respectivement. La largeur du faisceau
+de sortie est de 12,5 mm à une distance de 25,0 mm du réseau de diffraction et la lentille L2
+positionnée à cette distance a un diamètre de 12,7 mm. La longueur d'onde centrale est 
+$\lambda_c=\frac{\lambda_{bleu}+\lambda_{red}}{2}=580$. À cette longueur d'onde, l'angle de 
+diffraction est de $57,5{^\circ}$, ce qui correspond à un angle de $87,2{^\circ}$ entre les deux  
+
+La longueur d'onde diffractée sur l'axe optique est de 621 nm.
 
 \section{Discussion}
 La simulation de la modélisation mathématique donne un résultat satisfaisant. En effet, on remarque que tout le spectre
