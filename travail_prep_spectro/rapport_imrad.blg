@@ -1,0 +1,15 @@
+[0] Config.pm:308> INFO - This is Biber 2.20
+[1] Config.pm:311> INFO - Logfile is 'rapport_imrad.blg'
+[455] biber-MSWIN64:340> INFO - === 
+[575] Biber.pm:420> INFO - Reading 'rapport_imrad.bcf'
+[1069] Biber.pm:994> INFO - Found 2 citekeys in bib section 0
+[1132] Biber.pm:4463> INFO - Processing section 0
+[1192] Biber.pm:4654> INFO - Looking for bibtex file 'bibliographie.bib' for section 0
+[1400] bibtex.pm:1713> INFO - LaTeX decoding ...
+[1430] bibtex.pm:1519> INFO - Found BibTeX data source 'bibliographie.bib'
+[1612] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[1612] UCollate.pm:68> INFO - Overriding locale 'fr-FR' defaults 'variable = shifted' with 'variable = non-ignorable'
+[1612] Biber.pm:4283> INFO - Sorting list 'nty/global//global/global/global' of type 'entry' with template 'nty' and locale 'fr-FR'
+[1612] Biber.pm:4289> INFO - No sort tailoring available for locale 'fr-FR'
+[1630] bbl.pm:676> INFO - Writing 'rapport_imrad.bbl' with encoding 'UTF-8'
+[1636] bbl.pm:779> INFO - Output to rapport_imrad.bbl
