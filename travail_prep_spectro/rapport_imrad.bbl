@@ -1,0 +1,14 @@
+\begin{thebibliography}{1}
+\providecommand{\natexlab}[1]{#1}
+\providecommand{\url}[1]{\texttt{#1}}
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{doi: #1}\else
+  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+
+\bibitem[{Edmund Optics}(2024)]{edmund_optics_aberrations}
+{Edmund Optics}.
+\newblock How aberrations affect machine vision lenses, 2024.
+\newblock URL \url{https://www.edmundoptics.fr/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/}.
+\newblock Consulté le 2 novembre 2024.
+
+\end{thebibliography}
