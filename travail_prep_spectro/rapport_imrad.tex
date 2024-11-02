@@ -207,6 +207,16 @@ considérant que deux longueurs d'onde voisines, $\lambda_1$ et $\lambda_2$, se 
     \frac{af_2}{f_1}&=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\\
     \delta_{\lambda}&=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
 \end{align*}
+Afin de modèliser l'équation trouver et de la visualisé, un code python a été créé. Celui-ci recré, à partir de l'équation
+de U2, l'image apparaisant sur la caméra. Plusieures longueur d'onde du rouge au bleu ont été testées pour verifer 
+la fiabilité de l'équation avec les paramétre optenu précédement soit les deux focale, ainsi que les dimention de la fente. 
+Ce processus a permis egalement de prédire l'emplacement des différente longueur d'onde sur la caméra 
+et ainsi de verifier si le spectre complet de la lumiere visible etait présent. Il permet egalement d'observé les
+impacte des différent parametre sur la forme et l'aspect des image obtenues. Concretement le code python prend 
+l,équantion de U2 et l'implemente sur une grille de la taille du capteur de la caméra. Cette partie permet d'obtenir 
+la position et la forme de l'image. Par la suite, la fonction $wavelength_to_rgb$ permet de coloré l'image en fonction
+de la longueur d'onde envoyer ainsi il est possible de visualiser l'emplacement, la forme ainsi que la couleur de l'image.    
+
 \section{Résultats \label{resultats}}
 En considérant $\lambda_{bleu}=380\ nm$ et $\lambda_{rouge}=780\ nm$, les largeurs des spectres obtenues sont présentées
 dans le tableau \ref{largeur_spectre}.
@@ -235,10 +245,38 @@ disponibles. Les résultats sont présentés dans la figure \ref{res}.
     \caption{Résolution du spectromètre en fonction de la largeur de la fente $a$ et la longueur focale $f_1$
     de la lentille \label{res}}
 \end{figure}
+ La figue suivante montre la simutation de L'équation U2 pour les parametres suivants: 
+ f1=50mm, f2=25mm, largeur de la fente=0.1mm, longueur de la fente=20mm. Ce résultats est obtenu pour
+ 60 longueurs d'onde différentes variant du rouge(780nm) au bleu (390nm). 
+ \begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.5]{simulation.png}
+    \caption{Image appraissant sur la caméra}
+\end{figure}
+
 
 \section{Discussion}
-yap yap
+La simulation de la modélisation mathématique donne un résultat satisfaisant. En effet, on remarque que tout le spectre
+de la lumière visible est présent sur la caméra. Il est cependant important de mentionner qu'il a fallu ajuster la
+position de la caméra. Cette manipulation était nécessaire car le modèle mathématique considère que c'est l'ordre 0 qui est placé à 90 degrés du rayon
+incident et il faut que ce soit l'ordre 1 qui soit placé dans le capteur. En effet, c'est à l'ordre 1 qu'on peut observer
+la diffraction avec la plus forte intensité lumineuse. On remarque également qu'avec les paramètres utilisés, le spectre est plus étroit
+que le capteur. Cette situation n'est pas problématique car il est préférable d'avoir le spectre complet plutôt que d'avoir la totalité du capteur utilisée
+avec des bouts de spectre manquants.
 
+Lors de la simulation, il a été remarqué que c'est le paramètre de la largeur de la fente d'entrée qui a le plus d'impact sur l'image
+car elle a une incidence directe sur la largeur du rectangle de l'image. C'est-à-dire que plus la fente est large, plus
+l'image rectangulaire (fente de sortie) sera elle aussi de plus en plus large. La longueur de la fente n'a quant à elle pas eu d'impact
+visible sur l'image. Les longueurs focales sont restées constantes car il s'agit déjà du choix le plus optimal possible.
+
+On peut donc dire que c'est la taille de l'image, soit la largeur de la fente de sortie, qui a le plus d'impact sur la résolution comparée, par exemple, au nombre de pixels
+car même pour la largeur de fente d'entrée la plus petite (0.1 mm), la largeur de la fente de sortie reste beaucoup plus large que la largeur du pixel.
+Ainsi, dans ce cas, la limitation de la résolution vient de la fente de sortie car si deux longueurs d'onde sont trop proches, les images se superposeront
+et rendront ainsi la distinction entre les deux difficile.
+
+
+
+Aberations: 
 \section{Annexes}
 
 \subsection{Développement mathématique détaillé}
