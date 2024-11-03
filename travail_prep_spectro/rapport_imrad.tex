@@ -151,7 +151,6 @@ où $a$ et $b$ sont la largeur et la hauteur de la fente respectivement. Le cham
 la première lentille a donc pu être déterminé:
 \begin{align*}
     U_1(x_1,y_1)&\propto\mathscr{F}\left\{U(x_0,y_0)\right\}(\frac{x_1}{\lambda f_1},\frac{y_1}{\lambda f_1})\\
-    &\propto \mathscr{F}\left\{rect(\frac{y_0}{b})rect(\frac{x_0}{a})\right\}(\frac{x_1}{\lambda f_1},\frac{y_1}{\lambda f_1})\\
     &\propto sinc(\frac{y_1b}{\lambda f_1})\ast sinc(\frac{x_1a}{\lambda f_1}),
 \end{align*}
 où $f_1$ est la longueur focale de la lentille. Le réseau de diffraction blazé modifie la forme du champ, ce qui a pu être
@@ -163,19 +162,16 @@ de $U_1(x_1,y_1)$:
 \begin{align*}
     U_2\propto&\ \mathscr{F}\left\{sinc(\frac{y_1b}{\lambda f_1})\ast sinc(\frac{x_1a}{\lambda f_1})M\right\}(\frac{x_2}{\lambda f_2},\frac{y_2}{\lambda f_2})\\
     \propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})\\
-    &\ sinc(\frac{x_2 \Lambda}{\lambda f_2})\ast \delta(2\pi(x_2-\frac{\beta}{2\pi}))\\
-    \propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})\\
-    &\ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi})).
+    &\cdot\ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi})).
 \end{align*}
 Pour évaluer le terme $rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})$, la fonction $comb$ a été remplacée par sa définition:
 \begin{align*}
-    rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})&=rect(\frac{y_2 f_1}{b f_2})\ast\sum_{\infty}\delta(x_2-\frac{n\lambda f_2}{\Lambda})\\
-    &=\sum_{\infty}rect(\frac{f_1}{a f_2}(x_2-\frac{n\lambda f_2}{\Lambda})).
+    rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})&=\sum_{\infty}rect(\frac{f_1}{a f_2}(x_2-\frac{n\lambda f_2}{\Lambda})).
 \end{align*}
 En rassemblant tous les termes, on a obtenu:
 \begin{align*}
     U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})\sum_{\infty}rect(\frac{f_1}{a f_2}(x_2-\frac{n\lambda f_2}{\Lambda}))\\
-    & \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi})).
+    &\cdot \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi})).
 \end{align*}
 On sait que $\beta x = \phi$, où $\phi$ est le décalage de phase entre deux faisceaux à la sortie du réseau de diffraction.
 La différence de parcours $\delta(x)$ est directement reliée au décalage de phase par $\phi=2\pi\delta(x)/\lambda$, où $\delta(x)=2tan\theta x$.
@@ -188,8 +184,7 @@ Ce résultat est illustré dans la figure \ref{beta}.
 \end{figure}
 En faisant l'approximation des petits angles $tan\theta\approx\theta$ :
 \begin{align*}
-   \beta x &=\frac{2\pi\delta(x)}{\lambda} \approx\frac{4\pi\theta x}{\lambda}\\
-   \beta&\approx \frac{4\pi\theta}{\lambda}
+   \beta x &=\frac{2\pi\delta(x)}{\lambda} \approx\frac{4\pi\theta x}{\lambda} \Rightarrow\beta\approx \frac{4\pi\theta}{\lambda}
 \end{align*} 
 Avec l'équation de Bragg pour la diffraction, et en choisissant l'ordre $m=1$, il se trouve que $2\Lambda sin\theta=\lambda_B \rightarrow \theta\approx\lambda_B/2\Lambda$.
 On a donc:
@@ -202,7 +197,7 @@ avec la fonction $sinc$ lorsque $\lambda=\lambda_B$, où $\lambda_B$ est la long
 de $\lambda_B$, l'ordre $n=1$ est aussi suffisament aligné à la fonction $sinc$. La forme de $sinc$ a permis d'éliminer tous les autres termes $n\neq1$, et il a été obtenu:
 \begin{align*}
     U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{f_1}{a f_2}(x_2-\frac{\lambda f_2}{\Lambda}))\\
-    & \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2}{\Lambda})).
+    & \cdot\ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2}{\Lambda})).
 \end{align*}
 Les largeurs du $sinc$ et du $rect$ en $x$ sont proportionnelles à $\lambda f_2/\Lambda$ et $af_2/f_1$, respectivement, ce qui
 a permis de traiter $sinc\approx1$ parce que l'ordre de grandeur (pour les contraintes du projet) de $\lambda/\Lambda$ est de $\approx10^{-1}$ alors que celui de $a/f_1$ est
@@ -223,8 +218,7 @@ Ayant une valeur de $f_2$ déterminée, la résolution du spectromètre a pu ens
 considérant que deux longueurs d'onde voisines, $\lambda_1$ et $\lambda_2$, se touchent à une valeur de $x$ qui correspond à:
 \begin{align}\label{resolution}
     x&=\frac{a f_2}{2f_1}+\frac{\lambda_1 f_2}{\Lambda}=-\frac{a f_2}{2f_1}+\frac{\lambda_2 f_2}{\Lambda}.\notag \\
-    \Rightarrow&\ \frac{af_2}{f_1}=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\notag\\
-    \Rightarrow&\ \delta_{\lambda}=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
+    \Rightarrow\ \frac{af_2}{f_1}&=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\Rightarrow\ \delta_{\lambda}=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
 \end{align}
 Afin de modéliser l'équation trouver et de la visualiser, un code python a été créé. Celui-ci recrée, à partir de l'équation
 de $U_2$, l'image apparaisant sur la caméra. Plusieurs longueurs d'onde du rouge au bleu ont été testées pour vérifer 
@@ -282,12 +276,11 @@ disponibles. Les résultats sont présentés dans la figure \ref{res}.
 \end{figure}
  La figure \ref{arc-en-ciel} montre la simulation de l'équation pour $U_2$ pour les paramètres suivants: 
  $f_1=50$ mm, $f_2=25$ mm, largeur de la fente $a=0.1$ mm et longueur de la fente $b=20$ mm. Ce résultats est obtenu pour
- 60 longueurs d'onde différentes variant du rouge (780nm) au bleu (380nm).On rmarque que la graduation de l'axe des adscisse
- traduit la position du capteur par rapport a l'ordre 0. Par conséquant, le capteur a une largeur de 6.656 mm.   
+ 60 longueurs d'onde différentes variant du rouge (780nm) au bleu (380nm). \textcolor{green}{grossir texte titre, axes et graduations. Pourquoi ça varie de -11 à -6? on devrait pas mettre x = 0 à gauche?}
  \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.45]{simu2.png}
-    \caption{Image simulée sur le capeteur de la caméra }
+    \includegraphics[scale=0.4]{simu2.png}
+    \caption{Image appraissant sur la caméra \textcolor{green}{...simulée?}}
     \label{arc-en-ciel}
 \end{figure}
 
@@ -321,14 +314,13 @@ Ceci élimine donc toutes les lentilles sauf celle de longueur focale $f_2=25$ m
 Pour ce qui est du choix de la longueur focale de la première lentille $f_1$, la relation inversement proportionnelle
 entre la résolution et $f_1$ (voir équation (\ref{resolution})) permet de déterminer qu'une longueur focale plus grande serait optimale. Cependant,
 les limites imposées par les dimensions de l'imprimante 3D disponible éliminent le choix de $f_1=100$ mm. La deuxième longueur focale la plus grande, soit $f_1=50$ mm,
-est donc choisie. La largeur de la fente $a$ n'étant pas limitée, on peut minimiser sa valeur pour améliorer la résolution. Sachant que la fente sera
-placée manuellement, on considère que $a$ sera le plus petit possible, tout en laissant le faisceau passer.
+est donc choisie.
 
 La simulation de la modélisation mathématique donne un résultat satisfaisant. En effet, il est possible de remarquer que tout le spectre
 de la lumière visible est présent sur la caméra. Il est cependant important de mentionner qu'il a fallu ajuster la
 position de la caméra. Cette manipulation était nécessaire car le modèle mathématique considère que c'est l'ordre 0 qui est placé à 90 degrés du rayon
 incident et il faut que ce soit l'ordre 1 qui corresponde à cet alignement. En effet, c'est à l'ordre 1 qu'on peut observer
-la diffraction avec la plus forte intensité lumineuse, les graduation en x dans la simulation traduise donc la position du capteur par rapport à l'ordre 0. On remarque également qu'avec les paramètres utilisés, le spectre est plus étroit
+la diffraction avec la plus forte intensité lumineuse. On remarque également qu'avec les paramètres utilisés, le spectre est plus étroit
 que le capteur. Cette situation n'est pas problématique car il est préférable d'avoir le spectre complet plutôt que d'avoir la totalité du capteur utilisée
 avec une partie du spectre manquante.
 
