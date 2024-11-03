@@ -114,26 +114,24 @@ PHS3910 -- Techniques expérimentales et instrumentation\\
 
 \maketitle
 
-\textit{\textbf{Résumé} -- Angle du réseau de diffraction pour axe optique diffracté à $90{^\circ}$.\\
-Forme du champ électric comme deux fonctions rect.\\
-Position sur la caméra proportionnelle à la longueur d'onde\\
-Paramètre de chaque élément optique utilisé\\
-Autre?}
-
-
+\textit{\textbf{Résumé} -- Modélisation d'un spectromètre 4f avec une première lentille
+de focale $f_1=50mm$, un réseau de diffraction de pas $\Lambda=600mm^{-1}$ dont la normale
+est orientée à 
+$29,7{^\circ}$ de l'axe venant de la première lentille et diffractant la lumière à 
+$90{^\circ}$ vers une seconde lentille de focale $f_2=25mm$ avant d'atteindre un capteur
+rectangulaire de 1024x1280 pixels, de $5,2\mu m$ de côté. L'intensité du champ électrique 
+sur le capteur est de forme rectangulaire et la position d'un pic lumineux est 
+proportionnelle à sa longueur d'onde.}
 
 \section{Introduction}
-Le but de ce travail préparatoire est de modéliser un spectromètre 
-comprenant 2 lentilles, une fente et un réseau de diffraction à 
-l'aide de l'optique de Fourier. \textcolor{green}{dans le cadre du cours
-PHS3910, dans le but d'optimiser les coûts et performances d'un spectro réel.}
-Le résultat est que \textcolor{blue}{Mettre la recommandation précise et complète}
-
-Chaque longueur d'onde devrait former un pic qu'une largeur \textcolor{red}{est-ce qu'on sait quelle est la largeur d'un rectangle?}
-à une position spécifique sur la caméra. \\
-
-Les paramètres de chaque élément ont été déterminés pour optimiser 
-la résolution de l'image obtenue sur le plan du capteur de la caméra.\textcolor{red}{À couper?}
+Dans le but d'optimiser les coûts et la résolution d'un spectromètre réel,
+ce rapport présente, à l'aide de l'optique de Fourier, pour un système 4f, la modélisation
+d'un spectromètre comprenant 2 lentilles, une fente et un réseau de diffraction. 
+La première lentille doit avoir la focale la plus grande possible, donc $f_1=50mm$
+est choisi. La deuxième lentille a pour focale $f_2=25mm$. Le réseau de diffraction 
+qui a un pas $\Lambda=600mm^{-1}$ forme un angle de $29,7{^\circ}$ entre sa normale et
+l'axe d'entrée du spectromètre.
+Chaque longueur d'onde forme un pic d'une largeur de 0,05mm à une position spécifique sur la caméra. \\
 
 
 \section{Méthodes \label{methodes}}
@@ -306,7 +304,7 @@ la réflection du faisceau. La diffraction est seulement visible pour les ordres
 Par conséquent, l'axe optique à la sortie du réseau de diffraction doit être alignée avec l'ordre $n=1$ et non l'ordre $n=0$, ce qui impose
 de positionner le réseau de diffraction à un angle particulier. L'angle est de $90{^\circ}$ entre 
 l'onde incidente et l'onde diffractée à la longueur d'onde centrale de 621 nm qui correspond à du jaune orange.
-C'est donc cette couleur qui est au centre de la caméra; les longueurs d'onde plus faibles ayant un angle légèrement 
+C'est donc cette couleur qui est au centre de la caméra; les longueurs d'onde plus faibles ayant un angle  
 plus élevé se retrouvent plus à gauche et inversement pour les longueurs d'onde plus élevées.
 %\textcolor{red}{explication de l'angle d'incidence et de sortie}.
 
@@ -321,7 +319,7 @@ les limites imposées par les dimensions de l'imprimante 3D disponible éliminen
 est donc choisie. La largeur de la fente $a$ n'étant pas limitée, on peut minimiser sa valeur pour améliorer la résolution. Sachant que la fente sera
 placée manuellement, on considère que $a$ sera le plus petit possible, tout en laissant le faisceau passer.
 
-La simulation de la modélisation mathématique donne un résultat satisfaisant. En effet, il est possible de remarquer que tout le spectre
+La simulation de la modélisation mathématique donne un résultat satisfaisant. En effet, tout le spectre
 de la lumière visible est présent sur la caméra. Il est cependant important de mentionner qu'il a fallu ajuster la
 position de la caméra. Cette manipulation était nécessaire car le modèle mathématique considère que c'est l'ordre 0 qui est placé à 90 degrés du rayon
 incident et il faut que ce soit l'ordre 1 qui corresponde à cet alignement. En effet, c'est à l'ordre 1 qu'on peut observer
@@ -336,8 +334,8 @@ visible sur l'image. Les longueurs focales sont restées constantes car il s'agi
 
 Il est possible de conclure que c'est la taille de l'image, soit la largeur de la fente de sortie, qui a le plus d'impact sur la résolution comparée, par exemple, au nombre de pixels
 car même pour la largeur de fente d'entrée la plus petite (0.1 mm), la largeur de la fente de sortie reste beaucoup plus large que la largeur du pixel.
-Ainsi, dans ce cas, la limitation de la résolution vient de la fente de sortie car si deux longueurs d'onde sont trop proches, les images se superposeront
-et rendront ainsi la distinction entre les deux difficile.
+Dans ce cas, la limitation de la résolution vient de la fente de sortie car si deux longueurs d'onde sont trop proches, les images se superposent
+et rendent la distinction des longueurs d'onde difficile.
 
 Les angles obtenus pour les longueurs d'onde extrêmes permettent de confirmer le choix d'une lentille de focale f=25 mm. En 
 comparant la distance entre les rayons de 780 nm et 380 nm, au niveau de la lentille L2, qui est de 12,5 mm, au diamètre de
