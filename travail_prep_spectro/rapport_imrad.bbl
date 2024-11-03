@@ -40,10 +40,10 @@
       \field{title}{How Aberrations Affect Machine Vision Lenses}
       \field{year}{2024}
       \verb{urlraw}
-      \verb \url{https://www.edmundoptics.fr/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/}
+      \verb www.edmundoptics.fr/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/
       \endverb
       \verb{url}
-      \verb %5Curl%7Bhttps://www.edmundoptics.fr/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/%7D
+      \verb www.edmundoptics.fr/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/
       \endverb
     \endentry
     \entry{plymouth_grating_equation}{misc}{}{}
@@ -64,7 +64,6 @@
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: 2024-11-03}
       \field{title}{The Grating Equation}
       \field{year}{2024}
       \verb{urlraw}
@@ -107,38 +106,10 @@
       \field{title}{Mandat 2: Spectomètre}
       \field{year}{2024}
       \verb{urlraw}
-      \verb \url{https://moodle.polymtl.ca/mod/resource/view.php?id=544674}
+      \verb https://moodle.polymtl.ca/mod/resource/view.php?id=544674
       \endverb
       \verb{url}
-      \verb %5Curl%7Bhttps://moodle.polymtl.ca/mod/resource/view.php?id=544674%7D
-      \endverb
-    \endentry
-    \entry{camera}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=f344f596a5d1c9f527f864a3bab04ced}{%
-           family={{Thorlabs}},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{fullhash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{fullhashraw}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{bibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{authorbibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{authornamehash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{authorfullhash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{authorfullhashraw}{f344f596a5d1c9f527f864a3bab04ced}
-      \field{extraname}{1}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{DCx Camera Functional Description and SDK Manual}
-      \field{year}{2018}
-      \verb{urlraw}
-      \verb \url{https://www.thorlabs.de/thorProduct.cfm?partNumber=DCC1545M&fbclid=IwZXh0bgNhZW0CMTEAAR11VnBiOdXKraldwSp-ZL4I_ORG_w_G1adlkfm6d6rV9ZRA4_QZmkPOARw_aem_HuDtD6S8EroNtmEOvnwXiA}
-      \endverb
-      \verb{url}
-      \verb %5Curl%7Bhttps://www.thorlabs.de/thorProduct.cfm?partNumber=DCC1545M&fbclid=IwZXh0bgNhZW0CMTEAAR11VnBiOdXKraldwSp-ZL4I_ORG_w_G1adlkfm6d6rV9ZRA4_QZmkPOARw_aem_HuDtD6S8EroNtmEOvnwXiA%7D
+      \verb https://moodle.polymtl.ca/mod/resource/view.php?id=544674
       \endverb
     \endentry
     \entry{grating}{misc}{}{}
@@ -155,17 +126,44 @@
       \strng{authornamehash}{f344f596a5d1c9f527f864a3bab04ced}
       \strng{authorfullhash}{f344f596a5d1c9f527f864a3bab04ced}
       \strng{authorfullhashraw}{f344f596a5d1c9f527f864a3bab04ced}
-      \field{extraname}{2}
       \field{sortinit}{T}
       \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
       \field{title}{Visible Ruled Reflective Diffraction Gratings}
       \verb{urlraw}
-      \verb \url{https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=8626&pn=GR25-0605}
+      \verb www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=8626&pn=GR25-0605
       \endverb
       \verb{url}
-      \verb %5Curl%7Bhttps://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=8626&pn=GR25-0605%7D
+      \verb www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=8626&pn=GR25-0605
+      \endverb
+    \endentry
+    \entry{camera}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=95db84d81d70c6e336b029ce24ced8fe}{%
+           family={{Thorlabs, Inc.}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{fullhash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{fullhashraw}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{bibnamehash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{authorbibnamehash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{authornamehash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{authorfullhash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{authorfullhashraw}{95db84d81d70c6e336b029ce24ced8fe}
+      \field{extraname}{1}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{DCC1545M CMOS Camera (Obsolete Product)}
+      \field{year}{2020}
+      \verb{urlraw}
+      \verb www.thorlabs.com/catalogpages/obsolete/2020/DCC1545M.pdf
+      \endverb
+      \verb{url}
+      \verb www.thorlabs.com/catalogpages/obsolete/2020/DCC1545M.pdf
       \endverb
     \endentry
     \entry{thorlabs_diffraction_gratings}{misc}{}{}
@@ -182,11 +180,11 @@
       \strng{authornamehash}{95db84d81d70c6e336b029ce24ced8fe}
       \strng{authorfullhash}{95db84d81d70c6e336b029ce24ced8fe}
       \strng{authorfullhashraw}{95db84d81d70c6e336b029ce24ced8fe}
+      \field{extraname}{2}
       \field{sortinit}{T}
       \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: 2024-11-03}
       \field{title}{Diffraction Gratings}
       \field{year}{2024}
       \verb{urlraw}
@@ -198,23 +196,22 @@
     \endentry
     \entry{wikipedia_aberration_chromatique}{misc}{}{}
       \name{author}{1}{}{%
-        {{hash=7f3a7c21bcfe932c7424781ad55b00b4}{%
-           family={{Wikipédia, l'encyclopédie libre}},
+        {{hash=030bd0fa2faebea3a5543e5242f1569f}{%
+           family={{Wikipédia}},
            familyi={W\bibinitperiod}}}%
       }
-      \strng{namehash}{7f3a7c21bcfe932c7424781ad55b00b4}
-      \strng{fullhash}{7f3a7c21bcfe932c7424781ad55b00b4}
-      \strng{fullhashraw}{7f3a7c21bcfe932c7424781ad55b00b4}
-      \strng{bibnamehash}{7f3a7c21bcfe932c7424781ad55b00b4}
-      \strng{authorbibnamehash}{7f3a7c21bcfe932c7424781ad55b00b4}
-      \strng{authornamehash}{7f3a7c21bcfe932c7424781ad55b00b4}
-      \strng{authorfullhash}{7f3a7c21bcfe932c7424781ad55b00b4}
-      \strng{authorfullhashraw}{7f3a7c21bcfe932c7424781ad55b00b4}
+      \strng{namehash}{030bd0fa2faebea3a5543e5242f1569f}
+      \strng{fullhash}{030bd0fa2faebea3a5543e5242f1569f}
+      \strng{fullhashraw}{030bd0fa2faebea3a5543e5242f1569f}
+      \strng{bibnamehash}{030bd0fa2faebea3a5543e5242f1569f}
+      \strng{authorbibnamehash}{030bd0fa2faebea3a5543e5242f1569f}
+      \strng{authornamehash}{030bd0fa2faebea3a5543e5242f1569f}
+      \strng{authorfullhash}{030bd0fa2faebea3a5543e5242f1569f}
+      \strng{authorfullhashraw}{030bd0fa2faebea3a5543e5242f1569f}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
       \field{labelnamesource}{author}
       \field{labeltitlesource}{title}
-      \field{note}{Accessed: 2024-11-03}
       \field{title}{Aberration chromatique}
       \field{year}{2024}
       \verb{urlraw}
