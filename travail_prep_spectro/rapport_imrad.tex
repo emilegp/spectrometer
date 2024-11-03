@@ -136,22 +136,18 @@ la résolution de l'image obtenue sur le plan du capteur de la caméra.\textcolo
 
 
 \section{Méthodes \label{methodes}}
-
 Le système optique du spectromètre est schématisé dans la figure \ref{4f}.
-
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.4]{4f.png}
-    \caption{Schéma simplifié du spectromètre avec toutes ses composantes. \label{4f} \cite{procedurier}}
+    \caption{Schéma simplifié du spectromètre avec toutes ses composantes \cite{procedurier}. \label{4f}}
 \end{figure}
-
 Le parcours d'un faisceau passant à travers le spectromètre a été simulé à l'aide 
 de l'optique de Fourier. Le champ initial a été modélisé par une fonction rectangle en deux dimensions,
 afin de modéliser la forme du champ après avoir traversé une fente. Celui-ci peut donc être décrit par:
 \[U(x_0,y_0)=rect(\frac{y_0}{b})rect(\frac{x_0}{a}),\]
 où $a$ et $b$ sont la largeur et la hauteur de la fente respectivement. Le champ transmis par 
 la première lentille a donc pu être déterminé:
-
 \begin{align*}
     U_1(x_1,y_1)&\propto\mathscr{F}\left\{U(x_0,y_0)\right\}(\frac{x_1}{\lambda f_1},\frac{y_1}{\lambda f_1})\\
     &\propto \mathscr{F}\left\{rect(\frac{y_0}{b})rect(\frac{x_0}{a})\right\}(\frac{x_1}{\lambda f_1},\frac{y_1}{\lambda f_1})\\
@@ -160,11 +156,9 @@ la première lentille a donc pu être déterminé:
 où $f_1$ est la longueur focale de la lentille. Le réseau de diffraction blazé modifie la forme du champ, ce qui a pu être
 modélisé à l'aide d'un masque \cite{procedurier}:
 \[M(x_1,y_1)=(comb(\frac{x_1}{\Lambda})\ast rect(\frac{x_1}{\Lambda})e^{i\beta x})rect(\frac{x_1}{N\Lambda}).\]
-
 Ici, la forme du champ n'est pas limitée par la grandeur du réseau de diffraction, mais par les dimensions
 de la fente; le terme $rect(x_1/N\Lambda)$ a pu être négligé. Le champ à la sortie de la deuxième lentille revient à effectuer la transformée de Fourier
 de $U_1(x_1,y_1)$:
-
 \begin{align*}
     U_2\propto&\ \mathscr{F}\left\{sinc(\frac{y_1b}{\lambda f_1})\ast sinc(\frac{x_1a}{\lambda f_1})M\right\}(\frac{x_2}{\lambda f_2},\frac{y_2}{\lambda f_2})\\
     \propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{x_2 f_1}{a f_2})\ast comb(\frac{x_2 \Lambda}{\lambda f_2})\\
@@ -182,11 +176,9 @@ En rassemblant tous les termes, on a obtenu:
     U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})\sum_{\infty}rect(\frac{f_1}{a f_2}(x_2-\frac{n\lambda f_2}{\Lambda}))\\
     & \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2 \beta}{2\pi})).
 \end{align*}
-
 On sait que $\beta x = \phi$, où $\phi$ est le décalage de phase entre deux faisceaux à la sortie du réseau de diffraction.
 La différence de parcours $\delta(x)$ est directement reliée au décalage de phase par $\phi=2\pi\delta(x)/\lambda$, où $\delta(x)=2tan\theta x$.
 Ce résultat est illustré dans la figure \ref{beta}. 
-
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.2]{beta.png}
@@ -198,51 +190,41 @@ En faisant l'approximation des petits angles $tan\theta\approx\theta$, on retrou
    \beta x &=\frac{2\pi\delta(x)}{\lambda} \approx\frac{4\pi\theta x}{\lambda}\\
    \beta&\approx \frac{4\pi\theta}{\lambda}
 \end{align*} 
-
 Avec l'équation de Bragg pour la diffraction, et en choisissant l'ordre $m=1$, on a trouvé que $2\Lambda sin\theta=\lambda_B \rightarrow \theta\approx\lambda_B/2\Lambda$.
 On a donc:
-
 \begin{align*}
    \beta&\approx \frac{2\pi\lambda_B}{\lambda\Lambda}.
 \end{align*}
-
 En remplaçant ce terme dans la fonction $sinc$, on a $sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda_B f_2}{\Lambda}))$. En comparant cette
 fonction $sinc$ avec la fonction $rect$ en $x$, on a pu remarquer que le terme $n=1$ de la somme s'aligne parfaitement 
 avec la fonction $sinc$ lorsque $\lambda=\lambda_B$, où $\lambda_B$ est la longueur d'onde de Blaze. Par conséquent, on considère que pour des longueurs d'onde proches
 de $\lambda_B$, l'ordre $n=1$ est aussi suffisament aligné à la fonction $sinc$. La forme de $sinc$ nous a permis d'éliminer tous les autres termes $n\neq1$, et on a obtenu:
-
 \begin{align*}
     U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{f_1}{a f_2}(x_2-\frac{\lambda f_2}{\Lambda}))\\
     & \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2}{\Lambda})).
 \end{align*}
-
 Les largeurs du $sinc$ et du $rect$ en $x$ sont proportionnelles à $\lambda f_2/\Lambda$ et $af_2/f_1$, respectivement, ce qui nous
 a permis de traiter $sinc\approx1$ parce que l'ordre de grandeur (pour les contraintes du projet) de $\lambda/\Lambda$ est de $\approx10^{-1}$ alors que celui de $a/f_1$ est
 de $\approx10^{-2}$. La forme finale de $U_2(x_2,y_2)$ est:
-
 \begin{align*}
     U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{f_1}{a f_2}(x_2-\frac{\lambda f_2}{\Lambda})).
 \end{align*}
-
 Une contrainte du projet consiste à ce que la largeur du spectre d'ordre 1 capté par la caméra
 soit d'une largeur équivalente ou légèrement inférieure à la largeur de la caméra. Mathématiquement, ceci correspond à
 $x(\lambda_{bleu})-x(\lambda_{rouge})\leq D_{cam}$. On a pu approximer que $x(\lambda)$ correspond au terme de décalage
 de la fonction $rect$ en $x$. Les dimensions de la caméra utilisée pour le spectromètre sont de 1280 x 1024 pixels, chacun étant un carré de
-$5.2\ \mu m$ côté. La zone sensible de la caméra est donc de 6.656 x 5.323 mm \cite{camera}. Par conséquent, il a été nécessaire d'optimiser la relation suivante
-en fonction des lentilles disponibles (25, 30, 50 ou 100 mm de longueur focale):
-
-\begin{align*}
+$5.2\ \mu m$ de côté. La zone sensible de la caméra est donc de 6.656 x 5.323 mm \cite{camera}. Par conséquent, il a été nécessaire d'optimiser la relation suivante
+en fonction des lentilles disponibles (10, 15, 20, 25, 30, 50 ou 100 mm de longueur focale):
+\begin{align}\label{spectre}
     \frac{f_2}{\Lambda}(\lambda_{bleu}-\lambda_{rouge})\leq 6.656\ mm.
-\end{align*}
-
+\end{align}
 Ayant une valeur de $f_2$ déterminée, la résolution du spectromètre a pu ensuite être optimisée. La résolution a été trouvée en
 considérant que deux longueurs d'onde voisines, $\lambda_1$ et $\lambda_2$, se touchent à une valeur de $x$ qui correspond à:
-
-\begin{align*}
-    x=\frac{a f_2}{2f_1}+\frac{\lambda_1 f_2}{\Lambda}&=-\frac{a f_2}{2f_1}+\frac{\lambda_2 f_2}{\Lambda}\\
-    \frac{af_2}{f_1}&=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\\
-    \delta_{\lambda}&=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
-\end{align*}
+\begin{align}\label{resolution}
+    x&=\frac{a f_2}{2f_1}+\frac{\lambda_1 f_2}{\Lambda}=-\frac{a f_2}{2f_1}+\frac{\lambda_2 f_2}{\Lambda}.\notag \\
+    \rightarrow&\ \frac{af_2}{f_1}=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\notag\\
+    \rightarrow&\ \delta_{\lambda}=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
+\end{align}
 Afin de modéliser l'équation trouver et de la visualiser, un code python a été créé. Celui-ci recrée, à partir de l'équation
 de U2, l'image apparaisant sur la caméra. Plusieurs longueurs d'onde du rouge au bleu ont été testées pour vérifer 
 la fiabilité de l'équation avec les paramètres obtenus précédement, soit les deux focales ainsi que les dimensions de la fente. 
@@ -271,8 +253,8 @@ exactement sur l'axe optique ont pu être determinées une fois l'angle d'incide
 
 
 \section{Résultats \label{resultats}}
-En considérant $\lambda_{bleu}=380\ nm$ et $\lambda_{rouge}=780\ nm$, les largeurs des spectres obtenues sont présentées
-dans le tableau \ref{largeur_spectre}.
+En considérant $\lambda_{bleu}=380\ nm$ et $\lambda_{rouge}=780\ nm$, les largeurs des spectres obtenues avec l'équation \ref{spectre} sont présentées
+dans le tableau \ref{largeur_spectre}. Le terme $\Delta_D$ correspond à l'écart entre le diamètre de la caméra et le diamètre du spectre.
 \begin{table}[H]
     \caption{Résultats des largeurs de spectres pour des lentilles ayant des longueurs focales
     $f_2$ de 10, 15, 20, 25, 30, 50 ou 100 mm. Le réseau de diffraction a 600 lignes/mm, ce qui correspond à un pas de réseau
@@ -293,13 +275,12 @@ dans le tableau \ref{largeur_spectre}.
     \end{tabular}
     \label{largeur_spectre}
 \end{table}
-La résolution a été déterminée pour des valeurs de $a$ allant de 0 à 3 mm et pour les lentilles
+La résolution a été déterminée avec l'équation \ref{resolution} pour des valeurs de $a$ allant de 0 à 3 mm et pour les lentilles
 disponibles. Les résultats sont présentés dans la figure \ref{res}.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{Resolution.png}
-    \caption{Résolution du spectromètre en fonction de la largeur de la fente $a$ et la longueur focale $f_1$
-    de la lentille}
+    \caption{Résolution du spectromètre en fonction de la largeur de la fente $a$ et de la longueur focale $f_1$}
     \label{res}
 \end{figure}
  La figure \ref{arc-en-ciel} montre la simulation de l'équation pour U2 pour les parametres suivants: 
@@ -335,15 +316,15 @@ n'est pas linéaire, donc même si la longueur d'onde centrale n'est pas aligné
 longueurs d'onde extrêmes sont chacunes à environ $14{^\circ}$ de part et d'autre de l'axe optique.
 %\textcolor{red}{explication de l'angle d'incidence et de sortie}.
 
-En évaluant les résultats des longueurs focales $f_2$ et en considérant la condition initiale
-$x(\lambda_{bleu})-x(\lambda_{rouge})\leq 6.656$ mm, les seules lentilles acceptables sont celles
+En évaluant les résultats des longueurs focales $f_2$ et en considérant la condition initiale \ref{spectre}, les seules lentilles acceptables sont celles
 ayant une longueur focale inférieure ou égale à 25 mm. En raison des dimensions physiques des composantes et de
 la position du capteur de la caméra, les lentilles ayant des longueurs focales inférieures à 25 mm ne peuvent pas être utilisées.
-Ceci élimine donc toutes les lentilles sauf celle de $f_2=25$ mm, ce qui limite le choix à celle-ci.
+Ceci élimine donc toutes les lentilles sauf celle de longueur focale $f_2=25$ mm, limitant ainsi le choix à celle-ci.
 
 Pour ce qui est du choix de la longueur focale de la première lentille $f_1$, la relation inversement proportionnelle
-entre la résolution et $f_1$ ($\Lambda a/f_1$) permet de déterminer qu'une longueur focale plus grande serait optimale. Cependant,
-les limites imposées par l'impression 3D élimine le choix de $f_1=100$ mm. Une longueur focale $f_1$ de 50 mm est donc choisie.
+entre la résolution et $f_1$ (voir équation \ref{resolution}) permet de déterminer qu'une longueur focale plus grande serait optimale. Cependant,
+les limites imposées par l'impression 3D élimine le choix de $f_1=100$ mm. La deuxième longueur focale la plus grande, soit $f_1=50$ mm,
+est donc choisie.
 
 La simulation de la modélisation mathématique donne un résultat satisfaisant. En effet, on remarque que tout le spectre
 de la lumière visible est présent sur la caméra. Il est cependant important de mentionner qu'il a fallu ajuster la
