@@ -212,7 +212,7 @@ Une contrainte du projet consiste à ce que la largeur du spectre d'ordre 1 capt
 soit d'une largeur équivalente ou légèrement inférieure à la largeur de la caméra. Mathématiquement, ceci correspond à
 $x(\lambda_{bleu})-x(\lambda_{rouge})\leq D_{cam}$. On a pu approximer que $x(\lambda)$ correspond au terme de décalage
 de la fonction $rect$ en $x$. Les dimensions de la caméra utilisée pour le spectromètre sont de 1280 x 1024 pixels, chacun étant un carré de
-$5.2\ \mu m$ côté. La zone sensible de la caméra est donc de 6.656 x 5.323 mm \cite{camera}. Par conséquent, il a été nécessaire d'optimiser la relation suivante
+$5.2\ \mu m$ de côté. La zone sensible de la caméra est donc de 6.656 x 5.323 mm \cite{camera}. Par conséquent, il a été nécessaire d'optimiser la relation suivante
 en fonction des lentilles disponibles (10, 15, 20, 25, 30, 50 ou 100 mm de longueur focale):
 
 \begin{align*}
@@ -223,9 +223,9 @@ Ayant une valeur de $f_2$ déterminée, la résolution du spectromètre a pu ens
 considérant que deux longueurs d'onde voisines, $\lambda_1$ et $\lambda_2$, se touchent à une valeur de $x$ qui correspond à:
 
 \begin{align*}
-    x=\frac{a f_2}{2f_1}+\frac{\lambda_1 f_2}{\Lambda}&=-\frac{a f_2}{2f_1}+\frac{\lambda_2 f_2}{\Lambda}\\
-    \frac{af_2}{f_1}&=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\\
-    \delta_{\lambda}&=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
+    x&=\frac{a f_2}{2f_1}+\frac{\lambda_1 f_2}{\Lambda}=-\frac{a f_2}{2f_1}+\frac{\lambda_2 f_2}{\Lambda}.\\
+    \rightarrow&\ \frac{af_2}{f_1}=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\\
+    \rightarrow&\ \delta_{\lambda}=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
 \end{align*}
 Afin de modéliser l'équation trouver et de la visualiser, un code python a été créé. Celui-ci recrée, à partir de l'équation
 de U2, l'image apparaisant sur la caméra. Plusieurs longueurs d'onde du rouge au bleu ont été testées pour vérifer 
