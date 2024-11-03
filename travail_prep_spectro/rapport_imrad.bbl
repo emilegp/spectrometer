@@ -1,14 +1,146 @@
-\begin{thebibliography}{1}
-\providecommand{\natexlab}[1]{#1}
-\providecommand{\url}[1]{\texttt{#1}}
-\expandafter\ifx\csname urlstyle\endcsname\relax
-  \providecommand{\doi}[1]{doi: #1}\else
-  \providecommand{\doi}{doi: \begingroup \urlstyle{rm}\Url}\fi
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.3 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
 
-\bibitem[{Edmund Optics}(2024)]{edmund_optics_aberrations}
-{Edmund Optics}.
-\newblock How aberrations affect machine vision lenses, 2024.
-\newblock URL \url{https://www.edmundoptics.fr/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/}.
-\newblock Consulté le 2 novembre 2024.
 
-\end{thebibliography}
+\refsection{0}
+  \datalist[entry]{nty/global//global/global/global}
+    \entry{edmund_optics_aberrations}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=714ff9069af003141464f6417a3182c2}{%
+           family={{Edmund Optics}},
+           familyi={E\bibinitperiod}}}%
+      }
+      \strng{namehash}{714ff9069af003141464f6417a3182c2}
+      \strng{fullhash}{714ff9069af003141464f6417a3182c2}
+      \strng{fullhashraw}{714ff9069af003141464f6417a3182c2}
+      \strng{bibnamehash}{714ff9069af003141464f6417a3182c2}
+      \strng{authorbibnamehash}{714ff9069af003141464f6417a3182c2}
+      \strng{authornamehash}{714ff9069af003141464f6417a3182c2}
+      \strng{authorfullhash}{714ff9069af003141464f6417a3182c2}
+      \strng{authorfullhashraw}{714ff9069af003141464f6417a3182c2}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{How Aberrations Affect Machine Vision Lenses}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb \url{https://www.edmundoptics.fr/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/}
+      \endverb
+      \verb{url}
+      \verb %5Curl%7Bhttps://www.edmundoptics.fr/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/%7D
+      \endverb
+    \endentry
+    \entry{procedurier}{misc}{}{}
+      \name{author}{3}{}{%
+        {{hash=424b4955cc7664f1bb195f391cefd36d}{%
+           family={Provost},
+           familyi={P\bibinitperiod},
+           given={Jean},
+           giveni={J\bibinitperiod}}}%
+        {{hash=eb5cf920fcbadf39b9fb175984f027af}{%
+           family={Weiss},
+           familyi={W\bibinitperiod},
+           given={Lucien},
+           giveni={L\bibinitperiod}}}%
+        {{hash=bed53671ecb90b5daee9fdfcabd091a0}{%
+           family={Villeneuve},
+           familyi={V\bibinitperiod},
+           given={Jérémie},
+           giveni={J\bibinitperiod}}}%
+      }
+      \strng{namehash}{562353b07446c2758ca0fce466783511}
+      \strng{fullhash}{562353b07446c2758ca0fce466783511}
+      \strng{fullhashraw}{562353b07446c2758ca0fce466783511}
+      \strng{bibnamehash}{562353b07446c2758ca0fce466783511}
+      \strng{authorbibnamehash}{562353b07446c2758ca0fce466783511}
+      \strng{authornamehash}{562353b07446c2758ca0fce466783511}
+      \strng{authorfullhash}{562353b07446c2758ca0fce466783511}
+      \strng{authorfullhashraw}{562353b07446c2758ca0fce466783511}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Mandat 2: Spectomètre}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb \url{https://moodle.polymtl.ca/mod/resource/view.php?id=544674}
+      \endverb
+      \verb{url}
+      \verb %5Curl%7Bhttps://moodle.polymtl.ca/mod/resource/view.php?id=544674%7D
+      \endverb
+    \endentry
+    \entry{camera}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=f344f596a5d1c9f527f864a3bab04ced}{%
+           family={{Thorlabs}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{fullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{fullhashraw}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{bibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorbibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authornamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorfullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorfullhashraw}{f344f596a5d1c9f527f864a3bab04ced}
+      \field{extraname}{1}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{DCx Camera Functional Description and SDK Manual}
+      \field{year}{2018}
+      \verb{urlraw}
+      \verb \url{https://www.thorlabs.de/thorProduct.cfm?partNumber=DCC1545M&fbclid=IwZXh0bgNhZW0CMTEAAR11VnBiOdXKraldwSp-ZL4I_ORG_w_G1adlkfm6d6rV9ZRA4_QZmkPOARw_aem_HuDtD6S8EroNtmEOvnwXiA}
+      \endverb
+      \verb{url}
+      \verb %5Curl%7Bhttps://www.thorlabs.de/thorProduct.cfm?partNumber=DCC1545M&fbclid=IwZXh0bgNhZW0CMTEAAR11VnBiOdXKraldwSp-ZL4I_ORG_w_G1adlkfm6d6rV9ZRA4_QZmkPOARw_aem_HuDtD6S8EroNtmEOvnwXiA%7D
+      \endverb
+    \endentry
+    \entry{grating}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=f344f596a5d1c9f527f864a3bab04ced}{%
+           family={{Thorlabs}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{fullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{fullhashraw}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{bibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorbibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authornamehash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorfullhash}{f344f596a5d1c9f527f864a3bab04ced}
+      \strng{authorfullhashraw}{f344f596a5d1c9f527f864a3bab04ced}
+      \field{extraname}{2}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{title}{Visible Ruled Reflective Diffraction Gratings}
+      \verb{urlraw}
+      \verb \url{https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=8626&pn=GR25-0605}
+      \endverb
+      \verb{url}
+      \verb %5Curl%7Bhttps://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=8626&pn=GR25-0605%7D
+      \endverb
+    \endentry
+  \enddatalist
+\endrefsection
+\endinput
+
