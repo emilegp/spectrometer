@@ -46,6 +46,34 @@
       \verb %5Curl%7Bhttps://www.edmundoptics.fr/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/%7D
       \endverb
     \endentry
+    \entry{plymouth_grating_equation}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=d08d52901a25504f378d957d40ac5155}{%
+           family={{Plymouth Grating Laboratory}},
+           familyi={P\bibinitperiod}}}%
+      }
+      \strng{namehash}{d08d52901a25504f378d957d40ac5155}
+      \strng{fullhash}{d08d52901a25504f378d957d40ac5155}
+      \strng{fullhashraw}{d08d52901a25504f378d957d40ac5155}
+      \strng{bibnamehash}{d08d52901a25504f378d957d40ac5155}
+      \strng{authorbibnamehash}{d08d52901a25504f378d957d40ac5155}
+      \strng{authornamehash}{d08d52901a25504f378d957d40ac5155}
+      \strng{authorfullhash}{d08d52901a25504f378d957d40ac5155}
+      \strng{authorfullhashraw}{d08d52901a25504f378d957d40ac5155}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-11-03}
+      \field{title}{The Grating Equation}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.plymouthgrating.com/guidance/technical-notes/fundamentals/the-grating-equation/
+      \endverb
+      \verb{url}
+      \verb https://www.plymouthgrating.com/guidance/technical-notes/fundamentals/the-grating-equation/
+      \endverb
+    \endentry
     \entry{procedurier}{misc}{}{}
       \name{author}{3}{}{%
         {{hash=424b4955cc7664f1bb195f391cefd36d}{%
@@ -138,6 +166,34 @@
       \endverb
       \verb{url}
       \verb %5Curl%7Bhttps://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=8626&pn=GR25-0605%7D
+      \endverb
+    \endentry
+    \entry{thorlabs_diffraction_gratings}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=95db84d81d70c6e336b029ce24ced8fe}{%
+           family={{Thorlabs, Inc.}},
+           familyi={T\bibinitperiod}}}%
+      }
+      \strng{namehash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{fullhash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{fullhashraw}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{bibnamehash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{authorbibnamehash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{authornamehash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{authorfullhash}{95db84d81d70c6e336b029ce24ced8fe}
+      \strng{authorfullhashraw}{95db84d81d70c6e336b029ce24ced8fe}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-11-03}
+      \field{title}{Diffraction Gratings}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=1124
+      \endverb
+      \verb{url}
+      \verb https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=1124
       \endverb
     \endentry
   \enddatalist

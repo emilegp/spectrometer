@@ -229,7 +229,7 @@ la position et la forme de l'image. Par la suite, la fonction \texttt{wavelength
 de la longueur d'onde envoyée. Ainsi, il est possible de visualiser l'emplacement, la forme et la couleur de l'image.    
 
 Pour déterminer à quel angle positionner le réseau de diffraction pour 
-obtenir un axe optique diffracté à 90$^{\circ}$, l'équation \ref{GratingEq} a été utilisée \textcolor{red}{reference}:
+obtenir un axe optique diffracté à 90$^{\circ}$, l'équation \ref{GratingEq} a été utilisée \cite{plymouth_grating_equation}:
 \begin{align}\label{GratingEq}
     G m \lambda &= \sin(\theta_i) + \sin(\theta')
 \end{align}
@@ -331,12 +331,14 @@ et rendent la distinction des longueurs d'onde difficile.
 
 Les angles obtenus pour les longueurs d'onde extrêmes permettent de confirmer le choix d'une lentille de focale f=25 mm. En 
 comparant la distance entre les rayons de 780 nm et 380 nm, au niveau de la lentille L2, qui est de 12,5 mm, au diamètre de
-la lentille L2, qui est de 12,7 mm \textcolor{red}{reference datasheet}, il est clair que les rayons des longueurs d'onde 
+la lentille L2, qui est de 12,7 mm \cite{thorlabs_diffraction_gratings}, il est clair que les rayons des longueurs d'onde 
 les plus extrêmes ne passeraient pas par la lentille si elle était plus éloignée. Or, comme le réseau de diffraction doit être
 au point focal de la lentille, il ne serait pas possible d'utiliser une lentille ayant une focale supérieure à 25 mm pour 
-remplir la fonction de seconde lentille dans ce système. En étant presque saturée \textcolor{red}{JSP SI CE TERME EST BON}, 
-la lentille permet d'occuper au maximum l'espace sur la caméra en envoyant les rayons parallèlement, ce qui permet d'utiliser
-une grande proportion des pixels ce qui aide la résolution. Toutefois, cela entraine également des aberrations.
+remplir la fonction de seconde lentille dans ce système. Toutefois, l'utilisation de la presque totalité du diamètre de la 
+lentille entraine également des aberrations.
+%Comme la presque totalité du diamètre de la lentille L2 est utilisé
+%la lentille permet d'occuper au maximum l'espace sur la caméra en envoyant les rayons parallèlement, ce qui permet d'utiliser
+%une grande proportion des pixels et aide donc la résolution.
 %Pourrait être enlevé ou diminué s'il manque d'espace
 
 Puisque le système utilise des lentilles convergentes, l'impact de l'aberration sphérique \cite{edmund_optics_aberrations} sur la résolution est à considérer.
