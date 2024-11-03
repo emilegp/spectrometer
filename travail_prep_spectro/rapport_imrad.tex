@@ -302,8 +302,8 @@ de diffraction de $74,4{^\circ}$ et $46,3{^\circ}$ respectivement. La largeur du
 de sortie est de 12,5 mm à une distance de 25,0 mm du réseau de diffraction et la lentille L2
 positionnée à cette distance a un diamètre de 12,7 mm. La longueur d'onde centrale est 
 $\lambda_c=\frac{\lambda_{bleu}+\lambda_{red}}{2}=580$. À cette longueur d'onde, l'angle de 
-diffraction est de $57,5{^\circ}$, ce qui correspond à un angle de $87,2{^\circ}$ entre les deux  
-
+diffraction est de $57,5{^\circ}$, ce qui correspond à un angle de $87,2{^\circ}$ entre 
+l'onde incidente et l'onde diffractée à la longueur d'onde centrale. 
 La longueur d'onde diffractée sur l'axe optique est de 621 nm.
 
 \section{Discussion}
@@ -342,18 +342,29 @@ car même pour la largeur de fente d'entrée la plus petite (0.1 mm), la largeur
 Ainsi, dans ce cas, la limitation de la résolution vient de la fente de sortie car si deux longueurs d'onde sont trop proches, les images se superposeront
 et rendront ainsi la distinction entre les deux difficile.
 
+Les angles obtenus pour les longueurs d'onde extrêmes permettent de confirmer le choix d'une lentille de focale f=25 mm. En 
+comparant la distance entre les rayons de 780 nm et 380 nm, au niveau de la lentille L2, qui est de 12,5 mm, au diamètre de
+la lentille L2, qui est de 12,7 mm \textcolor{red}{reference datasheet}, il est clair que les rayons des longueurs d'onde 
+les plus extrêmes ne passeraient pas par la lentille si elle était plus éloignée. Or, comme le réseau de diffraction doit être
+au point focal de la lentille, il ne serait pas possible d'utiliser une lentille ayant une focale supérieure à 25 mm pour 
+remplir la fonction de seconde lentille dans ce système. En étant presque saturée \textcolor{red}{JSP SI CE TERME EST BON}, 
+la lentille permet d'occuper au maximum l'espace sur la caméra en envoyant les rayons parallèlement, ce qui permet d'utiliser
+une grande proportion des pixels ce qui aide la résolution. Toutefois, cela entraine également des aberrations.
+
 Puisque le système utilise des lentilles convergentes, l'impact de l'aberration sphérique \cite{edmund_optics_aberrations} sur la résolution est à considérer.
 En effet, lorsqu'un rayon lumineux passe par une lentille convergente, les rayons passant sur les extrémités de la lentille
 n'auront pas la même image que les rayons passant par le centre de la lentille. Donc, dans notre cas, ce sont les
-rayons dans le rouge ou dans le bleu qui subiront le plus cette abération. Celle-ci a pour effet de légèrement courber l'image
-ainsi que de créer un flou dans la périphérie de celle-ci, ce qui affecte par conséquent la résolution du système, surtout pour les longueurs d'onde
+rayons dans le rouge ou dans le bleu qui subiront le plus cette aberration. Celle-ci a pour effet de légèrement courber l'image
+ainsi que de créer un flou dans la périphérie de celle-ci, ce qui diminue par conséquent la résolution du système, surtout pour les longueurs d'onde
 extrêmes. 
 
 Cette aberration n'est pas la seule qui affecte différement les longueurs d'onde à imager. En effet, le chromatisme des lentilles
-est également une source d'aberrations dans ce montage. Au niveau de la première lentille, ce phénomène 
-
-
-
+est également une source d'aberrations dans ce montage. Au niveau de la première lentille, ce phénomène fait converger les rayons 
+de longueur d'onde plus faible un point avant la focale théorique et ceux de longueurs d'onde plus élevées un peu après la focale
+théorique \textcolor{red}{RefWiki}. Puisque le réseau de diffraction est placé à la focale de la première lentille, les rayons ne
+frapperont pas cet élément optique exactement au même endroit, les rayons de longueur d'onde plus centrale frappant près de l'axe
+optique et ceux de longueur d'onde extrême frappant en périphérie. Cette aberration est dû à la différence d'indice de réfraction 
+de la lentille ressenti par chaque rayon de longueur d'onde différente\textcolor{red}{RefWiki}. Cette 
 
 
 \clearpage
