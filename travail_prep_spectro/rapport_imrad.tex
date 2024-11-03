@@ -282,11 +282,12 @@ disponibles. Les résultats sont présentés dans la figure \ref{res}.
 \end{figure}
  La figure \ref{arc-en-ciel} montre la simulation de l'équation pour $U_2$ pour les paramètres suivants: 
  $f_1=50$ mm, $f_2=25$ mm, largeur de la fente $a=0.1$ mm et longueur de la fente $b=20$ mm. Ce résultats est obtenu pour
- 60 longueurs d'onde différentes variant du rouge (780nm) au bleu (380nm). \textcolor{green}{grossir texte titre, axes et graduations. Pourquoi ça varie de -11 à -6? on devrait pas mettre x = 0 à gauche?}
+ 60 longueurs d'onde différentes variant du rouge (780nm) au bleu (380nm).On rmarque que la graduation de l'axe des adscisse
+ traduit la position du capteur par rapport a l'ordre 0. Par conséquant, le capteur a une largeur de 6.656 mm.   
  \begin{figure}[H]
     \centering
-    \includegraphics[scale=0.45]{simulation.png}
-    \caption{Image appraissant sur la caméra \textcolor{green}{...simulée?}}
+    \includegraphics[scale=0.45]{simu2.png}
+    \caption{Image simulée sur le capeteur de la caméra }
     \label{arc-en-ciel}
 \end{figure}
 
@@ -326,7 +327,7 @@ La simulation de la modélisation mathématique donne un résultat satisfaisant.
 de la lumière visible est présent sur la caméra. Il est cependant important de mentionner qu'il a fallu ajuster la
 position de la caméra. Cette manipulation était nécessaire car le modèle mathématique considère que c'est l'ordre 0 qui est placé à 90 degrés du rayon
 incident et il faut que ce soit l'ordre 1 qui corresponde à cet alignement. En effet, c'est à l'ordre 1 qu'on peut observer
-la diffraction avec la plus forte intensité lumineuse. On remarque également qu'avec les paramètres utilisés, le spectre est plus étroit
+la diffraction avec la plus forte intensité lumineuse, les graduation en x dans la simulation traduise donc la position du capteur par rapport à l'ordre 0. On remarque également qu'avec les paramètres utilisés, le spectre est plus étroit
 que le capteur. Cette situation n'est pas problématique car il est préférable d'avoir le spectre complet plutôt que d'avoir la totalité du capteur utilisée
 avec une partie du spectre manquante.
 
