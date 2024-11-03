@@ -196,6 +196,34 @@
       \verb https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=1124
       \endverb
     \endentry
+    \entry{wikipedia_aberration_chromatique}{misc}{}{}
+      \name{author}{1}{}{%
+        {{hash=7f3a7c21bcfe932c7424781ad55b00b4}{%
+           family={{Wikipédia, l'encyclopédie libre}},
+           familyi={W\bibinitperiod}}}%
+      }
+      \strng{namehash}{7f3a7c21bcfe932c7424781ad55b00b4}
+      \strng{fullhash}{7f3a7c21bcfe932c7424781ad55b00b4}
+      \strng{fullhashraw}{7f3a7c21bcfe932c7424781ad55b00b4}
+      \strng{bibnamehash}{7f3a7c21bcfe932c7424781ad55b00b4}
+      \strng{authorbibnamehash}{7f3a7c21bcfe932c7424781ad55b00b4}
+      \strng{authornamehash}{7f3a7c21bcfe932c7424781ad55b00b4}
+      \strng{authorfullhash}{7f3a7c21bcfe932c7424781ad55b00b4}
+      \strng{authorfullhashraw}{7f3a7c21bcfe932c7424781ad55b00b4}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{note}{Accessed: 2024-11-03}
+      \field{title}{Aberration chromatique}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://fr.wikipedia.org/wiki/Aberration_chromatique
+      \endverb
+      \verb{url}
+      \verb https://fr.wikipedia.org/wiki/Aberration_chromatique
+      \endverb
+    \endentry
   \enddatalist
 \endrefsection
 \endinput

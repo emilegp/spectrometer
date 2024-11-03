@@ -2381,6 +2381,8 @@
     <bcf:citekey order="7" intorder="1">grating</bcf:citekey>
     <bcf:citekey order="8" intorder="1">thorlabs_diffraction_gratings</bcf:citekey>
     <bcf:citekey order="9" intorder="1">edmund_optics_aberrations</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">wikipedia_aberration_chromatique</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">wikipedia_aberration_chromatique</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nty">
