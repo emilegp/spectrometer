@@ -126,7 +126,7 @@ Le système optique du spectromètre est schématisé dans la figure \ref{4f}.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.4]{4f.png}
-    \caption{Schéma simplifié du spectromètre avec toutes ses composantes. \label{4f} \cite{procedurier}}
+    \caption{Schéma simplifié du spectromètre avec toutes ses composantes \cite{procedurier}. \label{4f}}
 \end{figure}
 
 Le parcours d'un faisceau passant à travers le spectromètre a été simulé à l'aide 
@@ -213,7 +213,7 @@ soit d'une largeur équivalente ou légèrement inférieure à la largeur de la 
 $x(\lambda_{bleu})-x(\lambda_{rouge})\leq D_{cam}$. On a pu approximer que $x(\lambda)$ correspond au terme de décalage
 de la fonction $rect$ en $x$. Les dimensions de la caméra utilisée pour le spectromètre sont de 1280 x 1024 pixels, chacun étant un carré de
 $5.2\ \mu m$ côté. La zone sensible de la caméra est donc de 6.656 x 5.323 mm \cite{camera}. Par conséquent, il a été nécessaire d'optimiser la relation suivante
-en fonction des lentilles disponibles (25, 30, 50 ou 100 mm de longueur focale):
+en fonction des lentilles disponibles (10, 15, 20, 25, 30, 50 ou 100 mm de longueur focale):
 
 \begin{align*}
     \frac{f_2}{\Lambda}(\lambda_{bleu}-\lambda_{rouge})\leq 6.656\ mm.
@@ -256,7 +256,7 @@ exactement sur l'axe optique ont pu être determinées une fois l'angle d'incide
 
 \section{Résultats \label{resultats}}
 En considérant $\lambda_{bleu}=380\ nm$ et $\lambda_{rouge}=780\ nm$, les largeurs des spectres obtenues sont présentées
-dans le tableau \ref{largeur_spectre}.
+dans le tableau \ref{largeur_spectre}. Le terme $\Delta_D$ correspond à l'écart entre le diamètre de la caméra et le diamètre du spectre.
 \begin{table}[H]
     \caption{Résultats des largeurs de spectres pour des lentilles ayant des longueurs focales
     $f_2$ de 10, 15, 20, 25, 30, 50 ou 100 mm. Le réseau de diffraction a 600 lignes/mm, ce qui correspond à un pas de réseau
@@ -282,8 +282,7 @@ disponibles. Les résultats sont présentés dans la figure \ref{res}.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.5]{Resolution.png}
-    \caption{Résolution du spectromètre en fonction de la largeur de la fente $a$ et la longueur focale $f_1$
-    de la lentille}
+    \caption{Résolution du spectromètre en fonction de la largeur de la fente $a$ et de la longueur focale $f_1$}
     \label{res}
 \end{figure}
  La figure \ref{arc-en-ciel} montre la simulation de l'équation pour U2 pour les parametres suivants: 
@@ -310,19 +309,20 @@ La longueur d'onde diffractée sur l'axe optique est de 621 nm.
 \section{Discussion}
 Tel que démontré mathématiquement dans la section \ref{methodes}, l'ordre $n=1$ est optimal pour visualiser la diffraction
 du faisceau entrant. Physiquement, l'ordre $n=0$ n'est pas pertinent pour le contexte d'un spectromètre parce qu'il ne présente que 
-la réflection du faisceau. La diffraction est seulement visible pour les ordres $|n|\leq0$, et ce, avec beaucoup plus d'intensité pour l'ordre $n=1$.
-Par conséquent, l'axe optique à la sortie du réseau de diffraction doit être alignée avec l'ordre $n=1$ et non l'ordre $n=0$, ce qui impose
+la réflection du faisceau. La diffraction est seulement visible pour les ordres $|n|\geq0$, et ce, avec beaucoup plus d'intensité pour l'ordre $n=1$.
+Par conséquent, l'axe optique à la sortie du réseau de diffraction doit être aligné avec l'ordre $n=1$ et non l'ordre $n=0$, ce qui impose
 de positionner le réseau de diffraction à un angle particulier. \textcolor{red}{explication de l'angle d'incidence et de sortie}.
 
 En évaluant les résultats des longueurs focales $f_2$ et en considérant la condition initiale
 $x(\lambda_{bleu})-x(\lambda_{rouge})\leq 6.656$ mm, les seules lentilles acceptables sont celles
 ayant une longueur focale inférieure ou égale à 25 mm. En raison des dimensions physiques des composantes et de
 la position du capteur de la caméra, les lentilles ayant des longueurs focales inférieures à 25 mm ne peuvent pas être utilisées.
-Ceci élimine donc toutes les lentilles sauf celle de $f_2=25$ mm, ce qui limite le choix à celle-ci.
+Ceci élimine donc toutes les lentilles sauf celle de longueur focale $f_2=25$ mm, limitant ainsi le choix à celle-ci.
 
 Pour ce qui est du choix de la longueur focale de la première lentille $f_1$, la relation inversement proportionnelle
 entre la résolution et $f_1$ ($\Lambda a/f_1$) permet de déterminer qu'une longueur focale plus grande serait optimale. Cependant,
-les limites imposées par l'impression 3D élimine le choix de $f_1=100$ mm. Une longueur focale $f_1$ de 50 mm est donc choisie.
+les limites imposées par l'impression 3D élimine le choix de $f_1=100$ mm. La deuxième longueur focale la plus grande, soit $f_1=50$ mm,
+est donc choisie.
 
 La simulation de la modélisation mathématique donne un résultat satisfaisant. En effet, on remarque que tout le spectre
 de la lumière visible est présent sur la caméra. Il est cependant important de mentionner qu'il a fallu ajuster la
