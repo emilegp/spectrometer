@@ -152,7 +152,6 @@
       \strng{authornamehash}{95db84d81d70c6e336b029ce24ced8fe}
       \strng{authorfullhash}{95db84d81d70c6e336b029ce24ced8fe}
       \strng{authorfullhashraw}{95db84d81d70c6e336b029ce24ced8fe}
-      \field{extraname}{1}
       \field{sortinit}{T}
       \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
       \field{labelnamesource}{author}
@@ -164,34 +163,6 @@
       \endverb
       \verb{url}
       \verb www.thorlabs.com/catalogpages/obsolete/2020/DCC1545M.pdf
-      \endverb
-    \endentry
-    \entry{thorlabs_diffraction_gratings}{misc}{}{}
-      \name{author}{1}{}{%
-        {{hash=95db84d81d70c6e336b029ce24ced8fe}{%
-           family={{Thorlabs, Inc.}},
-           familyi={T\bibinitperiod}}}%
-      }
-      \strng{namehash}{95db84d81d70c6e336b029ce24ced8fe}
-      \strng{fullhash}{95db84d81d70c6e336b029ce24ced8fe}
-      \strng{fullhashraw}{95db84d81d70c6e336b029ce24ced8fe}
-      \strng{bibnamehash}{95db84d81d70c6e336b029ce24ced8fe}
-      \strng{authorbibnamehash}{95db84d81d70c6e336b029ce24ced8fe}
-      \strng{authornamehash}{95db84d81d70c6e336b029ce24ced8fe}
-      \strng{authorfullhash}{95db84d81d70c6e336b029ce24ced8fe}
-      \strng{authorfullhashraw}{95db84d81d70c6e336b029ce24ced8fe}
-      \field{extraname}{2}
-      \field{sortinit}{T}
-      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
-      \field{labelnamesource}{author}
-      \field{labeltitlesource}{title}
-      \field{title}{Diffraction Gratings}
-      \field{year}{2024}
-      \verb{urlraw}
-      \verb https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=1124
-      \endverb
-      \verb{url}
-      \verb https://www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=1124
       \endverb
     \endentry
     \entry{wikipedia_aberration_chromatique}{misc}{}{}
