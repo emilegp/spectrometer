@@ -77,7 +77,7 @@
   #1
 }
 
-
+\pagestyle{plain}
 %----------------------------------------------------
 
 \setlength{\parindent}{0pt}
@@ -125,7 +125,8 @@ Autre?}
 \section{Introduction}
 Le but de ce travail préparatoire est de modéliser un spectromètre 
 comprenant 2 lentilles, une fente et un réseau de diffraction à 
-l'aide de l'optique de Fourier. 
+l'aide de l'optique de Fourier. \textcolor{green}{dans le cadre du cours
+PHS3910, dans le but d'optimiser les coûts et performances d'un spectro réel.}
 Le résultat est que \textcolor{blue}{Mettre la recommandation précise et complète}
 
 Chaque longueur d'onde devrait former un pic qu'une largeur \textcolor{red}{est-ce qu'on sait quelle est la largeur d'un rectangle?}
@@ -185,25 +186,25 @@ Ce résultat est illustré dans la figure \ref{beta}.
     \caption{Représentation de la différence de parcours de deux faisceaux sur un réseau de diffraction
     blazé. Ici, $\lambda_B$ correspond à la longueur d'onde de Blaze. \label{beta}}
 \end{figure}
-En faisant l'approximation des petits angles $tan\theta\approx\theta$, on retrouve:
+En faisant l'approximation des petits angles $tan\theta\approx\theta$ :
 \begin{align*}
    \beta x &=\frac{2\pi\delta(x)}{\lambda} \approx\frac{4\pi\theta x}{\lambda}\\
    \beta&\approx \frac{4\pi\theta}{\lambda}
 \end{align*} 
-Avec l'équation de Bragg pour la diffraction, et en choisissant l'ordre $m=1$, on a trouvé que $2\Lambda sin\theta=\lambda_B \rightarrow \theta\approx\lambda_B/2\Lambda$.
+Avec l'équation de Bragg pour la diffraction, et en choisissant l'ordre $m=1$, il se trouve que $2\Lambda sin\theta=\lambda_B \rightarrow \theta\approx\lambda_B/2\Lambda$.
 On a donc:
 \begin{align*}
    \beta&\approx \frac{2\pi\lambda_B}{\lambda\Lambda}.
 \end{align*}
-En remplaçant ce terme dans la fonction $sinc$, on a $sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda_B f_2}{\Lambda}))$. En comparant cette
-fonction $sinc$ avec la fonction $rect$ en $x$, on a pu remarquer que le terme $n=1$ de la somme s'aligne parfaitement 
+En remplaçant ce terme dans la fonction $sinc$, il est possible de trouver $sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda_B f_2}{\Lambda}))$. En comparant cette
+fonction $sinc$ avec la fonction $rect$ en $x$, il est possible de voir que le terme $n=1$ de la somme s'aligne parfaitement 
 avec la fonction $sinc$ lorsque $\lambda=\lambda_B$, où $\lambda_B$ est la longueur d'onde de Blaze. Par conséquent, on considère que pour des longueurs d'onde proches
-de $\lambda_B$, l'ordre $n=1$ est aussi suffisament aligné à la fonction $sinc$. La forme de $sinc$ nous a permis d'éliminer tous les autres termes $n\neq1$, et on a obtenu:
+de $\lambda_B$, l'ordre $n=1$ est aussi suffisament aligné à la fonction $sinc$. La forme de $sinc$ a permis d'éliminer tous les autres termes $n\neq1$, et il a été obtenu:
 \begin{align*}
     U_2(x_2,y_2)\propto&\ rect(\frac{y_2 f_1}{b f_2})rect(\frac{f_1}{a f_2}(x_2-\frac{\lambda f_2}{\Lambda}))\\
     & \ sinc(\frac{\Lambda}{\lambda f_2}(x_2-\frac{\lambda f_2}{\Lambda})).
 \end{align*}
-Les largeurs du $sinc$ et du $rect$ en $x$ sont proportionnelles à $\lambda f_2/\Lambda$ et $af_2/f_1$, respectivement, ce qui nous
+Les largeurs du $sinc$ et du $rect$ en $x$ sont proportionnelles à $\lambda f_2/\Lambda$ et $af_2/f_1$, respectivement, ce qui
 a permis de traiter $sinc\approx1$ parce que l'ordre de grandeur (pour les contraintes du projet) de $\lambda/\Lambda$ est de $\approx10^{-1}$ alors que celui de $a/f_1$ est
 de $\approx10^{-2}$. La forme finale de $U_2(x_2,y_2)$ est:
 \begin{align*}
@@ -222,38 +223,34 @@ Ayant une valeur de $f_2$ déterminée, la résolution du spectromètre a pu ens
 considérant que deux longueurs d'onde voisines, $\lambda_1$ et $\lambda_2$, se touchent à une valeur de $x$ qui correspond à:
 \begin{align}\label{resolution}
     x&=\frac{a f_2}{2f_1}+\frac{\lambda_1 f_2}{\Lambda}=-\frac{a f_2}{2f_1}+\frac{\lambda_2 f_2}{\Lambda}.\notag \\
-    \rightarrow&\ \frac{af_2}{f_1}=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\notag\\
-    \rightarrow&\ \delta_{\lambda}=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
+    \Rightarrow&\ \frac{af_2}{f_1}=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\notag\\
+    \Rightarrow&\ \delta_{\lambda}=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
 \end{align}
 Afin de modéliser l'équation trouver et de la visualiser, un code python a été créé. Celui-ci recrée, à partir de l'équation
-de U2, l'image apparaisant sur la caméra. Plusieurs longueurs d'onde du rouge au bleu ont été testées pour vérifer 
+de $U_2$, l'image apparaisant sur la caméra. Plusieurs longueurs d'onde du rouge au bleu ont été testées pour vérifer 
 la fiabilité de l'équation avec les paramètres obtenus précédement, soit les deux focales ainsi que les dimensions de la fente. 
 Ce processus a également permis de prédire l'emplacement des différentes longueurs d'onde sur la caméra 
 et ainsi de vérifier si le spectre complet de la lumière visible était présent. Il permet également d'observer les
 impacts des différents paramètres sur la forme et l'aspect des images obtenues. Concrètement, le code python prend 
-l'équation de U2 et l'implémente sur une grille de la taille du capteur de la caméra. Cette partie permet d'obtenir 
-la position et la forme de l'image. Par la suite, la fonction $wavelength\_to\_rgb$ permet de colorer l'image en fonction
-de la longueur d'onde envoyé. Ainsi, il est possible de visualiser l'emplacement, la forme et la couleur de l'image.    
+l'équation de $U_2$ et l'implémente sur une grille de la taille du capteur de la caméra. Cette partie permet d'obtenir 
+la position et la forme de l'image. Par la suite, la fonction \texttt{wavelength\_to\_rgb} fournie avec le mandat permet de colorer l'image en fonction
+de la longueur d'onde envoyée. Ainsi, il est possible de visualiser l'emplacement, la forme et la couleur de l'image.    
 
 Pour déterminer à quel angle positionner le réseau de diffraction pour 
-obtenir un axe optique diffracté à 90$^{\circ}$ et , l'équation \ref{GratingEq} a été utilisée \textcolor{red}{reference}:
-
+obtenir un axe optique diffracté à 90$^{\circ}$, l'équation \ref{GratingEq} a été utilisée \textcolor{red}{reference}:
 \begin{align}\label{GratingEq}
     G m \lambda &= \sin(\theta_i) + \sin(\theta')
 \end{align}
-
-Où G est le nombre de miroirs par mm, m est l'ordre de diffraction, $\lambda$ est la longueur d'onde,
-$\theta_i \ge 0$ est l'angle incident et $\theta' \le 0$ l'angle diffracté. Avec m=1 et $G=600mm^{-1}$, 
+où $G$ est le nombre de miroirs par mm, $m$ est l'ordre de diffraction, $\lambda$ est la longueur d'onde,
+$\theta_i \ge 0$ est l'angle incident et $\theta' \le 0$ l'angle diffracté. Avec $m=1$ et $G=600\text{ mm}^{-1}$,
 on a obtenu les relations entre l'angle d'incidence et l'angle du rayon diffracté pour les deux longueurs 
 d'onde extrêmes. Avec la condition $\theta_i-\theta'=90$ et en minimisant la différence entre les angles 
 de sortie, on a obtenu l'angle d'incidence optimal qui détermine le positionnement du réseau de diffraction.
 L'angle entre la longueur d'onde centrale et l'onde incidente ainsi que la longueur d'onde diffractée 
 exactement sur l'axe optique ont pu être determinées une fois l'angle d'incidence obtenu.
 
-
-
 \section{Résultats \label{resultats}}
-En considérant $\lambda_{bleu}=380\ nm$ et $\lambda_{rouge}=780\ nm$, les largeurs des spectres obtenues avec l'équation \ref{spectre} sont présentées
+En considérant $\lambda_{bleu}=380\ nm$ et $\lambda_{rouge}=780\ nm$, les largeurs des spectres obtenues avec l'équation (\ref{spectre}) sont présentées
 dans le tableau \ref{largeur_spectre}. Le terme $\Delta_D$ correspond à l'écart entre le diamètre de la caméra et le diamètre du spectre.
 \begin{table}[H]
     \caption{Résultats des largeurs de spectres pour des lentilles ayant des longueurs focales
@@ -261,7 +258,7 @@ dans le tableau \ref{largeur_spectre}. Le terme $\Delta_D$ correspond à l'écar
     de $\Lambda=1/600$ mm \cite{grating}.}    
     \centering
     \begin{tabular}{c|c|c|c}
-    $\Lambda$ (mm) & $f_2$ (mm) & $D_{spectre}$ (mm) & $\Delta_D$ \\
+    $\Lambda$ (mm) & $f_2$ (mm) & $D_{spectre}$ (mm) & $\Delta_D$ (mm) \\
     \hline
     \hline
     \multirow{7}{*}{1/600} & 10 & 2.40 & -4.256 \\
@@ -275,7 +272,7 @@ dans le tableau \ref{largeur_spectre}. Le terme $\Delta_D$ correspond à l'écar
     \end{tabular}
     \label{largeur_spectre}
 \end{table}
-La résolution a été déterminée avec l'équation \ref{resolution} pour des valeurs de $a$ allant de 0 à 3 mm et pour les lentilles
+La résolution a été déterminée avec l'équation (\ref{resolution}) pour des valeurs de $a$ allant de 0 à 3 mm et pour les lentilles
 disponibles. Les résultats sont présentés dans la figure \ref{res}.
 \begin{figure}[H]
     \centering
@@ -283,23 +280,22 @@ disponibles. Les résultats sont présentés dans la figure \ref{res}.
     \caption{Résolution du spectromètre en fonction de la largeur de la fente $a$ et de la longueur focale $f_1$}
     \label{res}
 \end{figure}
- La figure \ref{arc-en-ciel} montre la simulation de l'équation pour U2 pour les parametres suivants: 
- f1=50mm, f2=25mm, largeur de la fente=0.1mm, longueur de la fente=20mm. Ce résultats est obtenu pour
- 60 longueurs d'onde différentes variant du rouge(780nm) au bleu (380nm). 
+ La figure \ref{arc-en-ciel} montre la simulation de l'équation pour $U_2$ pour les paramètres suivants: 
+ $f_1=50$ mm, $f_2=25$ mm, largeur de la fente $a=0.1$ mm et longueur de la fente $b=20$ mm. Ce résultats est obtenu pour
+ 60 longueurs d'onde différentes variant du rouge (780nm) au bleu (380nm). \textcolor{green}{grossir texte titre, axes et graduations. Pourquoi ça varie de -11 à -6? on devrait pas mettre x = 0 à gauche?}
  \begin{figure}[H]
     \centering
     \includegraphics[scale=0.45]{simulation.png}
-    \caption{Image appraissant sur la caméra}
+    \caption{Image appraissant sur la caméra \textcolor{green}{...simulée?}}
     \label{arc-en-ciel}
 \end{figure}
 
-
-L'angle d'incidence sur le réseau de diffraction obtenu avec l'équation \ref{GratingEq}
+L'angle d'incidence sur le réseau de diffraction obtenu avec l'équation (\ref{GratingEq})
 est $60,3{^\circ}$. Les rayons rouge et bleus diffractés ont un angle de sortie du réseau
 de diffraction de $74,4{^\circ}$ et $46,3{^\circ}$ respectivement. La largeur du faisceau
-de sortie est de 12,5 mm à une distance de 25,0 mm du réseau de diffraction et la lentille L2
+de sortie est de 12,5 mm à une distance de 25,0 mm du réseau de diffraction et la lentille $L_2$
 positionnée à cette distance a un diamètre de 12,7 mm. La longueur d'onde centrale est 
-$\lambda_c=\frac{\lambda_{bleu}+\lambda_{red}}{2}=580nm$. À cette longueur d'onde, l'angle de 
+$\lambda_c=\frac{1}{2}(\lambda_{\text{bleu}}+\lambda_{\text{red}})=580$ nm. À cette longueur d'onde, l'angle de 
 diffraction est de $57,5{^\circ}$, ce qui correspond à un angle de $87,2{^\circ}$ entre 
 l'onde incidente et l'onde diffractée à la longueur d'onde centrale. 
 La longueur d'onde diffractée sur l'axe optique est de 621 nm.
@@ -307,11 +303,11 @@ La longueur d'onde diffractée sur l'axe optique est de 621 nm.
 \section{Discussion}
 Tel que démontré mathématiquement dans la section \ref{methodes}, l'ordre $n=1$ est optimal pour visualiser la diffraction
 du faisceau entrant. Physiquement, l'ordre $n=0$ n'est pas pertinent pour le contexte d'un spectromètre parce qu'il ne présente que 
-la réflection du faisceau. La diffraction est seulement visible pour les ordres $|n|\leq0$, et ce, avec beaucoup plus d'intensité pour l'ordre $n=1$.
+la réflection du faisceau. La diffraction est seulement visible pour les ordres $|n|<0$, et ce, avec beaucoup plus d'intensité pour l'ordre $n=1$.
 Par conséquent, l'axe optique à la sortie du réseau de diffraction doit être alignée avec l'ordre $n=1$ et non l'ordre $n=0$, ce qui impose
 de positionner le réseau de diffraction à un angle particulier. L'angle est de $87,2{^\circ}$ entre 
-l'onde incidente et l'onde diffractée à la longueur d'onde centrale de 580nm, ce qui est proche mais 
-différent de $90{^\circ}$. Ce n'est toutefois pas un problème puisque l'équation \ref{GratingEq} 
+l'onde incidente et l'onde diffractée à la longueur d'onde centrale de 580 nm, ce qui est proche mais 
+différent de $90{^\circ}$. Ce n'est toutefois pas un problème puisque l'équation (\ref{GratingEq}) 
 n'est pas linéaire, donc même si la longueur d'onde centrale n'est pas alignée sur l'axe optique, les
 longueurs d'onde extrêmes sont chacunes à environ $14{^\circ}$ de part et d'autre de l'axe optique.
 %\textcolor{red}{explication de l'angle d'incidence et de sortie}.
@@ -322,11 +318,11 @@ la position du capteur de la caméra, les lentilles ayant des longueurs focales 
 Ceci élimine donc toutes les lentilles sauf celle de longueur focale $f_2=25$ mm, limitant ainsi le choix à celle-ci.
 
 Pour ce qui est du choix de la longueur focale de la première lentille $f_1$, la relation inversement proportionnelle
-entre la résolution et $f_1$ (voir équation \ref{resolution}) permet de déterminer qu'une longueur focale plus grande serait optimale. Cependant,
-les limites imposées par l'impression 3D élimine le choix de $f_1=100$ mm. La deuxième longueur focale la plus grande, soit $f_1=50$ mm,
+entre la résolution et $f_1$ (voir équation (\ref{resolution})) permet de déterminer qu'une longueur focale plus grande serait optimale. Cependant,
+les limites imposées par les dimensions de l'imprimante 3D disponible éliminent le choix de $f_1=100$ mm. La deuxième longueur focale la plus grande, soit $f_1=50$ mm,
 est donc choisie.
 
-La simulation de la modélisation mathématique donne un résultat satisfaisant. En effet, on remarque que tout le spectre
+La simulation de la modélisation mathématique donne un résultat satisfaisant. En effet, il est possible de remarquer que tout le spectre
 de la lumière visible est présent sur la caméra. Il est cependant important de mentionner qu'il a fallu ajuster la
 position de la caméra. Cette manipulation était nécessaire car le modèle mathématique considère que c'est l'ordre 0 qui est placé à 90 degrés du rayon
 incident et il faut que ce soit l'ordre 1 qui corresponde à cet alignement. En effet, c'est à l'ordre 1 qu'on peut observer
@@ -335,11 +331,11 @@ que le capteur. Cette situation n'est pas problématique car il est préférable
 avec une partie du spectre manquante.
 
 Lors de la simulation, il a été remarqué que c'est le paramètre de la largeur de la fente d'entrée qui a le plus d'impact sur l'image,
-car elle a une incidence directe sur la largeur du rectangle de l'image. C'est-à-dire que plus la fente est large, plus
+car elle a une incidence directe sur la largeur du rectangle sur l'image. C'est-à-dire que plus la fente est large, plus
 l'image rectangulaire (fente de sortie) sera elle aussi de plus en plus large. La hauteur de la fente n'a quant à elle pas eu d'impact
 visible sur l'image. Les longueurs focales sont restées constantes car il s'agit déjà du choix le plus optimal possible.
 
-On peut donc dire que c'est la taille de l'image, soit la largeur de la fente de sortie, qui a le plus d'impact sur la résolution comparée, par exemple, au nombre de pixels
+Il est possible de conclure que c'est la taille de l'image, soit la largeur de la fente de sortie, qui a le plus d'impact sur la résolution comparée, par exemple, au nombre de pixels
 car même pour la largeur de fente d'entrée la plus petite (0.1 mm), la largeur de la fente de sortie reste beaucoup plus large que la largeur du pixel.
 Ainsi, dans ce cas, la limitation de la résolution vient de la fente de sortie car si deux longueurs d'onde sont trop proches, les images se superposeront
 et rendront ainsi la distinction entre les deux difficile.
@@ -376,7 +372,10 @@ de la lentille ressenti par chaque rayon de longueur d'onde différente\textcolo
 \section{Annexes}
 
 \subsection{Développement mathématique détaillé}
-yap yap
+\textcolor{green}{pas sur si nécessaire}
+
+\subsection{Preuve de correction par Antidote}
+\textcolor{red}{TODO}
 
 
 \clearpage
