@@ -3,14 +3,19 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 # Charger l'image en niveaux de gris
-image = Image.open("votre_image.tif").convert("L")
+image = Image.open("Photo-laser-rouge-atténué-n0=0.6-5um-table.tif").convert("L")
 image_array = np.array(image)
+
+TroisD=False
+
+if TroisD:
+    image_array=np.flip(image_array)
 
 # Étape 1 : Trouver l'intensité maximale dans l'image
 intensité_max = np.max(image_array)
 
 # Étape 2 : Identifier les pixels ayant une intensité >= 90% de l'intensité maximale
-seuil = 0.9 * intensité_max
+seuil = 0.95 * intensité_max
 mask = image_array >= seuil
 
 # Étape 3 : Trouver les lignes contenant au moins un point au-dessus du seuil
