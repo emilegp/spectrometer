@@ -115,11 +115,11 @@ PHS3910 -- Techniques expérimentales et instrumentation\\
 \maketitle
 
 \textit{\textbf{Résumé} -- Modélisation d'un spectromètre 4f avec une première lentille
-de focale $f_1=50mm$, un réseau de diffraction de pas $\Lambda=600mm^{-1}$ dont la normale
+  de focale $f_1=50$ mm, un réseau de diffraction de pas $\Lambda=600\text{ mm}^{-1}$ dont la normale
 est orientée à 
 $30{^\circ}\pm 1{^\circ}$ de l'axe venant de la première lentille et diffractant la lumière à 
-$90{^\circ}$ vers une seconde lentille de focale $f_2=25mm$ avant d'atteindre un capteur
-rectangulaire d'environ $6,7\pm0,1 mm$ de côté. L'intensité du champ électrique 
+$90{^\circ}$ vers une seconde lentille de focale $f_2=25$ mm avant d'atteindre un capteur
+rectangulaire d'environ $6,7\pm0,1$ mm de côté. L'intensité du champ électrique 
 sur le capteur est de forme rectangulaire et la position d'un pic lumineux est 
 proportionnelle à sa longueur d'onde.}
 
@@ -128,11 +128,11 @@ Dans le cadre du cours PHS3910, en vue d'optimiser les coûts et la résolution 
 ce rapport présente la modélisation d'un spectromètre comprenant 2 lentilles, une fente et un réseau de diffraction. 
 En suivant l'optique de Fourier pour un système 4f, avec une onde resteinte en un rectangle au départ,
 la forme de l'onde dans l'espace de Fourier à la deuxième focale de la première
-lentille, de longueur focale $f_1=50mm$, est déterminée. Ensuite, le réseau de diffraction, d'un pas $\Lambda=600mm^{-1}$ 
+lentille, de longueur focale $f_1=50$ mm, est déterminée. Ensuite, le réseau de diffraction, d'un pas $\Lambda=600\text{ mm}^{-1}$ 
 et qui forme un angle de $30{^\circ}\pm 1{^\circ}$ entre sa normale et
 l'axe d'entrée du spectromètre, sépare les longueurs d'onde qui 
-sont individuellement retransformées à la deuxième lentille, de focale $f_2=25mm$, avant de converger sur la caméra.
-Chaque longueur d'onde forme un pic d'une largeur de $(0,05\pm 0,01)mm$ lorsque la fente fait $(10\pm 1) \mu m$
+sont individuellement retransformées à la deuxième lentille, de focale $f_2=25$ mm, avant de converger sur la caméra.
+Chaque longueur d'onde forme un pic d'une largeur de $(0,05\pm 0,01)$ mm lorsque la fente fait $(10\pm 1) \mu$m
 de large à une position spécifique sur la caméra.
 
 
@@ -184,7 +184,7 @@ Ce résultat est illustré dans la figure \ref{beta}.
 \end{figure}
 En faisant l'approximation des petits angles $tan\theta\approx\theta$ :
 \begin{align*}
-   \beta x &=\frac{2\pi\delta(x)}{\lambda} \approx\frac{4\pi\theta x}{\lambda} \Rightarrow\beta\approx \frac{4\pi\theta}{\lambda}
+   \beta x &=\frac{2\pi\delta(x)}{\lambda} \approx\frac{4\pi\theta x}{\lambda} \Rightarrow\beta\approx \frac{4\pi\theta}{\lambda}.
 \end{align*} 
 Avec l'équation de Bragg pour la diffraction, et en choisissant l'ordre $m=1$, il se trouve que $2\Lambda sin\theta=\lambda_B \rightarrow \theta\approx\lambda_B/2\Lambda$.
 On a donc:
@@ -209,16 +209,16 @@ Une contrainte du projet consiste à ce que la largeur du spectre d'ordre 1 capt
 soit d'une largeur équivalente ou légèrement inférieure à la largeur de la caméra. Mathématiquement, ceci correspond à
 $x(\lambda_{bleu})-x(\lambda_{rouge})\leq D_{cam}$. On a pu approximer que $x(\lambda)$ correspond au terme de décalage
 de la fonction $rect$ en $x$. Les dimensions de la caméra utilisée pour le spectromètre sont de 1280 x 1024 pixels, chacun étant un carré de
-$5.2\ \mu m$ de côté. La zone sensible de la caméra est donc de (($6,6\pm0,1$) mm x ($5.3\pm0,1$)) $mm$ \cite{camera}. Par conséquent, il a été nécessaire d'optimiser la relation suivante
+$5.2\ \mu$m de côté. La zone sensible de la caméra est donc de (($6,6\pm0,1$) mm x ($5.3\pm0,1$)) mm \cite{camera}. Par conséquent, il a été nécessaire d'optimiser la relation suivante
 en fonction des lentilles disponibles (10, 15, 20, 25, 30, 50 ou 100 mm de longueur focale):
 \begin{align}\label{spectre}
-    \frac{f_2}{\Lambda}(\lambda_{bleu}-\lambda_{rouge})\leq 6.656\ mm.
+    \frac{f_2}{\Lambda}(\lambda_{bleu}-\lambda_{rouge})\leq 6.656\text{ mm}.
 \end{align}
 Ayant une valeur de $f_2$ déterminée, la résolution du spectromètre a pu ensuite être optimisée. La résolution a été trouvée en
 considérant que deux longueurs d'onde voisines, $\lambda_1$ et $\lambda_2$, se touchent à une valeur de $x$ qui correspond à:
 \begin{align}\label{resolution}
     x&=\frac{a f_2}{2f_1}+\frac{\lambda_1 f_2}{\Lambda}=-\frac{a f_2}{2f_1}+\frac{\lambda_2 f_2}{\Lambda}.\notag \\
-    \Rightarrow\ \frac{af_2}{f_1}&=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\Rightarrow\ \delta_{\lambda}=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
+    \Rightarrow\ \frac{af_2}{f_1}&=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\Rightarrow\ \delta_{\lambda}=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}.
 \end{align}
 Afin de modéliser l'équation trouvée et de la visualiser, un code python a été créé. Celui-ci recrée, à partir de l'équation
 de $U_2$, l'image apparaisant sur la caméra. Plusieurs longueurs d'onde du rouge au bleu ont été testées pour vérifer 
@@ -233,7 +233,7 @@ de la longueur d'onde envoyée. Ainsi, il est possible de visualiser l'emplaceme
 Pour déterminer à quel angle positionner le réseau de diffraction pour 
 obtenir un axe optique diffracté à 90$^{\circ}$, l'équation \ref{GratingEq} a été utilisée \cite{plymouth_grating_equation}:
 \begin{align}\label{GratingEq}
-    G m \lambda &= \sin(\theta_i) + \sin(\theta')
+    G m \lambda &= \sin(\theta_i) + \sin(\theta'),
 \end{align}
 où $G$ est le nombre de miroirs par mm, $m$ est l'ordre de diffraction, $\lambda$ est la longueur d'onde,
 $\theta_i \ge 0$ est l'angle incident et $\theta' \le 0$ l'angle diffracté. Avec $m=1$ et $G=600\text{ mm}^{-1}$,
@@ -244,7 +244,7 @@ L'angle entre la longueur d'onde centrale et l'onde incidente ainsi que la longu
 exactement sur l'axe optique ont pu être determinées une fois l'angle d'incidence obtenu.
 
 \section{Résultats \label{resultats}}
-En considérant $\lambda_{bleu}=380\ nm$ et $\lambda_{rouge}=780\ nm$, les largeurs des spectres obtenues avec l'équation (\ref{spectre}) sont présentées
+En considérant $\lambda_{bleu}=380$ nm et $\lambda_{rouge}=780$ nm, les largeurs des spectres obtenues avec l'équation (\ref{spectre}) sont présentées
 dans le tableau \ref{largeur_spectre}. Le terme $\Delta_D$ correspond à l'écart entre le diamètre de la caméra et le diamètre du spectre.
 \begin{table}[H]
     \caption{Résultats des largeurs de spectres pour des lentilles ayant des longueurs focales
@@ -276,12 +276,12 @@ disponibles. Les résultats sont présentés dans la figure \ref{res}.
 \end{figure}
  La figure \ref{arc-en-ciel} montre la simulation de l'équation pour $U_2$ pour les paramètres suivants: 
  $f_1=50$ mm, $f_2=25$ mm, largeur de la fente $a=0.1$ mm et longueur de la fente $b=20$ mm. Ce résultats est obtenu pour
- 60 longueurs d'onde différentes variant du rouge (780nm) au bleu (380nm). 
+ 60 longueurs d'onde différentes variant du rouge (780 nm) au bleu (380 nm). 
  %\textcolor{green}{grossir texte titre, axes et graduations. Pourquoi ça varie de -11 à -6? on devrait pas mettre x = 0 à gauche?}
  \begin{figure}[H]
     \centering
     \includegraphics[scale=0.4]{simu2.png}
-    \caption{Image appraissant sur la caméra \textcolor{green}{...simulée?}}
+    \caption{Simultation de l'image au plan de la caméra.}
     \label{arc-en-ciel}
 \end{figure}
 
@@ -359,7 +359,7 @@ frapperont pas cet élément optique exactement au même endroit, les rayons de 
 optique et ceux de longueur d'onde extrême frappant en périphérie. Cette aberration est dûe à la différence d'indice de réfraction 
 de la lentille ressenti par chaque rayon de longueur d'onde différente\cite{wikipedia_aberration_chromatique}. Cette différence 
 de position sur le réseau de diffraction entraine les longueurs d'onde à se répartir de façon plus distancée dans la suite du parcours
-optique. Elles arrivent à différents endroits sur la lentille L2 ce qui implique que les aberrations causées par cette lentille
+optique. Elles arrivent à différents endroits sur la lentille $L_2$ ce qui implique que les aberrations causées par cette lentille
 affectent les ondes de différentes longueurs d'onde avec plus d'intensité pour les longueurs d'onde extrêmes, comme expliqué précédemment.
 
 Les tests effectués sur la table optique ont confirmés ces valeurs prédites. Il reste à mettre en oeuvre un spectromètre à faible 
@@ -372,9 +372,6 @@ les lentilles et le capteur de la caméra. Ainsi, il sera possible d'évaluer la
 \clearpage
 
 \section{Annexes}
-
-\subsection{Développement mathématique détaillé}
-\textcolor{green}{pas sur si nécessaire}
 
 \subsection{Preuve de correction par Antidote}
 \textcolor{red}{TODO}
