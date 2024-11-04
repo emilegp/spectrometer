@@ -119,28 +119,30 @@ de focale $f_1=50mm$, un réseau de diffraction de pas $\Lambda=600mm^{-1}$ dont
 est orientée à 
 $30{^\circ}$ de l'axe venant de la première lentille et diffractant la lumière à 
 $90{^\circ}$ vers une seconde lentille de focale $f_2=25mm$ avant d'atteindre un capteur
-rectangulaire de 1024x1280 pixels, de $5,2\mu m$ de côté. L'intensité du champ électrique 
+rectangulaire d'environ $6,7\pm0,1 mm$ de côté. L'intensité du champ électrique 
 sur le capteur est de forme rectangulaire et la position d'un pic lumineux est 
 proportionnelle à sa longueur d'onde.}
 
 \section{Introduction}
-Dans le but d'optimiser les coûts et la résolution d'un spectromètre réel,
-ce rapport présente, à l'aide de l'optique de Fourier, pour un système 4f, la modélisation
-d'un spectromètre comprenant 2 lentilles, une fente et un réseau de diffraction. 
-La première lentille doit avoir la focale la plus grande possible, donc $f_1=50mm$
-est choisi. La deuxième lentille a pour focale $f_2=25mm$. Le réseau de diffraction 
-qui a un pas $\Lambda=600mm^{-1}$ forme un angle de $30{^\circ}$ entre sa normale et
-l'axe d'entrée du spectromètre.
-Chaque longueur d'onde forme un pic d'une largeur de 0,05mm à une position spécifique sur la caméra. \\
+Dans le cadre du cours PHS3910, en vue d'optimiser les coûts et la résolution d'un spectromètre réel,
+ce rapport présente la modélisation d'un spectromètre comprenant 2 lentilles, une fente et un réseau de diffraction. 
+En suivant l'optique de Fourier pour un système 4f, avec une onde resteinte en un rectangle au départ,
+la forme de l'onde dans l'espace de Fourier à la deuxième focale de la première
+lentille, de longueur focale $f_1=50mm$, est déterminée. Ensuite, le réseau de diffraction, d'un pas $\Lambda=600mm^{-1}$ 
+et qui forme un angle de $30{^\circ}$ entre sa normale et
+l'axe d'entrée du spectromètre, sépare les longueurs d'onde qui 
+sont individuellement retransformées à la deuxième lentille, de focale $f_2=25mm$, avant de converger sur la caméra.
+Chaque longueur d'onde forme un pic d'une largeur de $(0,05\pm 0,01)mm$ lorsque la fente fait $(10\pm 1) \mu m$
+de large à une position spécifique sur la caméra.
 
 
 \section{Méthodes \label{methodes}}
-Le système optique du spectromètre est schématisé dans la figure \ref{4f}.
 \begin{figure}[H]
     \centering
     \includegraphics[scale=0.4]{4f.png}
     \caption{Schéma simplifié du spectromètre avec toutes ses composantes \cite{procedurier}. \label{4f}}
 \end{figure}
+Le système optique du spectromètre est schématisé dans la figure \ref{4f}.
 Le parcours d'un faisceau passant à travers le spectromètre a été simulé à l'aide 
 de l'optique de Fourier. Le champ initial a été modélisé par une fonction rectangle en deux dimensions,
 afin de modéliser la forme du champ après avoir traversé une fente. Celui-ci peut donc être décrit par:
@@ -207,7 +209,7 @@ Une contrainte du projet consiste à ce que la largeur du spectre d'ordre 1 capt
 soit d'une largeur équivalente ou légèrement inférieure à la largeur de la caméra. Mathématiquement, ceci correspond à
 $x(\lambda_{bleu})-x(\lambda_{rouge})\leq D_{cam}$. On a pu approximer que $x(\lambda)$ correspond au terme de décalage
 de la fonction $rect$ en $x$. Les dimensions de la caméra utilisée pour le spectromètre sont de 1280 x 1024 pixels, chacun étant un carré de
-$5.2\ \mu m$ de côté. La zone sensible de la caméra est donc de 6.656 x 5.323 mm \cite{camera}. Par conséquent, il a été nécessaire d'optimiser la relation suivante
+$5.2\ \mu m$ de côté. La zone sensible de la caméra est donc de (($6,6\pm0,1$) mm x ($5.3\pm0,1$)) $mm$ \cite{camera}. Par conséquent, il a été nécessaire d'optimiser la relation suivante
 en fonction des lentilles disponibles (10, 15, 20, 25, 30, 50 ou 100 mm de longueur focale):
 \begin{align}\label{spectre}
     \frac{f_2}{\Lambda}(\lambda_{bleu}-\lambda_{rouge})\leq 6.656\ mm.
@@ -218,7 +220,7 @@ considérant que deux longueurs d'onde voisines, $\lambda_1$ et $\lambda_2$, se 
     x&=\frac{a f_2}{2f_1}+\frac{\lambda_1 f_2}{\Lambda}=-\frac{a f_2}{2f_1}+\frac{\lambda_2 f_2}{\Lambda}.\notag \\
     \Rightarrow\ \frac{af_2}{f_1}&=\frac{f_2}{\Lambda}(\lambda_2-\lambda_1)\Rightarrow\ \delta_{\lambda}=\lambda_2-\lambda_1=\frac{\Lambda a}{f_1}
 \end{align}
-Afin de modéliser l'équation trouver et de la visualiser, un code python a été créé. Celui-ci recrée, à partir de l'équation
+Afin de modéliser l'équation trouvée et de la visualiser, un code python a été créé. Celui-ci recrée, à partir de l'équation
 de $U_2$, l'image apparaisant sur la caméra. Plusieurs longueurs d'onde du rouge au bleu ont été testées pour vérifer 
 la fiabilité de l'équation avec les paramètres obtenus précédement, soit les deux focales ainsi que les dimensions de la fente. 
 Ce processus a également permis de prédire l'emplacement des différentes longueurs d'onde sur la caméra 
