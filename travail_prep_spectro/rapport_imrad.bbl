@@ -1,5 +1,5 @@
 % $ biblatex auxiliary file $
-% $ biblatex bbl format version 3.3 $
+% $ biblatex bbl format version 3.2 $
 % Do not modify the above lines!
 %
 % This is an auxiliary file used by the 'biblatex' package.
@@ -18,8 +18,8 @@
 
 
 \refsection{0}
-  \datalist[entry]{nty/global//global/global/global}
-    \entry{edmund_optics_aberrations}{misc}{}{}
+  \datalist[entry]{nty/global//global/global}
+    \entry{edmund_optics_aberrations}{misc}{}
       \name{author}{1}{}{%
         {{hash=714ff9069af003141464f6417a3182c2}{%
            family={{Edmund Optics}},
@@ -27,12 +27,10 @@
       }
       \strng{namehash}{714ff9069af003141464f6417a3182c2}
       \strng{fullhash}{714ff9069af003141464f6417a3182c2}
-      \strng{fullhashraw}{714ff9069af003141464f6417a3182c2}
       \strng{bibnamehash}{714ff9069af003141464f6417a3182c2}
       \strng{authorbibnamehash}{714ff9069af003141464f6417a3182c2}
       \strng{authornamehash}{714ff9069af003141464f6417a3182c2}
       \strng{authorfullhash}{714ff9069af003141464f6417a3182c2}
-      \strng{authorfullhashraw}{714ff9069af003141464f6417a3182c2}
       \field{sortinit}{E}
       \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
       \field{labelnamesource}{author}
@@ -46,7 +44,7 @@
       \verb www.edmundoptics.fr/knowledge-center/application-notes/imaging/how-aberrations-affect-machine-vision-lenses/
       \endverb
     \endentry
-    \entry{plymouth_grating_equation}{misc}{}{}
+    \entry{plymouth_grating_equation}{misc}{}
       \name{author}{1}{}{%
         {{hash=d08d52901a25504f378d957d40ac5155}{%
            family={{Plymouth Grating Laboratory}},
@@ -54,12 +52,10 @@
       }
       \strng{namehash}{d08d52901a25504f378d957d40ac5155}
       \strng{fullhash}{d08d52901a25504f378d957d40ac5155}
-      \strng{fullhashraw}{d08d52901a25504f378d957d40ac5155}
       \strng{bibnamehash}{d08d52901a25504f378d957d40ac5155}
       \strng{authorbibnamehash}{d08d52901a25504f378d957d40ac5155}
       \strng{authornamehash}{d08d52901a25504f378d957d40ac5155}
       \strng{authorfullhash}{d08d52901a25504f378d957d40ac5155}
-      \strng{authorfullhashraw}{d08d52901a25504f378d957d40ac5155}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}
@@ -73,7 +69,7 @@
       \verb https://www.plymouthgrating.com/guidance/technical-notes/fundamentals/the-grating-equation/
       \endverb
     \endentry
-    \entry{procedurier}{misc}{}{}
+    \entry{procedurier}{misc}{}
       \name{author}{3}{}{%
         {{hash=424b4955cc7664f1bb195f391cefd36d}{%
            family={Provost},
@@ -93,12 +89,10 @@
       }
       \strng{namehash}{562353b07446c2758ca0fce466783511}
       \strng{fullhash}{562353b07446c2758ca0fce466783511}
-      \strng{fullhashraw}{562353b07446c2758ca0fce466783511}
       \strng{bibnamehash}{562353b07446c2758ca0fce466783511}
       \strng{authorbibnamehash}{562353b07446c2758ca0fce466783511}
       \strng{authornamehash}{562353b07446c2758ca0fce466783511}
       \strng{authorfullhash}{562353b07446c2758ca0fce466783511}
-      \strng{authorfullhashraw}{562353b07446c2758ca0fce466783511}
       \field{sortinit}{P}
       \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
       \field{labelnamesource}{author}
@@ -112,7 +106,7 @@
       \verb https://moodle.polymtl.ca/mod/resource/view.php?id=544674
       \endverb
     \endentry
-    \entry{grating}{misc}{}{}
+    \entry{grating}{misc}{}
       \name{author}{1}{}{%
         {{hash=f344f596a5d1c9f527f864a3bab04ced}{%
            family={{Thorlabs}},
@@ -120,12 +114,10 @@
       }
       \strng{namehash}{f344f596a5d1c9f527f864a3bab04ced}
       \strng{fullhash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{fullhashraw}{f344f596a5d1c9f527f864a3bab04ced}
       \strng{bibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
       \strng{authorbibnamehash}{f344f596a5d1c9f527f864a3bab04ced}
       \strng{authornamehash}{f344f596a5d1c9f527f864a3bab04ced}
       \strng{authorfullhash}{f344f596a5d1c9f527f864a3bab04ced}
-      \strng{authorfullhashraw}{f344f596a5d1c9f527f864a3bab04ced}
       \field{sortinit}{T}
       \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
       \field{labelnamesource}{author}
@@ -138,7 +130,7 @@
       \verb www.thorlabs.com/newgrouppage9.cfm?objectgroup_id=8626&pn=GR25-0605
       \endverb
     \endentry
-    \entry{camera}{misc}{}{}
+    \entry{camera}{misc}{}
       \name{author}{1}{}{%
         {{hash=95db84d81d70c6e336b029ce24ced8fe}{%
            family={{Thorlabs, Inc.}},
@@ -146,12 +138,10 @@
       }
       \strng{namehash}{95db84d81d70c6e336b029ce24ced8fe}
       \strng{fullhash}{95db84d81d70c6e336b029ce24ced8fe}
-      \strng{fullhashraw}{95db84d81d70c6e336b029ce24ced8fe}
       \strng{bibnamehash}{95db84d81d70c6e336b029ce24ced8fe}
       \strng{authorbibnamehash}{95db84d81d70c6e336b029ce24ced8fe}
       \strng{authornamehash}{95db84d81d70c6e336b029ce24ced8fe}
       \strng{authorfullhash}{95db84d81d70c6e336b029ce24ced8fe}
-      \strng{authorfullhashraw}{95db84d81d70c6e336b029ce24ced8fe}
       \field{sortinit}{T}
       \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
       \field{labelnamesource}{author}
@@ -165,7 +155,7 @@
       \verb www.thorlabs.com/catalogpages/obsolete/2020/DCC1545M.pdf
       \endverb
     \endentry
-    \entry{wikipedia_aberration_chromatique}{misc}{}{}
+    \entry{wikipedia_aberration_chromatique}{misc}{}
       \name{author}{1}{}{%
         {{hash=030bd0fa2faebea3a5543e5242f1569f}{%
            family={{Wikipédia}},
@@ -173,12 +163,10 @@
       }
       \strng{namehash}{030bd0fa2faebea3a5543e5242f1569f}
       \strng{fullhash}{030bd0fa2faebea3a5543e5242f1569f}
-      \strng{fullhashraw}{030bd0fa2faebea3a5543e5242f1569f}
       \strng{bibnamehash}{030bd0fa2faebea3a5543e5242f1569f}
       \strng{authorbibnamehash}{030bd0fa2faebea3a5543e5242f1569f}
       \strng{authornamehash}{030bd0fa2faebea3a5543e5242f1569f}
       \strng{authorfullhash}{030bd0fa2faebea3a5543e5242f1569f}
-      \strng{authorfullhashraw}{030bd0fa2faebea3a5543e5242f1569f}
       \field{sortinit}{W}
       \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
       \field{labelnamesource}{author}
