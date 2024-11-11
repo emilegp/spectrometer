@@ -68,28 +68,28 @@ for i in x:
 
 val_lamda=np.array(val_lamda)
 
-# def calcule_incertitude_val_lamda(intimage, echelle_lamda, echelle_pixel, x_bleu, delta_echelle_lamda, delta_echelle_pixel, delta_x_bleu, delta_lambda_bleu):
-#     x = np.linspace(0, len(intimage) - 1, len(intimage))
-#     val_lamda = []
-#     incertitude_val_lamda = []
+def calcule_incertitude_val_lamda(intimage, echelle_lamda, echelle_pixel, x_bleu, delta_echelle_lamda, delta_echelle_pixel, delta_x_bleu, delta_lambda_bleu):
+    x = np.linspace(0, len(intimage) - 1, len(intimage))
+    val_lamda = []
+    incertitude_val_lamda = []
     
-#     for i in x:
-#         # Calcul de val_lamda
-#         val = (echelle_lamda / echelle_pixel) * (i - x_bleu) + 405
-#         val_lamda.append(val)
+    for i in x:
+        # Calcul de val_lamda
+        val = (echelle_lamda / echelle_pixel) * (i - x_bleu) + 405
+        val_lamda.append(val)
         
-#         # Calcul de l'incertitude
-#         term1 = ((i - x_bleu) / echelle_pixel) * delta_echelle_lamda
-#         term2 = (-echelle_lamda * (i - x_bleu) / (echelle_pixel ** 2)) * delta_echelle_pixel
-#         term3 = (echelle_lamda / echelle_pixel) * delta_x_bleu
-#         delta_val = np.sqrt(term1**2 + term2**2 + term3**2)+delta_lambda_bleu
+        # Calcul de l'incertitude
+        term1 = ((i - x_bleu) / echelle_pixel) * delta_echelle_lamda
+        term2 = (-echelle_lamda * (i - x_bleu) / (echelle_pixel ** 2)) * delta_echelle_pixel
+        term3 = (echelle_lamda / echelle_pixel) * delta_x_bleu
+        delta_val = np.sqrt(term1**2 + term2**2 + term3**2)+delta_lambda_bleu
         
-#         incertitude_val_lamda.append(delta_val)
+        incertitude_val_lamda.append(delta_val)
     
-#     val_lamda = np.array(val_lamda)
-#     incertitude_val_lamda = np.array(incertitude_val_lamda)
+    val_lamda = np.array(val_lamda)
+    incertitude_val_lamda = np.array(incertitude_val_lamda)
     
-#     return val_lamda, incertitude_val_lamda
+    return val_lamda, incertitude_val_lamda
 
 # Tracer la courbe de l'intensité en fonction de la position horizontale
 plt.plot(val_lamda, introusse/np.max(introusse))
