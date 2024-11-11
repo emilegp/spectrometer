@@ -89,12 +89,13 @@ plt.show()
 def transfert_filter(image_fond, image_filtre, type_de_spectro="table"):
     fond=intensite(image_fond, type_de_spectro)
     filtre=intensite(image_filtre, "table")
-    fond_min_non_zero = np.min(fond[fond > 0]) 
+    fond_min_non_zero = np.min(fond[fond > 0])/100
     fonction_de_transfert=filtre/(fond+fond_min_non_zero)
-    return fonction_de_transfert
+    fct_de_transfert_normalisee=fonction_de_transfert/np.max(fonction_de_transfert)
+    return fct_de_transfert_normalisee
 
 fct_trans=transfert_filter(image_array,image_arrayfiltre)
-#on de transfert en fonction de la position horizontale
+#Fonction de transfert en fonction de la position horizontale
 
 plt.plot(val_lamda, fct_trans)
 plt.xlabel("Position horizontale (nm)")
