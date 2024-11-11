@@ -3,17 +3,27 @@ from PIL import Image
 import matplotlib.pyplot as plt
 
 # Charger l'image en niveaux de gris
-image = Image.open("Photo-lumiere_blanche-lames-3D-testatte1x.tif").convert("L")
-image_array = np.array(image)
-imagefiltre = Image.open("Spectro-laser_rouge-lames-3D.tif").convert("L")
-image_arrayfiltre = np.array(imagefiltre)
-image_bleu = Image.open("Spectro-laser_bleu-lames-3D.tif").convert("L")
+image = Image.open("11-11-2024-Spectro-LED-froide-blanche-3D.tif").convert("L")
+froid_array = np.array(image)
+imagefiltre = Image.open("11-11-2024-Spectro-filtre-LED-froide-blanche-3D.tif").convert("L")
+froid_arrayfiltre = np.array(imagefiltre)
+image = Image.open("11-11-2024-Spectro-LED-chaude-blanche-3D.tif").convert("L")
+chaud_array = np.array(image)
+imagefiltre = Image.open("11-11-2024-Spectro-filtre-LED-chaude-blanche-3D.tif").convert("L")
+chaud_arrayfiltre = np.array(imagefiltre)
+image = Image.open("11-11-2024-Spectro-baton-lumiere-blanche-3D.tif").convert("L")
+baton_array = np.array(image)
+imagefiltre = Image.open("11-11-2024-Spectro-filtre-baton-lumiere-blanche-3D.tif").convert("L")
+baton_arrayfiltre = np.array(imagefiltre)
+image_bleu = Image.open("11-11-2024-Spectro-laser_bleu-lames-3D.tif").convert("L")
 image_bleu_array = np.array(image_bleu)
-image_rouge = Image.open("Spectro-laser_rouge-lames-3D.tif").convert("L")
+image_rouge = Image.open("11-11-2024-Spectro-laser_rouge-lames-3D.tif").convert("L")
 image_rouge_array = np.array(image_rouge)
+image = Image.open("11-11-2024-Spectro-DEL-rousse-3D.tif").convert("L")
+rousse_array = np.array(image)
 
-def intensite(matrice_image, type_de_spectro="table"):
-    if type_de_spectro=="3D":
+def intensite(matrice_image, type_de_spectro="3D"):
+    if type_de_spectro=="table":
         matrice_image=np.flip(matrice_image)
     
     # Étape 1 : Trouver l'intensité maximale dans l'image
@@ -34,9 +44,13 @@ def intensite(matrice_image, type_de_spectro="table"):
 
     return intensité_par_colonne
 
-
-intimage=intensite(image_array)
-intfiltre=intensite(image_arrayfiltre,"table")
+introusse=intensite(rousse_array)
+intfroid=intensite(froid_array)
+intfroidfiltre=intensite(froid_arrayfiltre)
+intchaud=intensite(chaud_array)
+intchaudfiltre=intensite(chaud_arrayfiltre)
+intbaton=intensite(baton_array)
+intbatonfiltre=intensite(baton_arrayfiltre)
 introuge=intensite(image_rouge_array)
 intbleu=intensite(image_bleu_array)
 
@@ -46,7 +60,7 @@ echelle_pixel=x_rouge-x_bleu
 delta_echelle_pixel=2
 echelle_lamda=650-405
 delta_lambda_bleu=4
-x = np.linspace(0, len(intimage) - 1, len(intimage))
+x = np.linspace(0, len(intfroid) - 1, len(intfroid))
 
 val_lamda=[]
 for i in x:
@@ -77,28 +91,55 @@ val_lamda=np.array(val_lamda)
     
 #     return val_lamda, incertitude_val_lamda
 
-
 # Tracer la courbe de l'intensité en fonction de la position horizontale
-plt.plot(val_lamda, intimage)
-plt.plot(val_lamda, intfiltre)
+plt.plot(val_lamda, introusse/np.max(introusse))
 plt.xlabel("Position horizontale (nm)")
-plt.ylabel("Intensité moyenne")
-plt.title("Courbe de l'intensité (lignes sélectionnées)")
+plt.ylabel("Intensité normalisée")
+plt.title("Intensité de la DEL orange obtenue au spectromètre imprimé en 3D")
 plt.show()
 
-def transfert_filter(image_fond, image_filtre, type_de_spectro="table"):
+# # Tracer la courbe de l'intensité en fonction de la position horizontale
+# plt.plot(val_lamda, intfroid)
+# plt.plot(val_lamda, intfroidfiltre)
+# plt.xlabel("Position horizontale (nm)")
+# plt.ylabel("Intensité moyenne")
+# plt.title("Courbe de l'intensité (froid)")
+# plt.show()
+
+# # Tracer la courbe de l'intensité en fonction de la position horizontale
+# plt.plot(val_lamda, intchaud)
+# plt.plot(val_lamda, intchaudfiltre)
+# plt.xlabel("Position horizontale (nm)")
+# plt.ylabel("Intensité moyenne")
+# plt.title("Courbe de l'intensité (chaud)")
+# plt.show()
+
+# # Tracer la courbe de l'intensité en fonction de la position horizontale
+# plt.plot(val_lamda, intbaton)
+# plt.plot(val_lamda, intbatonfiltre)
+# plt.xlabel("Position horizontale (nm)")
+# plt.ylabel("Intensité moyenne")
+# plt.title("Courbe de l'intensité (baton))")
+# plt.show()
+
+def transfert_filter(image_fond, image_filtre, type_de_spectro="3D"):
     fond=intensite(image_fond, type_de_spectro)
-    filtre=intensite(image_filtre, "table")
+    filtre=intensite(image_filtre, "3D")
     fond_min_non_zero = np.min(fond[fond > 0])/100
     fonction_de_transfert=filtre/(fond+fond_min_non_zero)
     fct_de_transfert_normalisee=fonction_de_transfert/np.max(fonction_de_transfert)
     return fct_de_transfert_normalisee
 
-fct_trans=transfert_filter(image_array,image_arrayfiltre)
+fct_trans_froid=transfert_filter(froid_array,froid_arrayfiltre)
+fct_trans_chaud=transfert_filter(chaud_array,chaud_arrayfiltre)
+fct_trans_baton=transfert_filter(baton_array,baton_arrayfiltre)
+
 #Fonction de transfert en fonction de la position horizontale
 
-plt.plot(val_lamda, fct_trans)
+# plt.plot(val_lamda, fct_trans_baton, label='baton')
+# plt.plot(val_lamda, fct_trans_chaud, label= 'chaude')
+plt.plot(val_lamda, fct_trans_froid)
 plt.xlabel("Position horizontale (nm)")
-plt.ylabel("Intensité moyenne")
-plt.title("Courbe de l'intensité (lignes sélectionnées)")
+plt.ylabel("Fonction de transfert normalisée")
+plt.title("Fonction de transfert de la LED froide")
 plt.show()
