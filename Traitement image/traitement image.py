@@ -81,7 +81,7 @@ def calcule_incertitude_val_lamda(intimage, echelle_lamda, echelle_pixel, x_bleu
         # Calcul de l'incertitude
         term1 = ((i - x_bleu) / echelle_pixel) * delta_echelle_lamda
         term2 = (-echelle_lamda * (i - x_bleu) / (echelle_pixel ** 2)) * delta_echelle_pixel
-        term3 = (echelle_lamda / echelle_pixel) * delta_x_bleu
+        term3 = (echelle_lamda / echelle_pixel) * delta_echelle_pixel
         delta_val = np.sqrt(term1**2 + term2**2 + term3**2)+delta_lambda_bleu
         
         incertitude_val_lamda.append(delta_val)
