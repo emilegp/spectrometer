@@ -93,7 +93,7 @@ def calcule_incertitude_val_lamda(intimage, echelle_lamda, echelle_pixel, x_bleu
 
 # Tracer la courbe de l'intensité en fonction de la position horizontale
 plt.plot(val_lamda, introusse/np.max(introusse))
-plt.xlabel("Position horizontale (nm)")
+plt.xlabel("Longueur d'onde (nm)")
 plt.ylabel("Intensité normalisée")
 plt.title("Intensité de la DEL orange obtenue au spectromètre imprimé en 3D")
 plt.show()
@@ -139,7 +139,7 @@ fct_trans_baton=transfert_filter(baton_array,baton_arrayfiltre)
 # plt.plot(val_lamda, fct_trans_baton, label='baton')
 # plt.plot(val_lamda, fct_trans_chaud, label= 'chaude')
 plt.plot(val_lamda, fct_trans_froid)
-plt.xlabel("Position horizontale (nm)")
+plt.xlabel("Longueur d'onde (nm)")
 plt.ylabel("Fonction de transfert normalisée")
 plt.title("Fonction de transfert de la LED froide")
 plt.show()
