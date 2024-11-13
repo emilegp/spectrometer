@@ -147,19 +147,6 @@ best_model = min(
 print("\nComparaison des ajustements :")
 print(f"Le meilleur choix pour ajuster les données est le modèle {best_model[0]}.")
 
-# Visualisation des ajustements
-plt.plot(x, introuge, label="Intensité bleue", color="blue")
-plt.plot(x, gauss_result.best_fit, 'k--', label=f"Ajustement Gaussien (FWHM = {fwhm_gauss:.2f})")
-plt.plot(x, lorentz_result.best_fit, 'g--', label=f"Ajustement Lorentzien (FWHM = {fwhm_lorentz:.2f})")
-plt.plot(x, sinc_result.best_fit, 'r--', label=f"Ajustement Sinc**2 (FWHM approx = {fwhm_sinc:.2f})")
-
-# Ajouter des détails de légende et de mise en forme
-plt.xlabel("Position horizontale (pixels)")
-plt.ylabel("Intensité moyenne")
-plt.title("Courbe d'intensité et ajustements gaussien, lorentzien et sinc**2")
-plt.legend()
-plt.show()
-
 # Fonction pour convertir une position de pixel en longueur d'onde
 def pixel_to_lambda(pixel_position, echelle_lamda, echelle_pixel, x_bleu):
     return (echelle_lamda / echelle_pixel) * (pixel_position - x_bleu) + 405
@@ -192,6 +179,19 @@ echelle_lamda = 657 - 405
 fwhm_gauss_lambda = fwhm_in_lambda(gauss_result, echelle_lamda, echelle_pixel, x_bleu)
 fwhm_lorentz_lambda = fwhm_in_lambda(lorentz_result, echelle_lamda, echelle_pixel, x_bleu)
 fwhm_sinc_lambda = fwhm_in_lambda(sinc_result, echelle_lamda, echelle_pixel, x_bleu)
+
+# Visualisation des ajustements
+plt.plot(val_lamda, intbleu, label="Intensité bleue", color="blue")
+# plt.plot(val_lamda, gauss_result.best_fit, 'k--', label=f"Ajustement Gaussien (FWHM = {fwhm_gauss:.2f})")
+# plt.plot(val_lamda, lorentz_result.best_fit, 'g--', label=f"Ajustement Lorentzien (FWHM = {fwhm_lorentz:.2f})")
+# plt.plot(val_lamda, sinc_result.best_fit, 'r--', label=f"Ajustement Sinc**2 (FWHM approx = {fwhm_sinc:.2f})")
+
+# Ajouter des détails de légende et de mise en forme
+plt.xlabel("Position horizontale (pixels)")
+plt.ylabel("Intensité moyenne")
+plt.title("Courbe d'intensité et ajustements gaussien, lorentzien et sinc**2")
+plt.legend()
+plt.show()
 
 # Affichage des résultats
 print(f"Résolution gaussienne (FWHM) : {fwhm_gauss_lambda:.2f} nm")

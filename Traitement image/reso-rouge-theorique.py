@@ -42,7 +42,28 @@ plt.show()
 
 
 
+# Charger les images en niveaux de gris
+image_bleu = Image.open("11-11-2024-Spectro-laser_bleu-lames-3D.tif").convert("L")
+image_bleu_array = np.array(image_bleu)
+image_rouge = Image.open("11-11-2024-Spectro-laser_rouge-lames-3D.tif").convert("L")
+image_rouge_array = np.array(image_rouge)
 
+def intensite(matrice_image):
+    intensité_max = np.max(matrice_image)
+    if intensité_max == 255:
+        print("L'image est saturée")
+        return
+
+    seuil = 0.95 * intensité_max
+    mask = matrice_image >= seuil
+    lignes_à_considerer = np.any(mask, axis=1)
+    intensité_par_colonne = np.mean(matrice_image[lignes_à_considerer, :], axis=0)
+
+    return intensité_par_colonne
+
+# Extraire les courbes d'intensité
+introuge = intensite(image_rouge_array)
+intbleu = intensite(image_bleu_array)
 
 
 # Définir les modèles de fonctions gaussienne, lorentzienne, et sinc
@@ -52,9 +73,9 @@ def gaussian(x, amplitude, center, sigma):
 def lorentzian(x, amplitude, center, gamma):
     return (amplitude * gamma**2) / ((x - center)**2 + gamma**2)
 
-def sinc(x, amplitude, center, width):
-    # Calcul de sinc en normalisant (x - center) pour définir la largeur
-    return amplitude * np.sinc((x - center) / width)
+def sinc_squared(x, amplitude, center, width):
+    # Calcul de sinc**2 en normalisant (x - center) pour définir la largeur
+    return amplitude * (np.sinc((x - center) / width))**2
 
 # Ajuster les données
 x = np.arange(len(intensites))  # Positions des pixels
@@ -69,17 +90,17 @@ lorentz_model = Model(lorentzian)
 lorentz_result = lorentz_model.fit(intensites, x=x, amplitude=np.max(intensites), center=np.argmax(intensites), gamma=1)
 fwhm_lorentz = 2 * lorentz_result.params['gamma'].value
 
-# Modèle sinc
-sinc_model = Model(sinc)
-sinc_result = sinc_model.fit(intensites, x=x, amplitude=np.max(intensites), center=np.argmax(intensites), width=5)
-# La FWHM d'une fonction sinc n'est pas aussi facilement définie que pour les gaussiennes et lorentziennes
+# Modèle sinc**2
+sinc_model = Model(sinc_squared)
+sinc_result = sinc_model.fit(intensites, x=x, amplitude=np.max(introuge), center=np.argmax(introuge), width=0.5)
+# La FWHM d'une fonction sinc**2 n'est pas aussi facilement définie que pour les gaussiennes et lorentziennes
 # mais on pourrait estimer la largeur à mi-hauteur en fonction du paramètre `width`
-fwhm_sinc = 2 * sinc_result.params['width'].value  # Approximation pour FWHM de sinc
+fwhm_sinc = 2 * sinc_result.params['width'].value  # Approximation pour FWHM de sinc**2
 
 # Imprimer les résolutions
 print(f"Résolution gaussienne (FWHM) : {fwhm_gauss:.2f} pixels")
 print(f"Résolution lorentzienne (FWHM) : {fwhm_lorentz:.2f} pixels")
-print(f"Résolution sinc approximée (FWHM) : {fwhm_sinc:.2f} pixels")
+print(f"Résolution sinc**2 approximée (FWHM) : {fwhm_sinc:.2f} pixels")
 
 # Afficher les statistiques pour chaque ajustement
 
@@ -95,8 +116,8 @@ print(f" - Chi-carré : {lorentz_result.chisqr}")
 print(f" - Chi-carré réduit : {lorentz_result.redchi}")
 print(f" - R² : {1 - (np.sum((intensites - lorentz_result.best_fit) ** 2) / np.sum((intensites - np.mean(intensites)) ** 2)):.4f}")
 
-# Statistiques pour l'ajustement sinc
-print("\nStatistiques de l'ajustement sinc :")
+# Statistiques pour l'ajustement sinc**2
+print("\nStatistiques de l'ajustement sinc**2 :")
 print(f" - Chi-carré : {sinc_result.chisqr}")
 print(f" - Chi-carré réduit : {sinc_result.redchi}")
 print(f" - R² : {1 - (np.sum((intensites - sinc_result.best_fit) ** 2) / np.sum((intensites - np.mean(intensites)) ** 2)):.4f}")
@@ -106,7 +127,7 @@ best_model = min(
     [
         ("gaussien", gauss_result.redchi, gauss_result),
         ("lorentzien", lorentz_result.redchi, lorentz_result),
-        ("sinc", sinc_result.redchi, sinc_result),
+        ("sinc**2", sinc_result.redchi, sinc_result),
     ],
     key=lambda item: (abs(item[1] - 1), -1 * (1 - np.sum((intensites - item[2].best_fit) ** 2) / np.sum((intensites - np.mean(intensites)) ** 2)))
 )
