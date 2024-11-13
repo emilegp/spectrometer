@@ -145,15 +145,49 @@ Polytechnique Montréal\\}
 
 \section{Description générale et spécifications}
 
+Cette fiche technique présente les caractéristiques de deux spectromètres : l'un construit sur 
+table optique et l'autre avec de l'impression 3D. Pour les deux appareils, le même système 4f
+est construit. La lumière passe au travers d'une fente de taille \textcolor{red}{XX} mm, 
+ajustable sur la table optique (VA100), ou faite avec des lames de rasoir parallèles pour le
+système imprimé. Cette lumière est convergée avec une lentille de distance focale de 50 mm 
+(LA-1213-A-ML) sur un réseau de diffraction blazé à 600 rainures/mm (GR25-0605) placé à un
+angle de \textcolor{red}{XX}\degree $\;$afin que la réflexion d'ordre 1 qui sépare les
+longueurs d'onde spatialement soit renvoyée vers une deuxième lentille de distance focale
+de 25 mm (LA-1560-A-ML). Cette réflexion, au travers de la lentille, place le spectre des 
+longueurs d'ondes sur le capteur d'une caméra (DCC1545M-GL) pour l'analyse. Les deux appareils
+sont concus pour que la caméra capte entre 397 nm et 666 nm. Le modèle imprimé présente une
+résolution de \textcolor{red}{XX $\pm$ XX} nm et un coût total de 877.28\$. Le modèle sur
+table optique a une résolution de \textcolor{red}{XX $\pm$ XX} nm et coûte 1852.72\$. Les
+deux spectromètres et leurs dimensions physiques sont présentés à la figure 
+\ref{schema_spectros} :
+
+
 \begin{figure}[H]
   \centering
   \includegraphics[scale=1.75]{schema_spectros.png}
-  \caption{test}
-  \label{test}
+  \caption{Schémas des spectromètres. Toutes les dimensions sont en millimètres. À gauche : spectromètre fait par impression 3D sans son couvercle. À droite : spectromètre sur table optique.}
+  \label{schema_spectros}
 \end{figure}
 
 
-\section{test tableaux}
+\section{Rapports de tests}
+
+L'objectif primaire de la construction de deux spectromètres séparés est de permettre la 
+comparaison des coûts et de la performance des deux dispositifs. Cette section présente
+donc les tests qui ont été effectués pour caractériser les dispositifs, et présente les 
+conclusions quant à la performance des dispositifs.
+
+\subsection{Caractérisation de la résolution}
+
+\textcolor{red}{plz détailler comment la méthode de comment trouver la résolution}
+
+\subsection{Rapport détaillé des coûts}
+
+Les méthodes de construction étant grandement différentes pour les deux spectromètres, une 
+étude des coûts est faite afin de déterminer lequel des deux est le plus abordable. Pour ce
+faire, une liste détaillée des pièces requises est faite, et le total des coûts est calculé en
+dollars canadiens avant taxes. La table \ref{prix_table} présente les coûts des pièces pour
+le système monté sur table optique :
 
 \begin{table}[!ht]
     \centering
@@ -180,6 +214,23 @@ Polytechnique Montréal\\}
     \label{prix_table}
 \end{table}
 
+Quelques points sont à relever pour cette table. La caméra utilisée est maintenant indisponible
+à l'achat sur le site de Thorlabs. Le prix affiché est donc le prix de cette pièce avant
+qu'elle soit enlevée du site en 2021 \textcolor{red}{source A}. Aussi, deux éléments importants
+ont été omis de cette liste. La quincaillerie, soit les vis, les écrous et les 
+rondelles, n'ont pas été comptées car ces derniers sont fréquemment disponibles en vrac dans
+des ateliers, ou ils s'achètent en ensemble à moindre coût. La table pour fixer les éléments 
+optiques n'a pas été comptée non plus car elle ne servait pas que pour le spectromètre 
+construit. Sa taille, donc son prix est donc beaucoup trop grand par rapport au besoin du projet. L'appareil
+construit fonctionnerait sur la table B1212F, mesurant 12 x 12 po. Avec un coût de 966.85\$,
+le total serait amené à 2819.57\$. L'achat de cette table pourrait toutefois ne pas être 
+justifiable pour un laboratoire étant donné sa taille restreinte, donc des options plus grandes
+seraient à considérer.
+
+% source A : https://www.thorlabs.com/thorProduct.cfm?partNumber=DCC1545M
+
+La table \ref{prix_3D} montre le calcul des coûts pour le modèle fait par l'impression 3D :
+
 \begin{table}[!ht]
     \centering
     \caption{Liste des pièces et coûts totaux pour le spectromètre avec impression 3D}
@@ -196,6 +247,22 @@ Polytechnique Montréal\\}
     \end{tabular}
     \label{prix_3D}
 \end{table}
+
+Un élément a aussi été exclu de cette liste, soit l'imprimante 3D utilisée pour l'impression.
+Celle utilisée, soit la Original Prusa i3 MK3S+, est disponible pour 899\$ US, ou 1245.21\$ CAD.
+Si considéré, ce prix augmente grandement les coûts associé à ce modèle de spectromètre, étant
+plus dispendieux que le total calculé. Toutefois, ce type d'imprimante est facilement accessible
+gratuitement en faisant affaire avec certains ateliers. Aussi, pour de faibles quantités de
+pièces, il est possible de commander des impressions en ligne pour beaucoup moins cher que
+l'imprimante. C'est donc pourquoi son prix a été omis.
+
+Il est donc facile de conclure que l'impression 3D est beaucoup plus avantageux économiquement.
+Le prix de l'impression sous 10\$ est une très grande économie lorsque comparé aux nombreuses
+pièces servant au montage sur table optique qui ont fortement contribués au coût élevé du
+modèle qui les requiert. L'économie de 975.44\$ en allant avec le modèle imprimé est
+considérable, et appuie le fait que c'est le modèle à préconiser.
+
+
 
 % \clearpage
 % \printbibliography
