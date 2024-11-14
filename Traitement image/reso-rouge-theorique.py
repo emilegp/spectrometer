@@ -66,7 +66,7 @@ introuge = intensite(image_rouge_array)
 intbleu = intensite(image_bleu_array)
 
 
-# Définir les modèles de fonctions gaussienne, lorentzienne, et sinc
+# Définir les modèles de fonctions gaussienne, lorentzienne, et sinc^2
 def gaussian(x, amplitude, center, sigma):
     return amplitude * np.exp(-(x - center)**2 / (2 * sigma**2))
 
@@ -74,7 +74,7 @@ def lorentzian(x, amplitude, center, gamma):
     return (amplitude * gamma**2) / ((x - center)**2 + gamma**2)
 
 def sinc_squared(x, amplitude, center, width):
-    # Calcul de sinc**2 en normalisant (x - center) pour définir la largeur
+    # Sinc^2 sans normalisation par pi
     return amplitude * (np.sinc((x - center) / width))**2
 
 # Ajuster les données
@@ -91,16 +91,22 @@ lorentz_result = lorentz_model.fit(intensites, x=x, amplitude=np.max(intensites)
 fwhm_lorentz = 2 * lorentz_result.params['gamma'].value
 
 # Modèle sinc**2
+
+# Estimer une largeur initiale pour sinc^2 (par exemple, basée sur l'écart entre les points maximaux et minimaux)
+width_init = (np.argmax(intensites) - np.argmin(intensites)) / 10  # Ajustez selon vos données
+
+# Ajustement du modèle sinc^2 avec une largeur initiale estimée
 sinc_model = Model(sinc_squared)
-sinc_result = sinc_model.fit(intensites, x=x, amplitude=np.max(introuge), center=np.argmax(introuge), width=0.5)
-# La FWHM d'une fonction sinc**2 n'est pas aussi facilement définie que pour les gaussiennes et lorentziennes
-# mais on pourrait estimer la largeur à mi-hauteur en fonction du paramètre `width`
+sinc_result = sinc_model.fit(intensites, x=x, amplitude=np.max(intensites), center=np.argmax(intensites), width=width_init)
+
+# La FWHM d'une fonction sinc**2 n'est pas aussi facilement définie que pour les gaussiennes et lorentziennes,
+# mais on peut l'estimer en fonction du paramètre 'width' du modèle sinc.
 fwhm_sinc = 2 * sinc_result.params['width'].value  # Approximation pour FWHM de sinc**2
 
 # Imprimer les résolutions
 print(f"Résolution gaussienne (FWHM) : {fwhm_gauss:.2f} pixels")
 print(f"Résolution lorentzienne (FWHM) : {fwhm_lorentz:.2f} pixels")
-print(f"Résolution sinc**2 approximée (FWHM) : {fwhm_sinc:.2f} pixels")
+print(f"Résolution sinc^2 approximée (FWHM) : {fwhm_sinc:.2f} pixels")
 
 # Afficher les statistiques pour chaque ajustement
 
@@ -116,8 +122,8 @@ print(f" - Chi-carré : {lorentz_result.chisqr}")
 print(f" - Chi-carré réduit : {lorentz_result.redchi}")
 print(f" - R² : {1 - (np.sum((intensites - lorentz_result.best_fit) ** 2) / np.sum((intensites - np.mean(intensites)) ** 2)):.4f}")
 
-# Statistiques pour l'ajustement sinc**2
-print("\nStatistiques de l'ajustement sinc**2 :")
+# Statistiques pour l'ajustement sinc^2
+print("\nStatistiques de l'ajustement sinc^2 :")
 print(f" - Chi-carré : {sinc_result.chisqr}")
 print(f" - Chi-carré réduit : {sinc_result.redchi}")
 print(f" - R² : {1 - (np.sum((intensites - sinc_result.best_fit) ** 2) / np.sum((intensites - np.mean(intensites)) ** 2)):.4f}")
@@ -127,7 +133,7 @@ best_model = min(
     [
         ("gaussien", gauss_result.redchi, gauss_result),
         ("lorentzien", lorentz_result.redchi, lorentz_result),
-        ("sinc**2", sinc_result.redchi, sinc_result),
+        ("sinc^2", sinc_result.redchi, sinc_result),
     ],
     key=lambda item: (abs(item[1] - 1), -1 * (1 - np.sum((intensites - item[2].best_fit) ** 2) / np.sum((intensites - np.mean(intensites)) ** 2)))
 )
@@ -136,14 +142,14 @@ print("\nComparaison des ajustements :")
 print(f"Le meilleur choix pour ajuster les données est le modèle {best_model[0]}.")
 
 # Visualisation des ajustements
-plt.plot(x, intensites, label="Intensité bleue", color="blue")
+plt.plot(x, intensites, label="Intensité", color="blue")
 plt.plot(x, gauss_result.best_fit, 'k--', label=f"Ajustement Gaussien (FWHM = {fwhm_gauss:.2f})")
 plt.plot(x, lorentz_result.best_fit, 'g--', label=f"Ajustement Lorentzien (FWHM = {fwhm_lorentz:.2f})")
-plt.plot(x, sinc_result.best_fit, 'r--', label=f"Ajustement Sinc (FWHM approx = {fwhm_sinc:.2f})")
+plt.plot(x, sinc_result.best_fit, 'r--', label=f"Ajustement Sinc^2 (FWHM approx = {fwhm_sinc:.2f})")
 
 # Ajouter des détails de légende et de mise en forme
 plt.xlabel("Position horizontale (pixels)")
 plt.ylabel("Intensité moyenne")
-plt.title("Courbe d'intensité et ajustements gaussien, lorentzien et sinc")
+plt.title("Courbe d'intensité et ajustements gaussien, lorentzien et sinc^2")
 plt.legend()
 plt.show()
