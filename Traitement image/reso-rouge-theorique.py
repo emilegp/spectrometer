@@ -148,7 +148,7 @@ plt.plot(x, lorentz_result.best_fit, 'g--', label=f"Ajustement Lorentzien (FWHM 
 plt.plot(x, sinc_result.best_fit, 'r--', label=f"Ajustement Sinc^2 (FWHM approx = {fwhm_sinc:.2f})")
 
 # Ajouter des détails de légende et de mise en forme
-plt.xlabel("Position horizontale (pixels)")
+plt.xlabel("Position horizontale (nm)")
 plt.ylabel("Intensité moyenne")
 plt.title("Courbe d'intensité et ajustements gaussien, lorentzien et sinc^2")
 plt.legend()

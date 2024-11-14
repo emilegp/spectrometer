@@ -12,27 +12,36 @@ from lmfit import Model
 # Fait pour rouge et bleu
 
 # Charger les images en niveaux de gris
-image_bleu = Image.open("11-11-2024-Spectro-laser_bleu-lames-3D.tif").convert("L")
+image_bleu = Image.open("Table-bleu.tif").convert("L")
 image_bleu_array = np.array(image_bleu)
-image_rouge = Image.open("11-11-2024-Spectro-laser_rouge-lames-3D.tif").convert("L")
+image_rouge = Image.open("Table-rouge.tif").convert("L")
 image_rouge_array = np.array(image_rouge)
 
-def intensite(matrice_image):
+def intensite(matrice_image, type_de_spectro="3D"):
+    if type_de_spectro=="table":
+        matrice_image=np.flip(matrice_image)
+    
+    # Étape 1 : Trouver l'intensité maximale dans l'image
     intensité_max = np.max(matrice_image)
     if intensité_max == 255:
         print("L'image est saturée")
-        return
-
+        return 
+    
+    # Étape 2 : Identifier les pixels ayant une intensité >= 90% de l'intensité maximale
     seuil = 0.95 * intensité_max
     mask = matrice_image >= seuil
+
+    # Étape 3 : Trouver les lignes contenant au moins un point au-dessus du seuil
     lignes_à_considerer = np.any(mask, axis=1)
+
+    # Étape 4 : Sélectionner ces lignes et calculer la moyenne d'intensité par colonne
     intensité_par_colonne = np.mean(matrice_image[lignes_à_considerer, :], axis=0)
 
     return intensité_par_colonne
 
 # Extraire les courbes d'intensité
-introuge = intensite(image_rouge_array)
-intbleu = intensite(image_bleu_array)
+introuge = intensite(image_rouge_array,"table")
+intbleu = intensite(image_bleu_array,"table")
 
 #Partie 2: Conversion de px en lambda 
 # 1. Formule de conversion de px en lambda (comment obtenue et forme)
@@ -197,6 +206,7 @@ fwhm_sinc_lambda = fwhm_in_lambda(sinc_result, echelle_lamda, echelle_pixel, x_b
 
 # Visualisation des ajustements
 plt.plot(val_lamda, intbleu, label="Intensité bleue", color="blue")
+plt.plot(val_lamda, introuge, label="Intensité rouge", color="red")
 # plt.plot(val_lamda, gauss_result.best_fit, 'k--', label=f"Ajustement Gaussien (FWHM = {fwhm_gauss:.2f})")
 # plt.plot(val_lamda, lorentz_result.best_fit, 'g--', label=f"Ajustement Lorentzien (FWHM = {fwhm_lorentz:.2f})")
 # plt.plot(val_lamda, sinc_result.best_fit, 'r--', label=f"Ajustement Sinc**2 (FWHM approx = {fwhm_sinc:.2f})")
