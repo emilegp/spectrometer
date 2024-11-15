@@ -110,14 +110,19 @@ def calculer_FWHM(x, y):
     # 3. Trouver les indices où l'intensité atteint la moitié du maximum
     indices_fwhm = np.where(y >= I_half)[0]
     
-    # 4. La FWHM est la distance entre les deux indices extrêmes
-    if len(indices_fwhm) >= 2:
-        x_fwhm_min = x[indices_fwhm[0]]
+    # 4. Détermination des bornes supérieure et inférieure en étant sûr de ne pas en manquer (incertitude)
+    if I_half <= x[indices_fwhm[-1]]:
         x_fwhm_max = x[indices_fwhm[-1]+1]
-        fwhm = x_fwhm_max - x_fwhm_min
     else:
-        fwhm = None
-        x_fwhm_min, x_fwhm_max = None, None
+        x_fwhm_max = x[indices_fwhm[-1]]
+
+    if I_half <= x[indices_fwhm[0]]:
+        x_fwhm_min = x[indices_fwhm[0]-1]
+    else:
+        x_fwhm_min = x[indices_fwhm[0]]
+
+    # 5. La FWHM est la distance entre les deux indices extrêmes
+    fwhm = x_fwhm_max - x_fwhm_min
     
     return fwhm, x_fwhm_min, x_fwhm_max, I_half
 
