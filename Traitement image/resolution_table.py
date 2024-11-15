@@ -28,7 +28,7 @@ def intensite(matrice_image, type_de_spectro="3D"):
         return 
     
     # Étape 2 : Identifier les pixels ayant une intensité >= 90% de l'intensité maximale
-    seuil = 0.4 * intensité_max
+    seuil = 0.5 * intensité_max
     mask = matrice_image >= seuil
 
     # Étape 3 : Trouver les lignes contenant au moins un point au-dessus du seuil

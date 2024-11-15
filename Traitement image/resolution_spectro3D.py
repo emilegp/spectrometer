@@ -23,7 +23,7 @@ def intensite(matrice_image):
         print("L'image est saturée")
         return
 
-    seuil = 0.1 * intensité_max
+    seuil = 0.5 * intensité_max
     mask = matrice_image >= seuil
     lignes_à_considerer = np.any(mask, axis=1)
     intensité_par_colonne = np.mean(matrice_image[lignes_à_considerer, :], axis=0)
@@ -123,14 +123,28 @@ def calculer_FWHM(x, y):
 
 # Exemple d'utilisation avec les données d'intensité rouge (introuge) et de longueur d'onde (val_lamda)
 fwhm, x_fwhm_min, x_fwhm_max, I_half = calculer_FWHM(val_lamda, introuge)
+fwhmbleu, x_fwhm_minbleu, x_fwhm_maxbleu, I_half_bleu = calculer_FWHM(val_lamda, intbleu)
 
-print(f"FWHM: {fwhm} nm, à partir de {x_fwhm_min} nm à {x_fwhm_max} nm")
+print(f"FWHM_rouge: {fwhm} nm, à partir de {x_fwhm_min} nm à {x_fwhm_max} nm")
+print(f"FWHM_bleu: {fwhmbleu} nm, à partir de {x_fwhm_minbleu} nm à {x_fwhm_maxbleu} nm")
 
 # Visualisation avec les lignes représentant la FWHM
 plt.plot(val_lamda, introuge, label="Intensité rouge", color="red")
 plt.axvline(x=x_fwhm_min, color='black', linestyle='--', label="Limite inférieure FWHM")
 plt.axvline(x=x_fwhm_max, color='black', linestyle='--', label="Limite supérieure FWHM")
 plt.axhline(y=I_half, color='blue', linestyle='--', label="Moitié de la hauteur maximale")
+plt.xlabel("Longueur d'onde (nm)")
+plt.ylabel("Intensité")
+plt.title("Calcul de la FWHM sur la courbe d'intensité")
+plt.legend()
+plt.grid(True)
+plt.show()
+
+# Visualisation avec les lignes représentant la FWHM
+plt.plot(val_lamda, intbleu, label="Intensité rouge", color="blue")
+plt.axvline(x=x_fwhm_minbleu, color='black', linestyle='--', label="Limite inférieure FWHM")
+plt.axvline(x=x_fwhm_maxbleu, color='black', linestyle='--', label="Limite supérieure FWHM")
+plt.axhline(y=I_half_bleu, color='blue', linestyle='--', label="Moitié de la hauteur maximale")
 plt.xlabel("Longueur d'onde (nm)")
 plt.ylabel("Intensité")
 plt.title("Calcul de la FWHM sur la courbe d'intensité")
