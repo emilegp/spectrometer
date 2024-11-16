@@ -181,6 +181,63 @@ conclusions quant à la performance des dispositifs.
 
 \textcolor{red}{plz détailler comment la méthode de comment trouver la résolution}
 
+%Partie 3: Largeur à mi-hauteur
+% 1. Technique utilisée pour obtenir la largeur (maximum, positions à la moitié du max, un peu overshoot au cas où)
+% 2. Comparaison entre les 3 spectromètres.
+
+La résolution est définie comme étant la plus petite distance entre les centres de deux
+faisceaux qui permet de les distinguer. On considère que lorsque les deux faisceaux se 
+chevauchent à la moitié de leur intensité maximale, il n'est plus possible de les distinguer.
+La largeur à mi-hauteur $FWHM$ de chaque faisceau sur le capteur est donc considérée. Pour 
+caractériser l'appareil, on suppose que les faisceaux d'intérêt ont la largeur à mi-hauteur
+du plus faisceau le plus étroit testé. La résolution est alors donnée par l'équation \ref{res}.
+
+\begin{equation}\label{res}
+  Resolution = \frac{1}{2}(FWHM_1)+\frac{1}{2}(FWHM_2)=\frac{2}{2}FWHM=FWHM
+\end{equation}
+
+Pour des faisceaux plus large, ce ne serait pas la 
+résolution du spectromètre qui limiterait la résolution obtenue, mais le profil des faisceaux
+utilisés. Cela est cohérent, car il est préférable d'utiliser un appareil dans des cas où 
+ce n'est pas sa résolution qui est limitante. 
+
+La largeur à mi-hauteur est déterminée en trouvant les points ayant la moitié de l'intensité 
+maximale. Ils sont toujours de deux, de part et d'autre du centre, grâce au profil gaussien
+des faisceaux laser. Il suffit de prendre la différence entre les deux pour obtenir FWHM et,
+donc, la résolution. Dû à la nature discrète du spectre obtenu, il est courant que l'intensité à 
+mi-hauteur ne corresponde pas directement à un point. Le point ayant l'intensité la plus proche
+de la moitié de l'intensité maximale, tout en étant plus faible que celle-ci, est pris. De
+cette façon, la largeur à mi-hauteur risque d'être légèrement sur-estimer, mais elle ne peut pas
+être sous-estimé. Les résultats des résolution obtenues sont présentés au tableau \ref{res_tab}.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}\hline
+    Spectromètre & Résolution (nm) \\
+    \hline
+    Imprimé en 3D & 1,94 $\pm$ ???\\    \hline
+    Sur table optique & 1,48 $\pm$ ???\\    \hline
+  \end{tabular}
+  \caption{Résolution pour les deux spectromètres testés}
+  \label{res_tab}
+\end{table}
+
+La résolution obtenue pour le spectromètre sur table optique, de $1,48 \pm ??$ est meilleure que celle 
+obtenue pour le spectromètre imprimé en 3D, de $1,94 \pm ???$. Cela s'explique par 
+
+% # Partie 4: Conclusion
+% # 0. Résultats énoncés et démarches pour s'y rendre expliquées
+% # 1. Comparaison entre les 2 spectros: Table optique meilleure
+% # 2. Limitations de cette comparasion: Difficultés d'alignement, de positionnement des lentilles à leur focale, aberration des lentilles
+% # qualité des photos photo obtenues, qualité de la fante fabriquée avec des lames de rasoirs (pas tellement droite, gros espace)
+% # 3. Comparaison avec Datasheet du bleu et résultat du rouge (énoncer leur résultat et dire qu'est-ce qui est plus grand que quoi)
+% # 4. Limitations de cette comparaison: 
+% # Comparer les deux spectro (table et 3D) au spectro de Guillaume. Donc Parties 1 à 3 pour 2 spectros. et comparaison avec rouge Guigui
+% # Différence dans les résolutions obtenues voir comparé avec Guigui
+% # Incertitudes respectives et dire si elles sont bien/logique ou pas
+
+
+
 \subsection{Rapport détaillé des coûts}
 
 Les méthodes de construction étant grandement différentes pour les deux spectromètres, une 
