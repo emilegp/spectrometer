@@ -219,8 +219,8 @@ conclusions quant à la performance des dispositifs.
 
 Pour caractériser la résolution, plusieurs étapes intermédiaires sont nécessaires, la procédure décrite ci-dessous est la même 
 pour la table optique et pour le spectromètre imprimé en 3D. 
-Premièrement, les images obtenues à l'aide de la caméra et du logiciel Thorcam sont sous forme d'un fichier .tif,
-on commence donc par les ouvrir sur python pour pouvoir traiter l'image sous forme de data. Les fichiers tif 
+Les images obtenues à l'aide de la caméra et du logiciel Thorcam sont sous forme d'un fichier .tif.
+Elles sont donc ouvertes sur python pour pouvoir traiter l'image sous forme de data. Les fichiers tif 
 contiennent des valeurs d'intensité entre 0 et 225 pour chaque pixel de la caméra, il est important de mentionner
 que lorsque la valeur excède 225, l'intensité et dit saturé, dans ce cas de figure le scripte python s'arrête et 
 averti l'utilisateur de la situation. 
@@ -245,17 +245,17 @@ de sa longueur d'onde.
 
 Un aspect important à étudier qui n'est pas directement en lien avec la résolution est d'évaluer l'incertitude sur 
 la position de nos pics d'intensité. Pour calculer cette incertitude, on utilise la formule suivante: 
-\begin{align}\label{GratingEq}
+\begin{align}
   \Delta \lambda =\sqrt{A^{2}+B^{2}+C^{2}}+\Delta \lambda _{bleu}
 \end{align}
 avec 
-\begin{align}\label{GratingEq}
+\begin{align}
   A=\frac{x-x_{bleu}}{x_{rouge}-x_{bleu}}\cdot \Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )
 \end{align}
-\begin{align}\label{GratingEq}
+\begin{align}
   B=\frac{-(\lambda _{rouge}-\lambda _{bleu})\cdot (x-x_{bleu})}{(x_{rouge}-x_{bleu})^{2}} \cdot \Delta \left ( x_{rouge}-x_{bleu} \right )
 \end{align}
-\begin{align}\label{GratingEq}
+\begin{align}
   C=\frac{(\lambda _{rouge}-\lambda _{bleu})}{(x_{rouge}-x_{bleu})}\cdot \Delta \lambda _{bleu}
 \end{align}
 
@@ -265,7 +265,7 @@ la valeur suivante sera donc utilisée: $ \lambda = 405\pm 5 nm$. On approxime q
 toutes les longueurs d'onde ainsi on obtient que $\Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )=2\cdot \Delta \lambda _{bleu}$, 
 finalement le résultat suivant est donc obtenu $\lambda _{rouge}-\lambda _{bleu}= (657-405)\pm 10 nm$.
 Pour finir, on considère que l'incertitude sur la position de n'importe quelle position en pixel est la plus petite
-division, soit 1 pixel, le résultat suiivant est donc obtenu: $\Delta \left ( x_{rouge}-x_{bleu} \right )=2 pixels$.
+division, soit 1 pixel, le résultat suivant est donc obtenu: $\Delta \left ( x_{rouge}-x_{bleu} \right )=2 pixels$.
 %variation lin/aire de tant a tant
 %therme dominant de l<incertitde thermne A = incertitude de lambda
 %comment reduire l<incertitude du spectro calibre avec bleu
@@ -299,22 +299,34 @@ donc, la résolution. Dû à la nature discrète du spectre obtenu, il est coura
 mi-hauteur ne corresponde pas directement à un point. Le point ayant l'intensité la plus proche
 de la moitié de l'intensité maximale, tout en étant plus faible que celle-ci, est pris. De
 cette façon, la largeur à mi-hauteur risque d'être légèrement sur-estimer, mais elle ne peut pas
-être sous-estimé. Les résultats des résolution obtenues sont présentés au tableau \ref{res_tab}.
+être sous-estimé. 
+%Incertitude sur la résolution comme étant la plus petite division de l'échelle en lambda
+%Image de la détermination de FWHM avec un zoom sur le bleu, avec un peu de flat des deux côtés
+\begin{figure}[h!]
+  \centering
+  \includegraphics[width=0.8\linewidth]{FWHM_bleu_3D.png}
+  \caption{Données expérimentales du coefficient de transmission en nuage de points avec barres d'erreurs en fonction de l'angle d'orientation de \(P_2\) par rapport à \(P_1\) et de \(P_3\) par rapport à \(P_2\) dans le système à 3 polariseurs, ainsi que la fonction théorique associée (\(T_3(\theta)\)).}
+  \label{FWHM_bleu}
+\end{figure}
+
+Les résultats des résolution obtenues sont présentés au tableau \ref{res_tab}.
 
 \begin{table}[H]
   \centering
   \begin{tabular}{|c|c|c|}\hline
     Spectromètre & Résolution (nm) \\
     \hline
-    Imprimé en 3D & 1,94 $\pm$ ???\\    \hline
-    Sur table optique & 1,48 $\pm$ ???\\    \hline
+    Imprimé en 3D & 1,9 $\pm$ 0,4\\    \hline
+    Sur table optique & 1,5 $\pm$ 0,4\\    \hline
   \end{tabular}
   \caption{Résolution pour les deux spectromètres testés}
   \label{res_tab}
 \end{table}
 
-La résolution obtenue pour le spectromètre sur table optique, de $1,48 \pm ??$ est meilleure que celle 
-obtenue pour le spectromètre imprimé en 3D, de $1,94 \pm ???$. Cela s'explique par 
+La résolution obtenue pour le spectromètre sur table optique, de $1,48 \pm 0,4$ est meilleure que celle 
+obtenue pour le spectromètre imprimé en 3D, de $1,94 \pm 0,4$. Cela s'explique par 
+
+%Résultat rouge à Mentionner
 
 % # Partie 4: Conclusion
 % # 0. Résultats énoncés et démarches pour s'y rendre expliquées
