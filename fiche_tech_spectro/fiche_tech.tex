@@ -224,9 +224,10 @@ on commence donc par les ouvrir sur python pour pouvoir traiter l'image sous for
 contiennent des valeurs d'intensité entre 0 et 225 pour chaque pixel de la caméra, il est important de mentionner
 que lorsque la valeur excède 225, l'intensité et dit saturé, dans ce cas de figure le scripte python s'arrête et 
 averti l'utilisateur de la situation. 
+
 Deuxiement, une fonction python est créée de façon à générer une courbe d'intensité en fonction de la position horizontale 
 en pixel de la caméra. Pour ce faire, une sélection préalable est faite en choisissant uniquement les lignes 
-contenant plus que 10 pour cent de l'intensité maximum, cette procédure permet de ne pas sélection les endroits de la caméra 
+contenant plus que 50 \% de l'intensité maximum, cette procédure permet de ne pas sélection les endroits de la caméra 
 ou l'intensité est complètement nul sur toutes la longueur. Une fois cette opération achevée, la moyenne des intensités sur chaque
 colonne est effectuée, ce qui retourne donc une valeur d'intensité pour chaque position de pixel horizontal. On exécute cette étape pour 
 un laser bleu et un laser rouge.
@@ -265,6 +266,11 @@ toutes les longueurs d'onde ainsi on obtient que $\Delta\left ( \lambda _{rouge}
 finalement le résultat suivant est donc obtenu $\lambda _{rouge}-\lambda _{bleu}= (657-405)\pm 10 nm$.
 Pour finir, on considère que l'incertitude sur la position de n'importe quelle position en pixel est la plus petite
 division, soit 1 pixel, le résultat suiivant est donc obtenu: $\Delta \left ( x_{rouge}-x_{bleu} \right )=2 pixels$.
+%variation lin/aire de tant a tant
+%therme dominant de l<incertitde thermne A = incertitude de lambda
+%comment reduire l<incertitude du spectro calibre avec bleu
+%ajouter les unit/ incertitude 
+%faire reference graphique 
 
 %Partie 3: Largeur à mi-hauteur
 % 1. Technique utilisée pour obtenir la largeur (maximum, positions à la moitié du max, un peu overshoot au cas où)
