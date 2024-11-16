@@ -54,7 +54,8 @@ def calcule_incertitude_val_lamda(rouge,bleu):
     echelle_pixel=x_rouge-x_bleu
     delta_echelle_pixel=2 #On considère que c'est l'addition de 2 incertitudes. Chacune étant la plus petite division, soit 1 px.
     echelle_lamda=657-405
-    delta_lambda_bleu=(echelle_lamda/echelle_pixel)*delta_echelle_pixel
+    delta_lambda_bleu=5
+    delta_res=(echelle_lamda/echelle_pixel)*delta_echelle_pixel
     delta_echelle_lambda=2*delta_lambda_bleu
     x = np.linspace(0, len(rouge) - 1, len(rouge))
     
@@ -76,10 +77,10 @@ def calcule_incertitude_val_lamda(rouge,bleu):
     val_lamda = np.array(val_lamda)
     incertitude_val_lamda = np.array(incertitude_val_lamda)
    
-    return val_lamda, incertitude_val_lamda
+    return val_lamda, incertitude_val_lamda, delta_res
 
 # Calculer les longueurs d'onde et leurs incertitudes
-val_lamda, incertitude_val_lamda = calcule_incertitude_val_lamda(introuge, intbleu)
+val_lamda, incertitude_val_lamda, inc_res = calcule_incertitude_val_lamda(introuge, intbleu)
 
 
 # Tracer l'évolution de l'incertitude de la longueur d'onde en fonction de la longueur d'onde
@@ -132,6 +133,7 @@ fwhmbleu, x_fwhm_minbleu, x_fwhm_maxbleu, I_half_bleu = calculer_FWHM(val_lamda,
 
 print(f"FWHM_rouge: {fwhm} nm, à partir de {x_fwhm_min} nm à {x_fwhm_max} nm")
 print(f"FWHM_bleu: {fwhmbleu} nm, à partir de {x_fwhm_minbleu} nm à {x_fwhm_maxbleu} nm")
+print(f'Incertitude sur la résolution: {inc_res}')
 
 # Visualisation avec les lignes représentant la FWHM
 plt.plot(val_lamda, introuge, label="Intensité rouge", color="red")

@@ -215,26 +215,26 @@ comparaison des coûts et de la performance des deux dispositifs. Cette section 
 donc les tests qui ont été effectués pour caractériser les dispositifs, et présente les 
 conclusions quant à la performance des dispositifs.
 
-\subsection{Caractérisation de la résolution}
+\subsection{Conversion en longueurs d'onde et incertitude}
 
 Pour caractériser la résolution, plusieurs étapes intermédiaires sont nécessaires, la procédure décrite ci-dessous est la même 
 pour la table optique et pour le spectromètre imprimé en 3D. 
 Les images obtenues à l'aide de la caméra et du logiciel Thorcam sont sous forme d'un fichier .tif.
 Elles sont donc ouvertes sur python pour pouvoir traiter l'image sous forme de data. Les fichiers tif 
-contiennent des valeurs d'intensité entre 0 et 225 pour chaque pixel de la caméra, il est important de mentionner
-que lorsque la valeur excède 225, l'intensité et dit saturé, dans ce cas de figure le scripte python s'arrête et 
+contiennent des valeurs d'intensité entre 0 et 225 pour chaque pixel de la caméra. Il est important de mentionner
+que lorsque la valeur excède 225, l'intensité est dite saturée, dans ce cas de figure le scripte python s'arrête et 
 averti l'utilisateur de la situation. 
 
-Deuxiement, une fonction python est créée de façon à générer une courbe d'intensité en fonction de la position horizontale 
+Une fonction python est créée de façon à générer une courbe d'intensité en fonction de la position horizontale 
 en pixel de la caméra. Pour ce faire, une sélection préalable est faite en choisissant uniquement les lignes 
 contenant plus que 50 \% de l'intensité maximum, cette procédure permet de ne pas sélection les endroits de la caméra 
 ou l'intensité est complètement nul sur toutes la longueur. Une fois cette opération achevée, la moyenne des intensités sur chaque
 colonne est effectuée, ce qui retourne donc une valeur d'intensité pour chaque position de pixel horizontal. On exécute cette étape pour 
 un laser bleu et un laser rouge.
 
-Troisièmement, il est nécessaire de convertir l'échelle, initialement en pixel, en nanomètre.
+Il est nécessaire de convertir l'échelle, initialement en pixel, en nanomètre.
 Pour ce faire la formule suivante a été utilisée: 
-\begin{align}\label{GratingEq}
+\begin{align}
   \lambda =\frac{\lambda _{rouge}-\lambda _{bleu}}{x_{rouge}-x_{bleu}}(x-x_{bleu})-\lambda _{bleu}
 \end{align}
 Dans cette équation $\lambda $ représente la position horizontale avec une valeur en nm. Dans la même idée, 
@@ -267,18 +267,22 @@ finalement le résultat suivant est donc obtenu $\lambda _{rouge}-\lambda _{bleu
 Pour finir, on considère que l'incertitude sur la position de n'importe quelle position en pixel est la plus petite
 division, soit 1 pixel, le résultat suivant est donc obtenu: $\Delta \left ( x_{rouge}-x_{bleu} \right )=2 pixels$.
 
-On remarque que l’incertitude sur la position varie de façon linéaire entre environ 5.5 et 15.5 nm. On remarque également que le terme dominant dans le calcul d'incertitude, 
-c'est à dire qui contribue le plus à la valeur de l'  incertitude, est le terme A. 
+On remarque que l’incertitude sur la position varie de façon linéaire entre environ 5.5 et 15.5 nm, ce qui représente une
+incertitude relative d'environ $1\%$ pour le bleu à 405 nm et d'environ $2\%$ pour le rouge à 657 nm. On remarque 
+également que le terme dominant dans le calcul d'incertitude, 
+c'est à dire qui contribue le plus à la valeur de l'incertitude, est le terme A. 
 En fait, il s’agit plus précisément du terme $\Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )$ qui fait augmenter de beaucoup
 la valeur de cette partie . On peut donc conclure qu'une façon efficace de réduire l'incertitude sur la position pour
 les spectromètres est de réduire le plus possible l’incertitude sur la position du laser bleu. Puisque cette valeur d'incertitude
 vient de la datasheet de laser, on en déduit qu'il faudrait trouver un laser plus précis pour réduit l'incertitude 
-globale de la position sur le spectromètre. 
-
+globale de la position sur le spectromètre, ou qu'il faudrait étalonner le laser utilisé avec un autre appareil pour préciser
+sa longueur d'onde centrale. 
 
 %Partie 3: Largeur à mi-hauteur
 % 1. Technique utilisée pour obtenir la largeur (maximum, positions à la moitié du max, un peu overshoot au cas où)
 % 2. Comparaison entre les 3 spectromètres.
+
+\subsection{Caractérisation de la résolution}
 
 La résolution est définie comme étant la plus petite distance entre les centres de deux
 faisceaux qui permet de les distinguer. On considère que lorsque les deux faisceaux se 
@@ -297,23 +301,28 @@ utilisés. Cela est cohérent, car il est préférable d'utiliser un appareil da
 ce n'est pas sa résolution qui est limitante. 
 
 La largeur à mi-hauteur est déterminée en trouvant les points ayant la moitié de l'intensité 
-maximale. Ils sont toujours de deux, de part et d'autre du centre, grâce au profil gaussien
-des faisceaux laser. Il suffit de prendre la différence entre les deux pour obtenir FWHM et,
-donc, la résolution. Dû à la nature discrète du spectre obtenu, il est courant que l'intensité à 
-mi-hauteur ne corresponde pas directement à un point. Le point ayant l'intensité la plus proche
-de la moitié de l'intensité maximale, tout en étant plus faible que celle-ci, est pris. De
-cette façon, la largeur à mi-hauteur risque d'être légèrement surestimée, mais elle ne peut pas
-être sous-estimée. 
-%Incertitude sur la résolution comme étant la plus petite division de l'échelle en lambda
-%Image de la détermination de FWHM avec un zoom sur le bleu, avec un peu de flat des deux côtés
+maximale. Ils sont toujours deux, de part et d'autre du centre, grâce au profil gaussien
+des faisceaux laser, comme illustré à la figure \ref{FWHM_bleu}. Il suffit de prendre la 
+différence entre les deux pour obtenir FWHM et, donc, la résolution. 
+
 \begin{figure}[h!]
   \centering
   \includegraphics[width=0.8\linewidth]{FWHM_bleu_3D.png}
-  \caption{Données expérimentales du coefficient de transmission en nuage de points avec barres d'erreurs en fonction de l'angle d'orientation de \(P_2\) par rapport à \(P_1\) et de \(P_3\) par rapport à \(P_2\) dans le système à 3 polariseurs, ainsi que la fonction théorique associée (\(T_3(\theta)\)).}
+  \caption{Calcul de FWHM sur la courbe d'intensité obtenue pour le laser bleu avec le spectromètre imprimé en 3D. Zoom sur l'intervalle $[396, 420]$ nm}
   \label{FWHM_bleu}
 \end{figure}
 
-Les résultats des résolutions obtenus sont présentés au tableau \ref{res_tab}.
+Dû à la nature discrète du spectre obtenu, il est courant que l'intensité à 
+mi-hauteur ne corresponde pas directement à un point. Le point ayant l'intensité la plus proche
+de la moitié de l'intensité maximale, tout en étant plus faible que celle-ci, est pris. De
+cette façon, la largeur à mi-hauteur risque d'être légèrement surestimée, mais elle ne peut pas
+être sous-estimée. L'incertitude sur cette mesure correspond à la plus petite divison de l'échelle en nm,
+puisque, de chaque côté, on peut être légèrement décalé par rapport à la valeur définie précédement.
+
+\subsection{Comparaison des deux spectromètres}
+
+L'incertitude de la résolution est d'environ 0,4 nm et les résultats des résolutions 
+obtenues sont présentés au tableau \ref{res_tab}.
 
 \begin{table}[H]
   \centering
@@ -327,25 +336,86 @@ Les résultats des résolutions obtenus sont présentés au tableau \ref{res_tab
   \label{res_tab}
 \end{table}
 
-La résolution obtenue pour le spectromètre sur table optique, de $1,48 \pm 0,4$ est meilleure que celle 
-obtenue pour le spectromètre imprimé en 3D, de $1,94 \pm 0,4$. Cela s'explique par 
+La résolution obtenue pour le spectromètre sur table optique est de ($1,5 \pm 0,4$) nm, ce qui
+est meilleur que celle obtenue pour le spectromètre imprimé en 3D, de ($1,9 \pm 0,4$) nm. Les difficultés d'alignement, qui sont plus importantes pour le spectromètre imprimé en 3D, ont
+pesé dans la balance, notamment pour l'angle du réseau de diffraction et l'angle d'entrée du laser. 
+En ajustant l'angle du réseau de diffraction, il arrive à de nombreuses reprises d'avoir 
+le rouge ou le bleu sur la caméra, mais pas les deux.
+Avec de multiples essais, l'alignement permettant d'avoir les deux simultanément est possible,
+mais il peut s'accompagner d'aberrations provenant des lentilles, puisque les rayons extrêmes
+se trouvent à passer très près du bord de celles-ci. Le système utilisé permet d'ajuster l'angle,
+mais pas de le fixer, donc l'ajustement est à recommencer avant une série de prises de mesures si
+l'appareil à été déplacé. 
+L'angle d'entrée du laser importe puisqu'il détermine la position des rayons sur la caméra. Il doit
+donc toujours être envoyé perpendiculairement à la fente pour des résultats répétables, ce qui est
+plus facilement réalisable sur une table optique où le laser est maintenu à un endroit fixe par 
+rapport au spectromètre.  
 
-%Résultat rouge à Mentionner
+La fente affecte également la résolution, puisque sa largeur affecte directement la largeur du spectre
+obtenu sur la caméra. Là encore, la table optique, avec un équipement plus couteux certes, permet un
+contrôle de l'ouverture bien plus précis que les lames de rasoirs utilisées pour le spectromètre 3D.
+L'espace entre celles-ci est plus large, ce qui affecte les résultats des tests. Il est également 
+plus difficile d'assurer qu'elles forment une fentre rectangulaire, mais cet élément n'affecte pas 
+la résolution de manière conséquente étant donné le traitement fait sur les données.
+La table optique a pour sa part une limitation majeure; il y est plus difficile de s'assurer que les
+lentilles sont positionnées au bon endroit, c'est-à-dire à une longueur focale de l'élément qui la 
+précède et qui la suit. Cela pourrait avoir comme effet de rendre l'image plus floue, car les principes
+utilisés ne sont valables que pour une configuration 4f, donc en ayant une configuration approximative,
+ça risquerait de rendre l'image approximative, donc de nuire à la résolution. 
+
+Les tests des deux spectromètres avec un laser rouge sont présentés et comparés au résultat d'un 
+spectromètre commercial. La largeur à mi-hauteur du laser rouge obtenue avec chaque spectromètre est 
+présentée au tableau \ref{res_tab_rouge}. L'incertitude sur la résolution du spectromètre commercial 
+est prise comme la plus petite graduation sur l'échelle des longueurs d'onde, soit 0,8 nm.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}\hline
+    Spectromètre & Largeur à mi-hauteur (nm) \\
+    \hline
+    Imprimé en 3D & 8,0 $\pm$ 0,4\\    \hline
+    Sur table optique & 2,3 $\pm$ 0,4\\    \hline
+    Commercial & 12,1 $\pm$ 0,8\\    \hline
+  \end{tabular}
+  \caption{Résolution pour les deux spectromètres testés et le spectromètre commercial}
+  \label{res_tab_rouge}
+\end{table}
+
+Aucun des deux spectromètres n'obtient la même largeur à mi-hauteur que le spectromètre commercial.
+La largeur à mi-hauteur obtenue avec le spectromètre sur table optique, de $(2,3 \pm 0,4)$ nm, est 
+beaucoup plus faible que celles obtenues avec le spectromètre imprimé en 3D, de $(8,0 \pm 0,4)$, nm 
+ou avec le spectromètre commercial, de $(12,1 \pm 0,8)$ nm. Les deux spectromètres s'accordent sur 
+le fait que le laser rouge a un profil plus large que le laser bleu.
+
+Alors que pour le bleu, les spectromètres tombent d'accord, il n'y a pas de largeur à mi-hauteur
+commune donnée par les trois spectromètres. Cela peut être dû à une combinaison des aberrations 
+des lentilles, aux enjeux d'alignement, de positionnement des éléments optiques et de contrôle de
+la fente. Le laser rouge ayant un profil plus large, il est plus sujet aux aberrations des lentilles
+qui n'affectent pas le faisceau églement en fonction de la position (extrême au centrale) où elle
+est traversée. Il est également plus sujet aux clippage à cause de sa largeur. Pour couronner le tout,
+ce laser n'est pas aligné avec son boitier, donc il est probable qu'il n'entre pas correctement dans
+le système optique. 
+
+Sans avoir d'information sur le spectromètre commercial utilisé, la confiance est tout de même supérieure
+pour le résultat obtenu avec ce spectomètre. Les spectromètres semblent donc sous-estimer la largeur deux
+laser rouge testé, avec un effet moins prononcé pour le spectromètre imprimé en 3D que celui sur table optique.
+Les spectres de diodes électroluminescentes testées sont toutefois cohérents, ce qui semblerait indiquer que 
+cette aberration des systèmes est davantage un enjeu pour les longueurs d'onde extrêmes tirant sur le rouge,
+plutôt que pour tout le spectre. 
 
 % # Partie 4: Conclusion
-% # 0. Résultats énoncés et démarches pour s'y rendre expliquées
 % # 1. Comparaison entre les 2 spectros: Table optique meilleure
 % # 2. Limitations de cette comparasion: Difficultés d'alignement ++pour le 3D spécifiquement (angle du réseau de diffraction),
 % # angle du laser devrait être perpendiculaire à la fente: difficle à confirmer pendant les tests surtout pour 3D, de 
-% # positionnement des lentilles à leur focale, aberration des lentilles,
+% # , aberration des lentilles,
 % # qualité des photos photo obtenues, qualité de la fante fabriquée avec des lames de rasoirs (pas tellement droite, gros espace)
-% # 3. Comparaison avec Datasheet du bleu et résultat du rouge (énoncer leur résultat et dire qu'est-ce qui est plus grand que quoi)
+% positionnement des lentilles à leur focale
+% # 3. Comparaison avec Datasheet du bleu et
+% résultat du rouge (énoncer leur résultat et dire qu'est-ce qui est plus grand que quoi)
 % # 4. Limitations de cette comparaison: qualité du laser (angle par rapport au boitier du laser lui-même)
-% # Comparer les deux spectro (table et 3D) au spectro de Guillaume. Donc Parties 1 à 3 pour 2 spectros. et comparaison avec rouge Guigui
-% # Différence dans les résolutions obtenues voir comparé avec Guigui
-% # Incertitudes respectives et dire si elles sont bien/logique ou pas: position: Relativement pas si grand, mais pourrait être amélioré
-% # en étalonnant le laser bleu qui sert de référence pour notre spectro, résolution : Bien, assez petit, donner le relatif aussi.
+% # Comparer les deux spectro (table et 3D) au spectro de Guillaume. 
 
+% Donner l'incertitude relative
 
 
 \subsection{Rapport détaillé des coûts}

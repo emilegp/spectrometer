@@ -31,6 +31,7 @@ for line in lines:
             pass  # Si la conversion échoue, ignorer la ligne
 
 print(f'intensité maximale rouge à : {longueurs_donde[np.argmax(intensites)]} nm')
+print(f'Incertitude théorique: {longueurs_donde[np.argmax(intensites)]-longueurs_donde[np.argmax(intensites)-1]}')
 
 # Tracer la courbe de l'intensité en fonction de la position horizontale
 plt.plot(longueurs_donde,intensites/np.max(intensites))
