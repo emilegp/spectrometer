@@ -94,6 +94,7 @@ plt.show()
 #Partie 3: Largeur à mi-hauteur
 # 1. Technique utilisée pour obtenir la largeur (maximum, positions à la moitié du max, un peu overshoot au cas où)
 # 2. Comparaison entre les 3 spectromètres.
+# 
 
 def calculer_FWHM(x, y):
     # 1. Identifier la valeur maximale de l'intensité
@@ -154,6 +155,12 @@ plt.show()
 
 
 # Partie 4: Conclusion
+# 0. Résultats énoncés et démarches pour s'y rendre expliquées
+# 1. Comparaison entre les 2 spectros: Table optique meilleure
+# 2. Limitations de cette comparasion: Difficultés d'alignement, de positionnement des lentilles à leur focale, aberration des lentilles
+# qualité des photos photo obtenues, qualité de la fante fabriquée avec des lames de rasoirs (pas tellement droite, gros espace)
+# 3. Comparaison avec Datasheet du bleu et résultat du rouge (énoncer leur résultat et dire qu'est-ce qui est plus grand que quoi)
+# 4. Limitations de cette comparaison: 
 # Comparer les deux spectro (table et 3D) au spectro de Guillaume. Donc Parties 1 à 3 pour 2 spectros. et comparaison avec rouge Guigui
 # Différence dans les résolutions obtenues voir comparé avec Guigui
 # Incertitudes respectives et dire si elles sont bien/logique ou pas
