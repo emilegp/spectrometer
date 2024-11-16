@@ -239,8 +239,8 @@ Pour ce faire la formule suivante a été utilisée:
 \end{align}
 Dans cette équation $\lambda $ représente la position horizontale avec une valeur en nm. Dans la même idée, 
 $\lambda _{rouge}$ et $\lambda _{bleu}$ représentent la valeur en nm des pics d'intensité rouge et bleu. 
-Pour ça part, x tout comme $x_{rouge}$ et $x_{bleu}$ représente une position sur une échelle en pixel.
-Avec cette formule il est possible de générer un graphique de l'intensité d'un faisceau en fonction 
+Pour ça part, x tout comme $x_{rouge}$ et $x_{bleu}$ représentent une position sur une échelle en pixel.
+Avec cette formule il est possible de générer un graphique, comme à la figure 2, de l'intensité d'un faisceau en fonction 
 de sa longueur d'onde. 
 
 Un aspect important à étudier qui n'est pas directement en lien avec la résolution est d'évaluer l'incertitude sur 
@@ -266,11 +266,15 @@ toutes les longueurs d'onde ainsi on obtient que $\Delta\left ( \lambda _{rouge}
 finalement le résultat suivant est donc obtenu $\lambda _{rouge}-\lambda _{bleu}= (657-405)\pm 10 nm$.
 Pour finir, on considère que l'incertitude sur la position de n'importe quelle position en pixel est la plus petite
 division, soit 1 pixel, le résultat suivant est donc obtenu: $\Delta \left ( x_{rouge}-x_{bleu} \right )=2 pixels$.
-%variation lin/aire de tant a tant
-%therme dominant de l<incertitde thermne A = incertitude de lambda
-%comment reduire l<incertitude du spectro calibre avec bleu
-%ajouter les unit/ incertitude 
-%faire reference graphique 
+
+On remarque que l’incertitude sur la position varie de façon linéaire entre environ 5.5 et 15.5 nm. On remarque également que le terme dominant dans le calcul d'incertitude, 
+c'est à dire qui contribue le plus à la valeur de l'  incertitude, est le terme A. 
+En fait, il s’agit plus précisément du terme $\Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )$ qui fait augmenter de beaucoup
+la valeur de cette partie . On peut donc conclure qu'une façon efficace de réduire l'incertitude sur la position pour
+les spectromètres est de réduire le plus possible l’incertitude sur la position du laser bleu. Puisque cette valeur d'incertitude
+vient de la datasheet de laser, on en déduit qu'il faudrait trouver un laser plus précis pour réduit l'incertitude 
+globale de la position sur le spectromètre. 
+
 
 %Partie 3: Largeur à mi-hauteur
 % 1. Technique utilisée pour obtenir la largeur (maximum, positions à la moitié du max, un peu overshoot au cas où)
@@ -287,7 +291,7 @@ du plus faisceau le plus étroit testé. La résolution est alors donnée par l'
   Resolution = \frac{1}{2}(FWHM_1)+\frac{1}{2}(FWHM_2)=\frac{2}{2}FWHM=FWHM
 \end{equation}
 
-Pour des faisceaux plus large, ce ne serait pas la 
+Pour des faisceaux plus larges, ce ne serait pas la 
 résolution du spectromètre qui limiterait la résolution obtenue, mais le profil des faisceaux
 utilisés. Cela est cohérent, car il est préférable d'utiliser un appareil dans des cas où 
 ce n'est pas sa résolution qui est limitante. 
@@ -298,8 +302,8 @@ des faisceaux laser. Il suffit de prendre la différence entre les deux pour obt
 donc, la résolution. Dû à la nature discrète du spectre obtenu, il est courant que l'intensité à 
 mi-hauteur ne corresponde pas directement à un point. Le point ayant l'intensité la plus proche
 de la moitié de l'intensité maximale, tout en étant plus faible que celle-ci, est pris. De
-cette façon, la largeur à mi-hauteur risque d'être légèrement sur-estimer, mais elle ne peut pas
-être sous-estimé. 
+cette façon, la largeur à mi-hauteur risque d'être légèrement surestimée, mais elle ne peut pas
+être sous-estimée. 
 %Incertitude sur la résolution comme étant la plus petite division de l'échelle en lambda
 %Image de la détermination de FWHM avec un zoom sur le bleu, avec un peu de flat des deux côtés
 \begin{figure}[h!]
@@ -309,7 +313,7 @@ cette façon, la largeur à mi-hauteur risque d'être légèrement sur-estimer, 
   \label{FWHM_bleu}
 \end{figure}
 
-Les résultats des résolution obtenues sont présentés au tableau \ref{res_tab}.
+Les résultats des résolutions obtenus sont présentés au tableau \ref{res_tab}.
 
 \begin{table}[H]
   \centering
