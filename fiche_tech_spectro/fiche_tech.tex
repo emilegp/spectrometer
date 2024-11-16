@@ -179,7 +179,54 @@ conclusions quant à la performance des dispositifs.
 
 \subsection{Caractérisation de la résolution}
 
-\textcolor{red}{plz détailler comment la méthode de comment trouver la résolution}
+Pour caractériser la résolution, plusieurs étapes intermédiaires sont nécessaires, la procédure décrite ci-dessous est la même 
+pour la table optique et pour le spectromètre imprimé en 3D. 
+Premièrement, les images obtenues à l'aide de la caméra et du logiciel Thorcam sont sous forme d'un fichier .tif,
+on commence donc par les ouvrir sur python pour pouvoir traiter l'image sous forme de data. Les fichiers tif 
+contiennent des valeurs d'intensité entre 0 et 225 pour chaque pixel de la caméra, il est important de mentionner
+que lorsque la valeur excède 225, l'intensité et dit saturé, dans ce cas de figure le scripte python s'arrête et 
+averti l'utilisateur de la situation. 
+Deuxiement, une fonction python est créée de façon à générer une courbe d'intensité en fonction de la position horizontale 
+en pixel de la caméra. Pour ce faire, une sélection préalable est faite en choisissant uniquement les lignes 
+contenant plus que 10 pour cent de l'intensité maximum, cette procédure permet de ne pas sélection les endroits de la caméra 
+ou l'intensité est complètement nul sur toutes la longueur. Une fois cette opération achevée, la moyenne des intensités sur chaque
+colonne est effectuée, ce qui retourne donc une valeur d'intensité pour chaque position de pixel horizontal. On exécute cette étape pour 
+un laser bleu et un laser rouge.
+
+Troisièmement, il est nécessaire de convertir l'échelle, initialement en pixel, en nanomètre.
+Pour ce faire la formule suivante a été utilisée: 
+\begin{align}\label{GratingEq}
+  \lambda =\frac{\lambda _{rouge}-\lambda _{bleu}}{x_{rouge}-x_{bleu}}(x-x_{bleu})-\lambda _{bleu}
+\end{align}
+Dans cette équation $\lambda $ représente la position horizontale avec une valeur en nm. Dans la même idée, 
+$\lambda _{rouge}$ et $\lambda _{bleu}$ représentent la valeur en nm des pics d'intensité rouge et bleu. 
+Pour ça part, x tout comme $x_{rouge}$ et $x_{bleu}$ représente une position sur une échelle en pixel.
+Avec cette formule il est possible de générer un graphique de l'intensité d'un faisceau en fonction 
+de sa longueur d'onde. 
+
+Un aspect important à étudier qui n'est pas directement en lien avec la résolution est d'évaluer l'incertitude sur 
+la position de nos pics d'intensité. Pour calculer cette incertitude, on utilise la formule suivante: 
+\begin{align}\label{GratingEq}
+  \Delta \lambda =\sqrt{A^{2}+B^{2}+C^{2}}+\Delta \lambda _{bleu}
+\end{align}
+avec 
+\begin{align}\label{GratingEq}
+  A=\frac{x-x_{bleu}}{x_{rouge}-x_{bleu}}\cdot \Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )
+\end{align}
+\begin{align}\label{GratingEq}
+  B=\frac{-(\lambda _{rouge}-\lambda _{bleu})\cdot (x-x_{bleu})}{(x_{rouge}-x_{bleu})^{2}} \cdot \Delta \left ( x_{rouge}-x_{bleu} \right )
+\end{align}
+\begin{align}\label{GratingEq}
+  C=\frac{(\lambda _{rouge}-\lambda _{bleu})}{(x_{rouge}-x_{bleu})}\cdot \Delta \lambda _{bleu}
+\end{align}
+
+Dans les équations ci-dessus, on définit $\Delta \lambda _{bleu}$ comme l'incertitude sur la la position (en nm)
+du laser bleu, dans le cas présent, la data sheet donne une incertitude de 5nm. Pour la position en nm du laser bleu,
+la valeur suivante sera donc utilisée: $ \lambda = 405\pm 5 nm$. On approxime que cette incertitude reste constante sur 
+toutes les longueurs d'onde ainsi on obtient que $\Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )=2\cdot \Delta \lambda _{bleu}$, 
+finalement le résultat suivant est donc obtenu $\lambda _{rouge}-\lambda _{bleu}= (657-405)\pm 10 nm$.
+Pour finir, on considère que l'incertitude sur la position de n'importe quelle position en pixel est la plus petite
+division, soit 1 pixel, le résultat suiivant est donc obtenu: $\Delta \left ( x_{rouge}-x_{bleu} \right )=2 pixels$.
 
 \subsection{Rapport détaillé des coûts}
 
