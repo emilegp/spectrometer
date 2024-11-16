@@ -28,6 +28,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{abstract}
 \usepackage{svg}
+\usepackage{multicol}
 \usepackage{biblatex}
 \addbibresource{bibliographie.bib}
 
@@ -83,6 +84,7 @@
 \captionsetup[figure]{labelsep=colon}
 \captionsetup{labelformat=mycaptionlabel}
 \captionsetup[figure]{name={Figure }}
+\captionsetup[table]{name=Tableau}
 \newcommand{\inlinecode}{\normalfont\texttt}
 \usepackage{enumitem}
 \setlist[itemize]{label=\textbullet}
@@ -159,7 +161,7 @@ sont concus pour que la caméra capte entre 397 nm et 666 nm. Le modèle imprim�
 résolution de \textcolor{red}{XX $\pm$ XX} nm et un coût total de 877.28\$. Le modèle sur
 table optique a une résolution de \textcolor{red}{XX $\pm$ XX} nm et coûte 1852.72\$. Les
 deux spectromètres et leurs dimensions physiques sont présentés à la figure 
-\ref{schema_spectros} :
+\ref{schema_spectros}. Un résumé des spécifications des deux dispositifs sont présentées dans le tableau \ref{specs}. 
 
 
 \begin{figure}[H]
@@ -169,6 +171,42 @@ deux spectromètres et leurs dimensions physiques sont présentés à la figure
   \label{schema_spectros}
 \end{figure}
 
+\begin{table}[H]
+  \centering
+  \caption{Tableau des spécifications}
+  \begin{tabular}{|p{2.5cm}|p{2cm}|p{3cm}|p{1.5cm}|p{6.5cm}|}
+  \hline
+      Spectromètre & Résolution (nm) & Dimensions (mm) & Coût (\$ CAD) & Composantes \\ \hline\hline
+      Table optique & ?? & L 200 $\times$ W 120 $\times$ H 200 & \$1,852.72 & \vspace{-20pt} {\small\parbox{7cm}{\setlength{\columnsep}{0pt} 
+      \begin{multicols}{2}\begin{itemize}[label=$\triangleright$, topsep=0pt, itemsep=0pt]
+            \item LA-1560-A-ML
+            \item LA-1213-A-ML
+            \item NE506A
+            \item GR25-0605
+            \item DCC1545M-GL
+            \item VA100
+            \item KM100S 
+            \item SMR05 
+            \item TR3-P5
+            \item BA1
+            \item BA1S
+            \item PH6 
+            \item PH4
+            \item VC1 
+        \end{itemize}
+      \end{multicols} }} \\ \hline
+      Impression 3D & ?? & L 140 $\times$ W 112.5 $\times$ H 80 & \$877.28 &  \vspace{-20pt} {\small\parbox{6.7cm}{\setlength{\columnsep}{-15pt} 
+      \begin{multicols}{2}\begin{itemize}[label=$\triangleright$, topsep=0pt, itemsep=0pt]
+            \item LA-1560-A-ML
+            \item LA-1213-A-ML
+            \item GR25-0605
+            \item DCC1545M-GL
+            \item Lames de rasoir
+        \end{itemize}
+    \end{multicols} } } \\ \hline
+  \end{tabular}
+  \label{specs}
+\end{table}
 
 \section{Rapports de tests}
 
