@@ -23,7 +23,7 @@ def intensite(matrice_image):
         print("L'image est saturée")
         return
 
-    seuil = 0.1 * intensité_max
+    seuil = 0.5 * intensité_max
     mask = matrice_image >= seuil
     lignes_à_considerer = np.any(mask, axis=1)
     intensité_par_colonne = np.mean(matrice_image[lignes_à_considerer, :], axis=0)
@@ -91,6 +91,11 @@ plt.show()
 # 3. Statistiques pour déterminer lequel est meilleur. TABLEAU. Chi-carré et R^2, et résolution obtenue
 # 4. Affichage des données et des fits ensemble pour visualiser. METTRE GRAPH dans doc
 
+#Partie 3: Largeur à mi-hauteur
+# 1. Technique utilisée pour obtenir la largeur (maximum, positions à la moitié du max, un peu overshoot au cas où)
+# 2. Comparaison entre les 3 spectromètres.
+# 
+
 def calculer_FWHM(x, y):
     # 1. Identifier la valeur maximale de l'intensité
     I_max = np.max(y)
@@ -101,21 +106,28 @@ def calculer_FWHM(x, y):
     # 3. Trouver les indices où l'intensité atteint la moitié du maximum
     indices_fwhm = np.where(y >= I_half)[0]
     
-    # 4. La FWHM est la distance entre les deux indices extrêmes
-    if len(indices_fwhm) >= 2:
-        x_fwhm_min = x[indices_fwhm[0]]
+    # 4. Détermination des bornes supérieure et inférieure en étant sûr de ne pas en manquer (incertitude)
+    if I_half <= x[indices_fwhm[-1]]:
         x_fwhm_max = x[indices_fwhm[-1]+1]
-        fwhm = x_fwhm_max - x_fwhm_min
     else:
-        fwhm = None
-        x_fwhm_min, x_fwhm_max = None, None
-    
+        x_fwhm_max = x[indices_fwhm[-1]]
+
+    if I_half <= x[indices_fwhm[0]]:
+        x_fwhm_min = x[indices_fwhm[0]-1]
+    else:
+        x_fwhm_min = x[indices_fwhm[0]]
+
+    # 5. La FWHM est la distance entre les deux indices extrêmes
+    fwhm = x_fwhm_max - x_fwhm_min
+
     return fwhm, x_fwhm_min, x_fwhm_max, I_half
 
 # Exemple d'utilisation avec les données d'intensité rouge (introuge) et de longueur d'onde (val_lamda)
 fwhm, x_fwhm_min, x_fwhm_max, I_half = calculer_FWHM(val_lamda, introuge)
+fwhmbleu, x_fwhm_minbleu, x_fwhm_maxbleu, I_half_bleu = calculer_FWHM(val_lamda, intbleu)
 
-print(f"FWHM: {fwhm} nm, à partir de {x_fwhm_min} nm à {x_fwhm_max} nm")
+print(f"FWHM_rouge: {fwhm} nm, à partir de {x_fwhm_min} nm à {x_fwhm_max} nm")
+print(f"FWHM_bleu: {fwhmbleu} nm, à partir de {x_fwhm_minbleu} nm à {x_fwhm_maxbleu} nm")
 
 # Visualisation avec les lignes représentant la FWHM
 plt.plot(val_lamda, introuge, label="Intensité rouge", color="red")
@@ -129,23 +141,26 @@ plt.legend()
 plt.grid(True)
 plt.show()
 
-
-
-# Visualisation des ajustements avec les largeurs à mi-hauteur en unités de longueur d'onde
-plt.plot(val_lamda, introuge, label="Intensité rouge", color="red")
-
-
-# Ajouter des détails de légende et de mise en forme
+# Visualisation avec les lignes représentant la FWHM
+plt.plot(val_lamda, intbleu, label="Intensité rouge", color="blue")
+plt.axvline(x=x_fwhm_minbleu, color='black', linestyle='--', label="Limite inférieure FWHM")
+plt.axvline(x=x_fwhm_maxbleu, color='black', linestyle='--', label="Limite supérieure FWHM")
+plt.axhline(y=I_half_bleu, color='blue', linestyle='--', label="Moitié de la hauteur maximale")
 plt.xlabel("Longueur d'onde (nm)")
-plt.ylabel("Intensité moyenne")
-plt.title("Courbe d'intensité et ajustements gaussien, lorentzien et sinc**2 (en nm)")
+plt.ylabel("Intensité")
+plt.title("Calcul de la FWHM sur la courbe d'intensité")
 plt.legend()
 plt.grid(True)
 plt.show()
 
 
-
 # Partie 4: Conclusion
+# 0. Résultats énoncés et démarches pour s'y rendre expliquées
+# 1. Comparaison entre les 2 spectros: Table optique meilleure
+# 2. Limitations de cette comparasion: Difficultés d'alignement, de positionnement des lentilles à leur focale, aberration des lentilles
+# qualité des photos photo obtenues, qualité de la fante fabriquée avec des lames de rasoirs (pas tellement droite, gros espace)
+# 3. Comparaison avec Datasheet du bleu et résultat du rouge (énoncer leur résultat et dire qu'est-ce qui est plus grand que quoi)
+# 4. Limitations de cette comparaison: 
 # Comparer les deux spectro (table et 3D) au spectro de Guillaume. Donc Parties 1 à 3 pour 2 spectros. et comparaison avec rouge Guigui
 # Différence dans les résolutions obtenues voir comparé avec Guigui
 # Incertitudes respectives et dire si elles sont bien/logique ou pas

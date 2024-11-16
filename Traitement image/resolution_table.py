@@ -28,7 +28,7 @@ def intensite(matrice_image, type_de_spectro="3D"):
         return 
     
     # Étape 2 : Identifier les pixels ayant une intensité >= 90% de l'intensité maximale
-    seuil = 0.4 * intensité_max
+    seuil = 0.5 * intensité_max
     mask = matrice_image >= seuil
 
     # Étape 3 : Trouver les lignes contenant au moins un point au-dessus du seuil
@@ -57,7 +57,7 @@ def calcule_incertitude_val_lamda(rouge,bleu):
     delta_lambda_bleu=(echelle_lamda/echelle_pixel)*delta_echelle_pixel
     delta_echelle_lambda=2*delta_lambda_bleu
     x = np.linspace(0, len(rouge) - 1, len(rouge))
-   
+    
     val_lamda = []
     incertitude_val_lamda = []
     
@@ -110,21 +110,28 @@ def calculer_FWHM(x, y):
     # 3. Trouver les indices où l'intensité atteint la moitié du maximum
     indices_fwhm = np.where(y >= I_half)[0]
     
-    # 4. La FWHM est la distance entre les deux indices extrêmes
-    if len(indices_fwhm) >= 2:
-        x_fwhm_min = x[indices_fwhm[0]]
+    # 4. Détermination des bornes supérieure et inférieure en étant sûr de ne pas en manquer (incertitude)
+    if I_half <= x[indices_fwhm[-1]]:
         x_fwhm_max = x[indices_fwhm[-1]+1]
-        fwhm = x_fwhm_max - x_fwhm_min
     else:
-        fwhm = None
-        x_fwhm_min, x_fwhm_max = None, None
+        x_fwhm_max = x[indices_fwhm[-1]]
+
+    if I_half <= x[indices_fwhm[0]]:
+        x_fwhm_min = x[indices_fwhm[0]-1]
+    else:
+        x_fwhm_min = x[indices_fwhm[0]]
+
+    # 5. La FWHM est la distance entre les deux indices extrêmes
+    fwhm = x_fwhm_max - x_fwhm_min
     
     return fwhm, x_fwhm_min, x_fwhm_max, I_half
 
 # Exemple d'utilisation avec les données d'intensité rouge (introuge) et de longueur d'onde (val_lamda)
 fwhm, x_fwhm_min, x_fwhm_max, I_half = calculer_FWHM(val_lamda, introuge)
+fwhmbleu, x_fwhm_minbleu, x_fwhm_maxbleu, I_half_bleu = calculer_FWHM(val_lamda, intbleu)
 
-print(f"FWHM: {fwhm} nm, à partir de {x_fwhm_min} nm à {x_fwhm_max} nm")
+print(f"FWHM_rouge: {fwhm} nm, à partir de {x_fwhm_min} nm à {x_fwhm_max} nm")
+print(f"FWHM_bleu: {fwhmbleu} nm, à partir de {x_fwhm_minbleu} nm à {x_fwhm_maxbleu} nm")
 
 # Visualisation avec les lignes représentant la FWHM
 plt.plot(val_lamda, introuge, label="Intensité rouge", color="red")
@@ -137,6 +144,19 @@ plt.title("Calcul de la FWHM sur la courbe d'intensité")
 plt.legend()
 plt.grid(True)
 plt.show()
+
+# Visualisation avec les lignes représentant la FWHM
+plt.plot(val_lamda, intbleu, label="Intensité rouge", color="blue")
+plt.axvline(x=x_fwhm_minbleu, color='black', linestyle='--', label="Limite inférieure FWHM")
+plt.axvline(x=x_fwhm_maxbleu, color='black', linestyle='--', label="Limite supérieure FWHM")
+plt.axhline(y=I_half_bleu, color='blue', linestyle='--', label="Moitié de la hauteur maximale")
+plt.xlabel("Longueur d'onde (nm)")
+plt.ylabel("Intensité")
+plt.title("Calcul de la FWHM sur la courbe d'intensité")
+plt.legend()
+plt.grid(True)
+plt.show()
+
 
 # Partie 4: Conclusion
 # Comparer les deux spectro (table et 3D) au spectro de Guillaume. Donc Parties 1 à 3 pour 2 spectros. et comparaison avec rouge Guigui

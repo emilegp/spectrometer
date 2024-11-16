@@ -28,6 +28,7 @@
 \usepackage[hidelinks]{hyperref}
 \usepackage{abstract}
 \usepackage{svg}
+\usepackage{multicol}
 \usepackage{biblatex}
 \addbibresource{bibliographie.bib}
 
@@ -83,6 +84,7 @@
 \captionsetup[figure]{labelsep=colon}
 \captionsetup{labelformat=mycaptionlabel}
 \captionsetup[figure]{name={Figure }}
+\captionsetup[table]{name=Tableau}
 \newcommand{\inlinecode}{\normalfont\texttt}
 \usepackage{enumitem}
 \setlist[itemize]{label=\textbullet}
@@ -159,7 +161,7 @@ sont concus pour que la caméra capte entre 397 nm et 666 nm. Le modèle imprim�
 résolution de \textcolor{red}{XX $\pm$ XX} nm et un coût total de 877.28\$. Le modèle sur
 table optique a une résolution de \textcolor{red}{XX $\pm$ XX} nm et coûte 1852.72\$. Les
 deux spectromètres et leurs dimensions physiques sont présentés à la figure 
-\ref{schema_spectros} :
+\ref{schema_spectros}. Un résumé des spécifications des deux dispositifs sont présentées dans le tableau \ref{specs}. 
 
 
 \begin{figure}[H]
@@ -169,6 +171,42 @@ deux spectromètres et leurs dimensions physiques sont présentés à la figure
   \label{schema_spectros}
 \end{figure}
 
+\begin{table}[H]
+  \centering
+  \caption{Tableau des spécifications}
+  \begin{tabular}{|p{2.5cm}|p{2cm}|p{3cm}|p{1.5cm}|p{6.5cm}|}
+  \hline
+      Spectromètre & Résolution (nm) & Dimensions (mm) & Coût (\$ CAD) & Composantes \\ \hline\hline
+      Table optique & ?? & L 200 $\times$ W 120 $\times$ H 200 & \$1,852.72 & \vspace{-20pt} {\small\parbox{7cm}{\setlength{\columnsep}{0pt} 
+      \begin{multicols}{2}\begin{itemize}[label=$\triangleright$, topsep=0pt, itemsep=0pt]
+            \item LA-1560-A-ML
+            \item LA-1213-A-ML
+            \item NE506A
+            \item GR25-0605
+            \item DCC1545M-GL
+            \item VA100
+            \item KM100S 
+            \item SMR05 
+            \item TR3-P5
+            \item BA1
+            \item BA1S
+            \item PH6 
+            \item PH4
+            \item VC1 
+        \end{itemize}
+      \end{multicols} }} \\ \hline
+      Impression 3D & ?? & L 140 $\times$ W 112.5 $\times$ H 80 & \$877.28 &  \vspace{-20pt} {\small\parbox{6.7cm}{\setlength{\columnsep}{-15pt} 
+      \begin{multicols}{2}\begin{itemize}[label=$\triangleright$, topsep=0pt, itemsep=0pt]
+            \item LA-1560-A-ML
+            \item LA-1213-A-ML
+            \item GR25-0605
+            \item DCC1545M-GL
+            \item Lames de rasoir
+        \end{itemize}
+    \end{multicols} } } \\ \hline
+  \end{tabular}
+  \label{specs}
+\end{table}
 
 \section{Rapports de tests}
 
@@ -227,6 +265,63 @@ toutes les longueurs d'onde ainsi on obtient que $\Delta\left ( \lambda _{rouge}
 finalement le résultat suivant est donc obtenu $\lambda _{rouge}-\lambda _{bleu}= (657-405)\pm 10 nm$.
 Pour finir, on considère que l'incertitude sur la position de n'importe quelle position en pixel est la plus petite
 division, soit 1 pixel, le résultat suiivant est donc obtenu: $\Delta \left ( x_{rouge}-x_{bleu} \right )=2 pixels$.
+
+%Partie 3: Largeur à mi-hauteur
+% 1. Technique utilisée pour obtenir la largeur (maximum, positions à la moitié du max, un peu overshoot au cas où)
+% 2. Comparaison entre les 3 spectromètres.
+
+La résolution est définie comme étant la plus petite distance entre les centres de deux
+faisceaux qui permet de les distinguer. On considère que lorsque les deux faisceaux se 
+chevauchent à la moitié de leur intensité maximale, il n'est plus possible de les distinguer.
+La largeur à mi-hauteur $FWHM$ de chaque faisceau sur le capteur est donc considérée. Pour 
+caractériser l'appareil, on suppose que les faisceaux d'intérêt ont la largeur à mi-hauteur
+du plus faisceau le plus étroit testé. La résolution est alors donnée par l'équation \ref{res}.
+
+\begin{equation}\label{res}
+  Resolution = \frac{1}{2}(FWHM_1)+\frac{1}{2}(FWHM_2)=\frac{2}{2}FWHM=FWHM
+\end{equation}
+
+Pour des faisceaux plus large, ce ne serait pas la 
+résolution du spectromètre qui limiterait la résolution obtenue, mais le profil des faisceaux
+utilisés. Cela est cohérent, car il est préférable d'utiliser un appareil dans des cas où 
+ce n'est pas sa résolution qui est limitante. 
+
+La largeur à mi-hauteur est déterminée en trouvant les points ayant la moitié de l'intensité 
+maximale. Ils sont toujours de deux, de part et d'autre du centre, grâce au profil gaussien
+des faisceaux laser. Il suffit de prendre la différence entre les deux pour obtenir FWHM et,
+donc, la résolution. Dû à la nature discrète du spectre obtenu, il est courant que l'intensité à 
+mi-hauteur ne corresponde pas directement à un point. Le point ayant l'intensité la plus proche
+de la moitié de l'intensité maximale, tout en étant plus faible que celle-ci, est pris. De
+cette façon, la largeur à mi-hauteur risque d'être légèrement sur-estimer, mais elle ne peut pas
+être sous-estimé. Les résultats des résolution obtenues sont présentés au tableau \ref{res_tab}.
+
+\begin{table}[H]
+  \centering
+  \begin{tabular}{|c|c|c|}\hline
+    Spectromètre & Résolution (nm) \\
+    \hline
+    Imprimé en 3D & 1,94 $\pm$ ???\\    \hline
+    Sur table optique & 1,48 $\pm$ ???\\    \hline
+  \end{tabular}
+  \caption{Résolution pour les deux spectromètres testés}
+  \label{res_tab}
+\end{table}
+
+La résolution obtenue pour le spectromètre sur table optique, de $1,48 \pm ??$ est meilleure que celle 
+obtenue pour le spectromètre imprimé en 3D, de $1,94 \pm ???$. Cela s'explique par 
+
+% # Partie 4: Conclusion
+% # 0. Résultats énoncés et démarches pour s'y rendre expliquées
+% # 1. Comparaison entre les 2 spectros: Table optique meilleure
+% # 2. Limitations de cette comparasion: Difficultés d'alignement, de positionnement des lentilles à leur focale, aberration des lentilles
+% # qualité des photos photo obtenues, qualité de la fante fabriquée avec des lames de rasoirs (pas tellement droite, gros espace)
+% # 3. Comparaison avec Datasheet du bleu et résultat du rouge (énoncer leur résultat et dire qu'est-ce qui est plus grand que quoi)
+% # 4. Limitations de cette comparaison: 
+% # Comparer les deux spectro (table et 3D) au spectro de Guillaume. Donc Parties 1 à 3 pour 2 spectros. et comparaison avec rouge Guigui
+% # Différence dans les résolutions obtenues voir comparé avec Guigui
+% # Incertitudes respectives et dire si elles sont bien/logique ou pas
+
+
 
 \subsection{Rapport détaillé des coûts}
 
