@@ -149,17 +149,17 @@ Polytechnique Montréal\\}
 
 Cette fiche technique présente les caractéristiques de deux spectromètres : l'un construit sur 
 table optique et l'autre avec de l'impression 3D. Pour les deux appareils, le même système 4f
-est construit. La lumière passe au travers d'une fente de taille \textcolor{red}{XX} mm, 
+est construit. La lumière passe au travers d'une fente de l'ordre de 0,1 mm, 
 ajustable sur la table optique (VA100), ou faite avec des lames de rasoir parallèles pour le
 système imprimé. Cette lumière est convergée avec une lentille de distance focale de 50 mm 
 (LA-1213-A-ML) sur un réseau de diffraction blazé à 600 rainures/mm (GR25-0605) placé à un
-angle de \textcolor{red}{XX}\degree $\;$afin que la réflexion d'ordre 1 qui sépare les
-longueurs d'onde spatialement soit renvoyée vers une deuxième lentille de distance focale
+angle de 31\degree $\;$afin que la diffraction d'ordre 1, qui sépare les
+longueurs d'onde spatialement, soit renvoyée vers une deuxième lentille de distance focale
 de 25 mm (LA-1560-A-ML). Cette réflexion, au travers de la lentille, place le spectre des 
 longueurs d'ondes sur le capteur d'une caméra (DCC1545M-GL) pour l'analyse. Les deux appareils
-sont concus pour que la caméra capte entre \textcolor{red}{397} nm et \textcolor{red}{666} nm. Le modèle imprimé présente une
-résolution de \textcolor{red}{XX $\pm$ XX} nm et un coût total de 877.28\$. Le modèle sur
-table optique a une résolution de \textcolor{red}{XX $\pm$ XX} nm et coûte 1852.72\$. Les
+sont concus pour que la caméra capte entre 400 nm et 662 nm. Le modèle imprimé présente une
+résolution de (1,9 $\pm$ 0,4) nm et un coût total de 877.28\$. Le modèle sur
+table optique a une résolution de (1,5 $\pm$ 0,4) nm et coûte 1852.72\$. Les
 deux spectromètres et leurs dimensions physiques sont présentés à la figure 
 \ref{schema_spectros}. Un résumé des spécifications des deux dispositifs sont présentées dans le tableau \ref{specs}. 
 
@@ -177,7 +177,7 @@ deux spectromètres et leurs dimensions physiques sont présentés à la figure
   \begin{tabular}{|p{2.5cm}|p{2cm}|p{3cm}|p{1.5cm}|p{6.5cm}|}
   \hline
       Spectromètre & Résolution (nm) & Dimensions (mm) & Coût  \$CAD & Composantes \\ \hline\hline
-      Table optique & ?? & L 200 $\times$ W 120 $\times$ H 200 & \$1,852.72 & \vspace{-20pt} {\small\parbox{7cm}{\setlength{\columnsep}{0pt} 
+      Table optique & 1,5 $\pm$ 0,4 & L 200 $\times$ W 120 $\times$ H 200 & \$1,852.72 & \vspace{-20pt} {\small\parbox{7cm}{\setlength{\columnsep}{0pt} 
       \begin{multicols}{2}\begin{itemize}[label=$\triangleright$, topsep=0pt, itemsep=0pt]
             \item LA-1560-A-ML
             \item LA-1213-A-ML
@@ -195,7 +195,7 @@ deux spectromètres et leurs dimensions physiques sont présentés à la figure
             \item VC1 
         \end{itemize}
       \end{multicols} }} \\ \hline
-      Impression 3D & ?? & L 140 $\times$ W 112.5 $\times$ H 80 & \$877.28 &  \vspace{-20pt} {\small\parbox{6.7cm}{\setlength{\columnsep}{-15pt} 
+      Impression 3D & 1,9 $\pm$ 0,4 & L 140 $\times$ W 112.5 $\times$ H 80 & \$877.28 &  \vspace{-20pt} {\small\parbox{6.7cm}{\setlength{\columnsep}{-15pt} 
       \begin{multicols}{2}\begin{itemize}[label=$\triangleright$, topsep=0pt, itemsep=0pt]
             \item LA-1560-A-ML
             \item LA-1213-A-ML
@@ -223,12 +223,12 @@ Les images obtenues à l'aide de la caméra et du logiciel Thorcam sont sous for
 Elles sont donc ouvertes sur python pour pouvoir traiter l'image sous forme de données brutes. Les fichiers tif 
 contiennent des valeurs d'intensité entre 0 et 255 pour chaque pixel de la caméra. Il est important de mentionner
 que lorsque la valeur excède 255, l'intensité est dite saturée, dans ce cas de figure le scripte python s'arrête et 
-avertit l'utilisateur de la situation. Ces cas sont évités car l'information réelle sur le spectre est perdue.
+avertit l'utilisateur de la situation. Ces cas sont à éviter car l'information réelle sur le spectre est perdue.
 
 Une fonction python est créée de façon à générer une courbe d'intensité en fonction de la position horizontale 
 en pixel de la caméra. Pour ce faire, une sélection préalable est faite en choisissant uniquement les lignes 
-contenant plus que 50 \% de l'intensité maximum, cette procédure permet de ne pas sélection les endroits de la caméra 
-ou l'intensité est complètement nulle sur toute la longueur. Une fois cette opération achevée, la moyenne des intensités sur chaque
+contenant plus que 50 \% de l'intensité maximale, cette procédure permet de ne pas sélectionner les endroits de la caméra 
+où l'intensité est complètement nulle sur toute la longueur. Une fois cette opération achevée, la moyenne des intensités sur chaque
 colonne est effectuée, ce qui retourne donc une valeur d'intensité pour chaque position de pixel horizontal. Cette étape est exécutée pour 
 un laser bleu et un laser rouge.
 
@@ -259,7 +259,7 @@ avec
   C=\frac{(\lambda _{rouge}-\lambda _{bleu})}{(x_{rouge}-x_{bleu})}\cdot \Delta \lambda _{bleu}
 \end{align}
 
-Dans les équations ci-dessus, on définit $\Delta \lambda _{bleu}$ comme l'incertitude sur la la position (en nm)
+Dans les équations ci-dessus, on définit $\Delta \lambda _{bleu}$ comme l'incertitude sur la position (en nm)
 du laser bleu. Dans le cas présent, la fiche technique du laser donne une incertitude de 5nm \cite{noauthor_compact_2024} . Pour la position en nm du laser bleu,
 la valeur suivante sera donc utilisée: $ \lambda = 405\pm 5$ nm. On approxime que cette incertitude reste constante sur 
 toutes les longueurs d'onde. Ainsi, il est obtenu que :
@@ -276,11 +276,11 @@ incertitude relative d'environ $1\%$ pour le bleu à 405 nm et d'environ $2\%$ p
 également que le terme dominant dans le calcul d'incertitude, 
 c'est à dire qui contribue le plus à la valeur de l'incertitude, est le terme A. 
 En fait, il s’agit plus précisément du terme $\Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )$ qui fait augmenter de beaucoup
-la valeur de cette partie . On peut donc conclure qu'une façon efficace de réduire l'incertitude sur la position pour
+la valeur de cette partie . Une façon efficace de réduire l'incertitude sur la position pour
 les spectromètres est de réduire le plus possible l’incertitude sur la position du laser bleu. Puisque cette valeur d'incertitude
-vient de la fiche technique du laser, on en déduit qu'il faudrait trouver un laser plus précis pour réduit l'incertitude 
-globale de la position sur le spectromètre, ou qu'il faudrait étalonner le laser utilisé avec un autre appareil pour préciser
-sa longueur d'onde centrale. 
+vient de la fiche technique du laser, il faudrait trouver un laser plus précis pour réduire l'incertitude 
+globale de la position sur le spectromètre ou bien étalonner le laser utilisé avec un autre appareil pour préciser
+sa longueur d'onde. 
 
 %Partie 3: Largeur à mi-hauteur
 % 1. Technique utilisée pour obtenir la largeur (maximum, positions à la moitié du max, un peu overshoot au cas où)
@@ -325,8 +325,8 @@ puisque, de chaque côté, on peut être légèrement décalé par rapport à la
 
 \subsection{Comparaison des deux spectromètres}
 
-L'incertitude de la résolution est d'environ 0,4 nm et les résultats des résolutions 
-obtenues sont présentés au tableau \ref{res_tab}.
+L'incertitude de la résolution est d'environ 0,4 nm pour les deux spectromètres et les résultats 
+des résolutions obtenues sont présentés au tableau \ref{res_tab}.
 
 \begin{table}[H]
   \centering
@@ -364,7 +364,7 @@ la résolution de manière conséquente étant donné le traitement fait sur les
 La table optique a pour sa part une limitation majeure; il y est plus difficile de s'assurer que les
 lentilles sont positionnées au bon endroit, c'est-à-dire à une longueur focale de l'élément qui la 
 précède et qui la suit. Cela pourrait avoir comme effet de rendre l'image plus floue, car les principes
-utilisés ne sont valables que pour une configuration 4f, donc en ayant une configuration approximative,
+utilisés ne sont valables que pour une configuration 4f. En ayant une configuration approximative,
 il y a risque de rendre l'image approximative, donc de nuire à la résolution. 
 
 Les tests des deux spectromètres avec un laser rouge sont présentés et comparés au résultat d'un 
@@ -401,11 +401,18 @@ ce laser n'est pas aligné avec son boitier, donc il est probable qu'il n'entre 
 le système optique. 
 
 Sans avoir d'information sur le spectromètre commercial utilisé, la confiance est tout de même supérieure
-pour le résultat obtenu avec ce spectomètre. Les spectromètres semblent donc sous-estimer la largeur deux
+pour le résultat obtenu avec ce spectomètre. Les spectromètres semblent donc sous-estimer la largeur du
 laser rouge testé, avec un effet moins prononcé pour le spectromètre imprimé en 3D que celui sur table optique.
-Les spectres de diodes électroluminescentes testées sont toutefois cohérents, ce qui semblerait indiquer que 
-cette aberration des systèmes est davantage un enjeu pour les longueurs d'onde extrêmes tirant sur le rouge,
-plutôt que pour tout le spectre. 
+Les spectres de diodes électroluminescentes testées sont toutefois cohérents comme illustré à la figure 
+\ref{fig:Int-Del-rousse}, ce qui semblerait indiquer que cette aberration des systèmes est davantage un enjeu
+pour les longueurs d'onde extrêmes tirant sur le rouge, plutôt que pour tout le spectre. 
+
+\begin{figure}
+  \centering
+  \includegraphics[width=0.6\linewidth]{mandat2_ledrousse.png}
+  \caption{Intensité de la DEL orange obtenue au spectromètre imprimé en 3D}
+  \label{fig:Int-Del-rousse}
+\end{figure}
 
 % # Partie 4: Conclusion
 % # 1. Comparaison entre les 2 spectros: Table optique meilleure
@@ -428,7 +435,7 @@ Les méthodes de construction étant grandement différentes pour les deux spect
 étude des coûts est faite afin de déterminer lequel des deux est le plus abordable. Pour ce
 faire, une liste détaillée des pièces requises est faite, et le total des coûts est calculé en
 dollars canadiens avant taxes. Sauf exception, tous les prix proviennent de Thorlabs \cite{noauthor_thorlabs_2024}. La table \ref{prix_table} présente les coûts des pièces pour
-le système monté sur table optique :
+le système monté sur table optique.
 
 \begin{table}[!ht]
     \centering

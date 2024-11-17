@@ -95,7 +95,7 @@ def calcule_incertitude_val_lamda(intimage, echelle_lamda, echelle_pixel, x_bleu
 plt.plot(val_lamda, introusse/np.max(introusse))
 plt.xlabel("Longueur d'onde (nm)")
 plt.ylabel("Intensité normalisée")
-plt.title("Intensité de la DEL orange obtenue au spectromètre imprimé en 3D")
+#plt.title("Intensité de la DEL orange obtenue au spectromètre imprimé en 3D")
 plt.show()
 
 # # Tracer la courbe de l'intensité en fonction de la position horizontale
