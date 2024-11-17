@@ -148,7 +148,7 @@ plt.grid(True)
 plt.show()
 
 # Visualisation avec les lignes représentant la FWHM
-plt.plot(val_lamda, intbleu, label="Intensité rouge", color="blue")
+plt.plot(val_lamda, intbleu, label="Intensité bleu", color="blue")
 plt.axvline(x=x_fwhm_minbleu, color='black', linestyle='--', label="Limite inférieure FWHM")
 plt.axvline(x=x_fwhm_maxbleu, color='black', linestyle='--', label="Limite supérieure FWHM")
 plt.axhline(y=I_half_bleu, color='blue', linestyle='--', label="Moitié de la hauteur maximale")
