@@ -155,12 +155,12 @@ système imprimé. Cette lumière est convergée avec une lentille de distance f
 (LA-1213-A-ML) sur un réseau de diffraction blazé à 600 rainures/mm (GR25-0605) placé à un
 angle de 31\degree $\;$afin que la diffraction d'ordre 1 soit renvoyée vers une deuxième lentille de distance focale
 de 25 mm (LA-1560-A-ML). Cette diffraction, au travers de la lentille, place le spectre des 
-longueurs d'ondes sur le capteur d'une caméra (DCC1545M-GL) pour l'analyse. Les deux appareils
-sont concus pour que la caméra capte entre 400 nm et 662 nm. Le modèle imprimé présente une
+longueurs d'onde sur le capteur d'une caméra (DCC1545M-GL) pour l'analyse. Les deux appareils
+sont conçus pour que la caméra capte entre 400 nm et 662 nm. Le modèle imprimé présente une
 résolution de (1,9 $\pm$ 0,4) nm et un coût total de 877.28\$. Le modèle sur
 table optique a une résolution de (1,5 $\pm$ 0,4) nm et coûte 1852.72\$. Les
 deux spectromètres et leurs dimensions physiques sont présentés à la figure 
-\ref{schema_spectros}. Un résumé des spécifications des deux dispositifs sont présentées dans le tableau \ref{specs}. 
+\ref{schema_spectros}. Un résumé des spécifications des deux dispositifs est présenté dans le tableau \ref{specs}. 
 
 
 \begin{figure}[H]
@@ -222,7 +222,7 @@ Les images obtenues à l'aide de la caméra et du logiciel Thorcam sont sous for
 Elles sont donc ouvertes sur Python pour pouvoir traiter l'image sous forme de données brutes. Les fichiers $.tif$ 
 contiennent des valeurs d'intensité entre 0 et 255 pour chaque pixel de la caméra. Il est important de mentionner
 que lorsque la valeur excède 255, l'intensité est dite saturée, et dans ce cas de figure le scripte Python s'arrête et 
-avertit l'utilisateur de la situation. Ces cas sont à éviter car l'information réelle sur le spectre est perdue.
+avertit l'utilisateur de la situation. Ces cas sont à éviter, car l'information réelle sur le spectre est perdue.
 
 Une fonction Python est créée de façon à générer une courbe d'intensité en fonction de la position horizontale 
 en pixel de la caméra. Pour ce faire, une sélection préalable est faite en choisissant uniquement les lignes 
@@ -319,8 +319,8 @@ Dû à la nature discrète du spectre obtenu, il est courant que l'intensité à
 mi-hauteur ne corresponde pas directement à un point. Le point ayant l'intensité la plus proche
 de la moitié de l'intensité maximale, tout en étant plus faible que celle-ci, est pris. De
 cette façon, la largeur à mi-hauteur risque d'être légèrement surestimée, mais elle ne peut pas
-être sous-estimée. L'incertitude sur cette mesure correspond à la plus petite divison de l'échelle en nm,
-puisque, de chaque côté, on peut être légèrement décalé par rapport à la valeur définie précédement.
+être sous-estimée. L'incertitude sur cette mesure correspond à la plus petite division de l'échelle en nm,
+puisque, de chaque côté, on peut être légèrement décalé par rapport à la valeur définie précédemment.
 
 \subsection{Comparaison des deux spectromètres}
 
@@ -330,13 +330,13 @@ des résolutions obtenues ainsi que leurs incertitudes sont présentés au table
 
 \begin{table}[H]
   \centering
+  \caption{Résolution pour les deux spectromètres testés}
   \begin{tabular}{|c|c|c|}\hline
     Spectromètre & Résolution (nm) \\
     \hline
     Imprimé en 3D & 1,9 $\pm$ 0,4\\    \hline
     Sur table optique & 1,5 $\pm$ 0,4\\    \hline
   \end{tabular}
-  \caption{Résolution pour les deux spectromètres testés}
   \label{res_tab}
 \end{table}
 
@@ -356,10 +356,10 @@ plus facilement réalisable sur une table optique où le laser est maintenu à u
 rapport au spectromètre.  
 
 La fente affecte également la résolution, puisque sa largeur affecte directement la largeur du spectre
-obtenu sur la caméra. Là encore, la table optique, avec un équipement plus couteux certes, permet un
-contrôle de l'ouverture bien plus précis que les lames de rasoirs utilisées pour le spectromètre 3D.
+obtenu sur la caméra. Là encore, la table optique, avec un équipement plus coûteux certes, permet un
+contrôle de l'ouverture bien plus précis que les lames de rasoir utilisées pour le spectromètre 3D.
 L'espace entre celles-ci est plus large, ce qui affecte les résultats des tests. Il est également 
-plus difficile d'assurer qu'elles forment une fentre rectangulaire, mais cet élément n'affecte pas 
+plus difficile d'assurer qu'elles forment une fente rectangulaire, mais cet élément n'affecte pas 
 la résolution de manière conséquente étant donné le traitement fait sur les données.
 La table optique a pour sa part une limitation majeure; il y est plus difficile de s'assurer que les
 lentilles sont positionnées au bon endroit, c'est-à-dire à une longueur focale de l'élément qui la 
@@ -374,6 +374,7 @@ est prise comme la plus petite graduation sur l'échelle des longueurs d'onde, s
 
 \begin{table}[H]
   \centering
+  \caption{Résolution pour les deux spectromètres testés et le spectromètre commercial}
   \begin{tabular}{|c|c|c|}\hline
     Spectromètre & Largeur à mi-hauteur (nm) \\
     \hline
@@ -381,7 +382,6 @@ est prise comme la plus petite graduation sur l'échelle des longueurs d'onde, s
     Sur table optique & 2,3 $\pm$ 0,4\\    \hline
     Commercial & 12,1 $\pm$ 0,8\\    \hline
   \end{tabular}
-  \caption{Résolution pour les deux spectromètres testés et le spectromètre commercial}
   \label{res_tab_rouge}
 \end{table}
 
@@ -394,14 +394,12 @@ le fait que le laser rouge a un profil plus large que le laser bleu.
 Alors que pour le bleu, les spectromètres tombent d'accord, il n'y a pas de largeur à mi-hauteur
 commune donnée par les trois spectromètres. Cela peut être dû à une combinaison des aberrations 
 des lentilles, aux enjeux d'alignement, de positionnement des éléments optiques et de contrôle de
-la fente. Le laser rouge ayant un profil plus large, il est plus sujet aux aberrations des lentilles
-qui n'affectent pas le faisceau églement en fonction de la position (extrême au centrale) où elle
-est traversée. Il est également plus sujet aux clippage à cause de sa largeur. Pour couronner le tout,
+la fente. Le laser rouge ayant un profil plus large. Il est donc plus affecté par les aberrations des lentilles puisqu'elles sont plus prononcées en périphérie qu'au centre de la lentille. Il est également plus sujet aux clippages à cause de sa largeur. Pour couronner le tout,
 ce laser n'est pas aligné avec son boitier, donc il est probable qu'il n'entre pas correctement dans
 le système optique. 
 
 Sans avoir d'information sur le spectromètre commercial utilisé, la confiance est tout de même supérieure
-pour le résultat obtenu avec ce spectomètre. Les spectromètres semblent donc sous-estimer la largeur du
+pour le résultat obtenu avec ce spectromètre. Les spectromètres semblent donc sous-estimer la largeur du
 laser rouge testé, avec un effet moins prononcé pour le spectromètre imprimé en 3D que celui sur table optique.
 Les spectres de diodes électroluminescentes testées sont toutefois cohérents comme illustré à la figure 
 \ref{fig:Int-Del-rousse}, ce qui semblerait indiquer que cette aberration des systèmes est davantage un enjeu
@@ -466,9 +464,9 @@ Quelques points sont à relever pour cette table. La caméra utilisée est maint
 à l'achat sur le site de Thorlabs. Le prix affiché est donc le prix de cette pièce avant
 qu'elle soit enlevée du site en 2021 \cite{noauthor_thorlabs_2021}. Aussi, deux éléments importants
 ont été omis de cette liste. La quincaillerie, soit les vis, les écrous et les 
-rondelles, n'ont pas été comptées car ces derniers sont fréquemment disponibles en vrac dans
-des ateliers, ou ils s'achètent en ensemble à moindre coût. La table pour fixer les éléments 
-optiques n'a pas été comptée non plus car elle ne servait pas que pour le spectromètre 
+rondelles, n'a pas été comptée, car ces derniers sont fréquemment disponibles en vrac dans
+des ateliers, où ils s'achètent en ensemble à moindre coût. La table pour fixer les éléments 
+optiques n'a pas été comptée non plus, car elle ne servait pas que pour le spectromètre 
 construit. Sa taille, donc son prix est donc beaucoup trop grand par rapport au besoin du projet. L'appareil
 construit fonctionnerait sur la table B1212F, mesurant 12 x 12 po. Avec un coût de 966.85\$,
 le total serait amené à 2819.57\$. L'achat de cette table pourrait toutefois ne pas être 
@@ -477,7 +475,7 @@ seraient à considérer.
 
 % source A : https://www.thorlabs.com/thorProduct.cfm?partNumber=DCC1545M
 
-Le tableeau \ref{prix_3D} montre le calcul des coûts pour le modèle fait par l'impression 3D :
+Le tableau \ref{prix_3D} montre le calcul des coûts pour le modèle fait par l'impression 3D :
 
 \begin{table}[!ht]
     \centering
@@ -498,15 +496,14 @@ Le tableeau \ref{prix_3D} montre le calcul des coûts pour le modèle fait par l
 
 Un élément a aussi été exclu de cette liste, soit l'imprimante 3D utilisée pour l'impression.
 Celle utilisée, soit la Original Prusa i3 MK3S+, est disponible pour 899\$ US, ou 1245.21\$ CAD \cite{prusa_imprimante_2024} .
-Si considéré, ce prix augmente grandement les coûts associé à ce modèle de spectromètre, étant
+Si considéré, ce prix augmente grandement les coûts associés à ce modèle de spectromètre, étant
 plus dispendieux que le total calculé. Toutefois, ce type d'imprimante est facilement accessible
 gratuitement en faisant affaire avec certains ateliers. Aussi, pour de faibles quantités de
-pièces, il est possible de commander des impressions en ligne pour beaucoup moins cher que
-l'imprimante. C'est donc pourquoi son prix a été omis.
+pièces, il est possible de commander des impressions en ligne pour un prix beaucoup moins  élevé que celui de l'imprimante. C'est donc pourquoi son prix a été omis.
 
-Il est donc facile de conclure que l'impression 3D est beaucoup plus avantageux économiquement.
+Il est donc facile de conclure que l'impression 3D est beaucoup plus avantageuse économiquement.
 Le prix de l'impression sous 10\$ est une très grande économie lorsque comparé aux nombreuses
-pièces servant au montage sur table optique qui ont fortement contribués au coût élevé du
+pièces servant au montage sur table optique qui ont fortement contribué au coût élevé du
 modèle qui les requiert. L'économie de 975.44\$ en allant avec le modèle imprimé est
 considérable, et étant donné sa performance respectable, c'est le modèle à préconiser.
 
@@ -516,5 +513,16 @@ considérable, et étant donné sa performance respectable, c'est le modèle à 
 % \printbibliography
 \bibliographystyle{unsrtnat}
 \bibliography{spectro.bib}
+
+\clearpage
+
+\section{Annexes}
+
+\subsection{Preuve de correction par Antidote}
+\begin{figure}[H]
+    \centering
+    \includegraphics[scale=0.1]{Screenshot (112).png}
+    \caption{Correction par Antidote}
+\end{figure}
 
 \end{document}
