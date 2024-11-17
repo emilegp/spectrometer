@@ -153,9 +153,8 @@ est construit. La lumière passe au travers d'une fente de l'ordre de 0,1 mm,
 ajustable sur la table optique (VA100), ou faite avec des lames de rasoir parallèles pour le
 système imprimé. Cette lumière est convergée avec une lentille de distance focale de 50 mm 
 (LA-1213-A-ML) sur un réseau de diffraction blazé à 600 rainures/mm (GR25-0605) placé à un
-angle de 31\degree $\;$afin que la diffraction d'ordre 1, qui sépare les
-longueurs d'onde spatialement, soit renvoyée vers une deuxième lentille de distance focale
-de 25 mm (LA-1560-A-ML). Cette réflexion, au travers de la lentille, place le spectre des 
+angle de 31\degree $\;$afin que la diffraction d'ordre 1 soit renvoyée vers une deuxième lentille de distance focale
+de 25 mm (LA-1560-A-ML). Cette diffraction, au travers de la lentille, place le spectre des 
 longueurs d'ondes sur le capteur d'une caméra (DCC1545M-GL) pour l'analyse. Les deux appareils
 sont concus pour que la caméra capte entre 400 nm et 662 nm. Le modèle imprimé présente une
 résolution de (1,9 $\pm$ 0,4) nm et un coût total de 877.28\$. Le modèle sur
@@ -167,7 +166,7 @@ deux spectromètres et leurs dimensions physiques sont présentés à la figure
 \begin{figure}[H]
   \centering
   \includegraphics[scale=1.75]{schema_spectros.png}
-  \caption{Schémas des spectromètres. Toutes les dimensions sont en millimètres. À gauche : spectromètre fait par impression 3D sans son couvercle. À droite : spectromètre sur table optique.}
+  \caption{Schémas des spectromètres. Toutes les dimensions sont en millimètres ($\pm$ 1 mm PARTOUT). À gauche : spectromètre fait par impression 3D sans son couvercle. À droite : spectromètre sur table optique.}
   \label{schema_spectros}
 \end{figure}
 
@@ -219,13 +218,13 @@ conclusions quant à la performance des dispositifs.
 
 Pour caractériser la résolution, plusieurs étapes intermédiaires sont nécessaires. La procédure décrite ci-dessous est la même 
 pour la table optique et pour le spectromètre imprimé en 3D. 
-Les images obtenues à l'aide de la caméra et du logiciel Thorcam sont sous forme d'un fichier .tif.
-Elles sont donc ouvertes sur python pour pouvoir traiter l'image sous forme de données brutes. Les fichiers tif 
+Les images obtenues à l'aide de la caméra et du logiciel Thorcam sont sous forme d'un fichier $.tif$.
+Elles sont donc ouvertes sur Python pour pouvoir traiter l'image sous forme de données brutes. Les fichiers $.tif$ 
 contiennent des valeurs d'intensité entre 0 et 255 pour chaque pixel de la caméra. Il est important de mentionner
-que lorsque la valeur excède 255, l'intensité est dite saturée, dans ce cas de figure le scripte python s'arrête et 
+que lorsque la valeur excède 255, l'intensité est dite saturée, et dans ce cas de figure le scripte Python s'arrête et 
 avertit l'utilisateur de la situation. Ces cas sont à éviter car l'information réelle sur le spectre est perdue.
 
-Une fonction python est créée de façon à générer une courbe d'intensité en fonction de la position horizontale 
+Une fonction Python est créée de façon à générer une courbe d'intensité en fonction de la position horizontale 
 en pixel de la caméra. Pour ce faire, une sélection préalable est faite en choisissant uniquement les lignes 
 contenant plus que 50 \% de l'intensité maximale, cette procédure permet de ne pas sélectionner les endroits de la caméra 
 où l'intensité est complètement nulle sur toute la longueur. Une fois cette opération achevée, la moyenne des intensités sur chaque
@@ -234,17 +233,17 @@ un laser bleu et un laser rouge.
 
 Il est nécessaire de convertir l'échelle, initialement en pixel, en nanomètre.
 Pour ce faire la formule suivante a été utilisée: 
-\begin{align}
+\begin{align}\label{eq1}
   \lambda =\frac{\lambda _{rouge}-\lambda _{bleu}}{x_{rouge}-x_{bleu}}(x-x_{bleu})-\lambda _{bleu}
 \end{align}
 Dans cette équation $\lambda $ représente la position horizontale avec une valeur en nm. Dans la même idée, 
-$\lambda _{rouge}$ et $\lambda _{bleu}$ représentent la valeur en nm des pics d'intensité rouge et bleu. 
-Pour sa part, x tout comme $x_{rouge}$ et $x_{bleu}$ représente une position sur une échelle en pixel.
+$\lambda _{rouge}$ et $\lambda _{bleu}$ représentent les longueurs d'onde en nm des pics d'intensité rouge et bleu obtenues. 
+Pour sa part, $x$, tout comme $x_{rouge}$ et $x_{bleu}$, représente une position sur une échelle en pixel.
 Avec cette formule il est possible de générer un graphique, comme à la figure 2, de l'intensité d'un faisceau en fonction 
 de sa longueur d'onde. 
 
 Un aspect important à étudier qui n'est pas directement en lien avec la résolution est d'évaluer l'incertitude sur 
-la position de nos pics d'intensité. Pour calculer cette incertitude, on utilise la formule suivante: 
+la longueur d'onde de nos pics d'intensité. Pour calculer cette incertitude, on utilise la formule suivante: 
 \begin{align}
   \Delta \lambda =\sqrt{A^{2}+B^{2}+C^{2}}+\Delta \lambda _{bleu}
 \end{align}
@@ -255,12 +254,12 @@ avec
 \begin{align}
   B=\frac{-(\lambda _{rouge}-\lambda _{bleu})\cdot (x-x_{bleu})}{(x_{rouge}-x_{bleu})^{2}} \cdot \Delta \left ( x_{rouge}-x_{bleu} \right )
 \end{align}
-\begin{align}
-  C=\frac{(\lambda _{rouge}-\lambda _{bleu})}{(x_{rouge}-x_{bleu})}\cdot \Delta \lambda _{bleu}
+\begin{align}\label{eq5}
+  C=\frac{(\lambda _{rouge}-\lambda _{bleu})}{(x_{rouge}-x_{bleu})}\cdot \Delta (x-x_{bleu})
 \end{align}
 
 Dans les équations ci-dessus, on définit $\Delta \lambda _{bleu}$ comme l'incertitude sur la position (en nm)
-du laser bleu. Dans le cas présent, la fiche technique du laser donne une incertitude de 5nm \cite{noauthor_compact_2024} . Pour la position en nm du laser bleu,
+du laser bleu. Dans le cas présent, la fiche technique du laser donne une incertitude de 5 nm \cite{noauthor_compact_2024} . Pour la position en nm du laser bleu,
 la valeur suivante sera donc utilisée: $ \lambda = 405\pm 5$ nm. On approxime que cette incertitude reste constante sur 
 toutes les longueurs d'onde. Ainsi, il est obtenu que :
 \begin{equation}
@@ -276,11 +275,11 @@ incertitude relative d'environ $1\%$ pour le bleu à 405 nm et d'environ $2\%$ p
 également que le terme dominant dans le calcul d'incertitude, 
 c'est à dire qui contribue le plus à la valeur de l'incertitude, est le terme A. 
 En fait, il s’agit plus précisément du terme $\Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )$ qui fait augmenter de beaucoup
-la valeur de cette partie . Une façon efficace de réduire l'incertitude sur la position pour
+la valeur de cette partie. Une façon efficace de réduire l'incertitude sur la position pour
 les spectromètres est de réduire le plus possible l’incertitude sur la position du laser bleu. Puisque cette valeur d'incertitude
 vient de la fiche technique du laser, il faudrait trouver un laser plus précis pour réduire l'incertitude 
 globale de la position sur le spectromètre ou bien étalonner le laser utilisé avec un autre appareil pour préciser
-sa longueur d'onde. 
+sa longueur d'onde on son intervalle de longueur d'onde. 
 
 %Partie 3: Largeur à mi-hauteur
 % 1. Technique utilisée pour obtenir la largeur (maximum, positions à la moitié du max, un peu overshoot au cas où)
@@ -293,7 +292,7 @@ faisceaux qui permet de les distinguer. On considère que lorsque les deux faisc
 chevauchent à la moitié de leur intensité maximale, il n'est plus possible de les distinguer.
 La largeur à mi-hauteur $FWHM$ de chaque faisceau sur le capteur est donc considérée. Pour 
 caractériser l'appareil, on suppose que les faisceaux d'intérêt ont la largeur à mi-hauteur
-du plus faisceau le plus étroit testé. La résolution est alors donnée par l'équation \ref{res}.
+du faisceau le plus étroit testé. La résolution est alors donnée par l'équation \ref{res}.
 
 \begin{equation}\label{res}
   \text{Résolution} = \frac{1}{2}(FWHM_1)+\frac{1}{2}(FWHM_2)=\frac{2}{2}FWHM=FWHM
@@ -325,8 +324,9 @@ puisque, de chaque côté, on peut être légèrement décalé par rapport à la
 
 \subsection{Comparaison des deux spectromètres}
 
-L'incertitude de la résolution est d'environ 0,4 nm pour les deux spectromètres et les résultats 
-des résolutions obtenues sont présentés au tableau \ref{res_tab}.
+En utilisant les équations \ref{eq1} à \ref{res} pour obtenir la résolution sur une échelle de nm et en évaluant la plus petite division de l'échelle,
+l'incertitude de la résolution obtenue est d'environ 0,4 nm pour les deux spectromètres. Les résultats 
+des résolutions obtenues ainsi que leurs incertitudes sont présentés au tableau \ref{res_tab}.
 
 \begin{table}[H]
   \centering
@@ -434,7 +434,7 @@ pour les longueurs d'onde extrêmes tirant sur le rouge, plutôt que pour tout l
 Les méthodes de construction étant grandement différentes pour les deux spectromètres, une 
 étude des coûts est faite afin de déterminer lequel des deux est le plus abordable. Pour ce
 faire, une liste détaillée des pièces requises est faite, et le total des coûts est calculé en
-dollars canadiens avant taxes. Sauf exception, tous les prix proviennent de Thorlabs \cite{noauthor_thorlabs_2024}. La table \ref{prix_table} présente les coûts des pièces pour
+dollars canadiens avant taxes. Sauf exception, tous les prix proviennent de Thorlabs \cite{noauthor_thorlabs_2024}. Le tableau \ref{prix_table} présente les coûts des pièces pour
 le système monté sur table optique.
 
 \begin{table}[!ht]
@@ -477,7 +477,7 @@ seraient à considérer.
 
 % source A : https://www.thorlabs.com/thorProduct.cfm?partNumber=DCC1545M
 
-La table \ref{prix_3D} montre le calcul des coûts pour le modèle fait par l'impression 3D :
+Le tableeau \ref{prix_3D} montre le calcul des coûts pour le modèle fait par l'impression 3D :
 
 \begin{table}[!ht]
     \centering
