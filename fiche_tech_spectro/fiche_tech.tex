@@ -4,7 +4,7 @@
 \usepackage{graphicx}
 \usepackage{etoolbox}
 \apptocmd{\sloppy}{\hbadness 10000\relax}{}{}
-% \usepackage[numbers]{natbib}
+\usepackage[numbers]{natbib}
 \usepackage[T1]{fontenc}
 \usepackage{ragged2e}
 \usepackage[french]{babel}
@@ -29,8 +29,8 @@
 \usepackage{abstract}
 \usepackage{svg}
 \usepackage{multicol}
-\usepackage{biblatex}
-\addbibresource{bibliographie.bib}
+%\usepackage{biblatex}
+%\addbibresource{bibliographie.bib}
 
 \renewcommand{\abstractnamefont}{\normalfont\bfseries}
 \renewcommand{\abstracttextfont}{\normalfont\itshape}
@@ -157,7 +157,7 @@ angle de \textcolor{red}{XX}\degree $\;$afin que la réflexion d'ordre 1 qui sé
 longueurs d'onde spatialement soit renvoyée vers une deuxième lentille de distance focale
 de 25 mm (LA-1560-A-ML). Cette réflexion, au travers de la lentille, place le spectre des 
 longueurs d'ondes sur le capteur d'une caméra (DCC1545M-GL) pour l'analyse. Les deux appareils
-sont concus pour que la caméra capte entre 397 nm et 666 nm. Le modèle imprimé présente une
+sont concus pour que la caméra capte entre \textcolor{red}{397} nm et \textcolor{red}{666} nm. Le modèle imprimé présente une
 résolution de \textcolor{red}{XX $\pm$ XX} nm et un coût total de 877.28\$. Le modèle sur
 table optique a une résolution de \textcolor{red}{XX $\pm$ XX} nm et coûte 1852.72\$. Les
 deux spectromètres et leurs dimensions physiques sont présentés à la figure 
@@ -176,7 +176,7 @@ deux spectromètres et leurs dimensions physiques sont présentés à la figure
   \caption{Tableau des spécifications}
   \begin{tabular}{|p{2.5cm}|p{2cm}|p{3cm}|p{1.5cm}|p{6.5cm}|}
   \hline
-      Spectromètre & Résolution (nm) & Dimensions (mm) & Coût (\$ CAD) & Composantes \\ \hline\hline
+      Spectromètre & Résolution (nm) & Dimensions (mm) & Coût  \$CAD & Composantes \\ \hline\hline
       Table optique & ?? & L 200 $\times$ W 120 $\times$ H 200 & \$1,852.72 & \vspace{-20pt} {\small\parbox{7cm}{\setlength{\columnsep}{0pt} 
       \begin{multicols}{2}\begin{itemize}[label=$\triangleright$, topsep=0pt, itemsep=0pt]
             \item LA-1560-A-ML
@@ -217,19 +217,19 @@ conclusions quant à la performance des dispositifs.
 
 \subsection{Conversion en longueurs d'onde et incertitude}
 
-Pour caractériser la résolution, plusieurs étapes intermédiaires sont nécessaires, la procédure décrite ci-dessous est la même 
+Pour caractériser la résolution, plusieurs étapes intermédiaires sont nécessaires. La procédure décrite ci-dessous est la même 
 pour la table optique et pour le spectromètre imprimé en 3D. 
 Les images obtenues à l'aide de la caméra et du logiciel Thorcam sont sous forme d'un fichier .tif.
-Elles sont donc ouvertes sur python pour pouvoir traiter l'image sous forme de data. Les fichiers tif 
-contiennent des valeurs d'intensité entre 0 et 225 pour chaque pixel de la caméra. Il est important de mentionner
-que lorsque la valeur excède 225, l'intensité est dite saturée, dans ce cas de figure le scripte python s'arrête et 
-averti l'utilisateur de la situation. 
+Elles sont donc ouvertes sur python pour pouvoir traiter l'image sous forme de données brutes. Les fichiers tif 
+contiennent des valeurs d'intensité entre 0 et 255 pour chaque pixel de la caméra. Il est important de mentionner
+que lorsque la valeur excède 255, l'intensité est dite saturée, dans ce cas de figure le scripte python s'arrête et 
+avertit l'utilisateur de la situation. Ces cas sont évités car l'information réelle sur le spectre est perdue.
 
 Une fonction python est créée de façon à générer une courbe d'intensité en fonction de la position horizontale 
 en pixel de la caméra. Pour ce faire, une sélection préalable est faite en choisissant uniquement les lignes 
 contenant plus que 50 \% de l'intensité maximum, cette procédure permet de ne pas sélection les endroits de la caméra 
-ou l'intensité est complètement nul sur toutes la longueur. Une fois cette opération achevée, la moyenne des intensités sur chaque
-colonne est effectuée, ce qui retourne donc une valeur d'intensité pour chaque position de pixel horizontal. On exécute cette étape pour 
+ou l'intensité est complètement nulle sur toute la longueur. Une fois cette opération achevée, la moyenne des intensités sur chaque
+colonne est effectuée, ce qui retourne donc une valeur d'intensité pour chaque position de pixel horizontal. Cette étape est exécutée pour 
 un laser bleu et un laser rouge.
 
 Il est nécessaire de convertir l'échelle, initialement en pixel, en nanomètre.
@@ -239,7 +239,7 @@ Pour ce faire la formule suivante a été utilisée:
 \end{align}
 Dans cette équation $\lambda $ représente la position horizontale avec une valeur en nm. Dans la même idée, 
 $\lambda _{rouge}$ et $\lambda _{bleu}$ représentent la valeur en nm des pics d'intensité rouge et bleu. 
-Pour ça part, x tout comme $x_{rouge}$ et $x_{bleu}$ représentent une position sur une échelle en pixel.
+Pour sa part, x tout comme $x_{rouge}$ et $x_{bleu}$ représente une position sur une échelle en pixel.
 Avec cette formule il est possible de générer un graphique, comme à la figure 2, de l'intensité d'un faisceau en fonction 
 de sa longueur d'onde. 
 
@@ -260,12 +260,16 @@ avec
 \end{align}
 
 Dans les équations ci-dessus, on définit $\Delta \lambda _{bleu}$ comme l'incertitude sur la la position (en nm)
-du laser bleu, dans le cas présent, la data sheet donne une incertitude de 5nm. Pour la position en nm du laser bleu,
-la valeur suivante sera donc utilisée: $ \lambda = 405\pm 5 nm$. On approxime que cette incertitude reste constante sur 
-toutes les longueurs d'onde ainsi on obtient que $\Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )=2\cdot \Delta \lambda _{bleu}$, 
-finalement le résultat suivant est donc obtenu $\lambda _{rouge}-\lambda _{bleu}= (657-405)\pm 10 nm$.
+du laser bleu. Dans le cas présent, la fiche technique du laser donne une incertitude de 5nm \cite{noauthor_compact_2024} . Pour la position en nm du laser bleu,
+la valeur suivante sera donc utilisée: $ \lambda = 405\pm 5$ nm. On approxime que cette incertitude reste constante sur 
+toutes les longueurs d'onde. Ainsi, il est obtenu que :
+\begin{equation}
+  \Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )=2\cdot \Delta \lambda _{bleu}. 
+\end{equation}
+
+Finalement le résultat suivant est donc obtenu : $\lambda _{rouge}-\lambda _{bleu}= (657-405)\pm 10$ nm.
 Pour finir, on considère que l'incertitude sur la position de n'importe quelle position en pixel est la plus petite
-division, soit 1 pixel, le résultat suivant est donc obtenu: $\Delta \left ( x_{rouge}-x_{bleu} \right )=2 pixels$.
+division, soit 1 pixel. Le résultat suivant est donc obtenu: $\Delta \left ( x_{rouge}-x_{bleu} \right )=2$ pixels.
 
 On remarque que l’incertitude sur la position varie de façon linéaire entre environ 5.5 et 15.5 nm, ce qui représente une
 incertitude relative d'environ $1\%$ pour le bleu à 405 nm et d'environ $2\%$ pour le rouge à 657 nm. On remarque 
@@ -274,7 +278,7 @@ c'est à dire qui contribue le plus à la valeur de l'incertitude, est le terme 
 En fait, il s’agit plus précisément du terme $\Delta\left ( \lambda _{rouge}-\lambda _{bleu} \right )$ qui fait augmenter de beaucoup
 la valeur de cette partie . On peut donc conclure qu'une façon efficace de réduire l'incertitude sur la position pour
 les spectromètres est de réduire le plus possible l’incertitude sur la position du laser bleu. Puisque cette valeur d'incertitude
-vient de la datasheet de laser, on en déduit qu'il faudrait trouver un laser plus précis pour réduit l'incertitude 
+vient de la fiche technique du laser, on en déduit qu'il faudrait trouver un laser plus précis pour réduit l'incertitude 
 globale de la position sur le spectromètre, ou qu'il faudrait étalonner le laser utilisé avec un autre appareil pour préciser
 sa longueur d'onde centrale. 
 
@@ -292,7 +296,7 @@ caractériser l'appareil, on suppose que les faisceaux d'intérêt ont la largeu
 du plus faisceau le plus étroit testé. La résolution est alors donnée par l'équation \ref{res}.
 
 \begin{equation}\label{res}
-  Resolution = \frac{1}{2}(FWHM_1)+\frac{1}{2}(FWHM_2)=\frac{2}{2}FWHM=FWHM
+  \text{Résolution} = \frac{1}{2}(FWHM_1)+\frac{1}{2}(FWHM_2)=\frac{2}{2}FWHM=FWHM
 \end{equation}
 
 Pour des faisceaux plus larges, ce ne serait pas la 
@@ -303,7 +307,7 @@ ce n'est pas sa résolution qui est limitante.
 La largeur à mi-hauteur est déterminée en trouvant les points ayant la moitié de l'intensité 
 maximale. Ils sont toujours deux, de part et d'autre du centre, grâce au profil gaussien
 des faisceaux laser, comme illustré à la figure \ref{FWHM_bleu}. Il suffit de prendre la 
-différence entre les deux pour obtenir FWHM et, donc, la résolution. 
+différence entre les deux pour obtenir $FWHM$ et, donc, la résolution. 
 
 \begin{figure}[h!]
   \centering
@@ -345,7 +349,7 @@ Avec de multiples essais, l'alignement permettant d'avoir les deux simultanémen
 mais il peut s'accompagner d'aberrations provenant des lentilles, puisque les rayons extrêmes
 se trouvent à passer très près du bord de celles-ci. Le système utilisé permet d'ajuster l'angle,
 mais pas de le fixer, donc l'ajustement est à recommencer avant une série de prises de mesures si
-l'appareil à été déplacé. 
+l'appareil a été déplacé. 
 L'angle d'entrée du laser importe puisqu'il détermine la position des rayons sur la caméra. Il doit
 donc toujours être envoyé perpendiculairement à la fente pour des résultats répétables, ce qui est
 plus facilement réalisable sur une table optique où le laser est maintenu à un endroit fixe par 
@@ -361,7 +365,7 @@ La table optique a pour sa part une limitation majeure; il y est plus difficile 
 lentilles sont positionnées au bon endroit, c'est-à-dire à une longueur focale de l'élément qui la 
 précède et qui la suit. Cela pourrait avoir comme effet de rendre l'image plus floue, car les principes
 utilisés ne sont valables que pour une configuration 4f, donc en ayant une configuration approximative,
-ça risquerait de rendre l'image approximative, donc de nuire à la résolution. 
+il y a risque de rendre l'image approximative, donc de nuire à la résolution. 
 
 Les tests des deux spectromètres avec un laser rouge sont présentés et comparés au résultat d'un 
 spectromètre commercial. La largeur à mi-hauteur du laser rouge obtenue avec chaque spectromètre est 
@@ -423,12 +427,12 @@ plutôt que pour tout le spectre.
 Les méthodes de construction étant grandement différentes pour les deux spectromètres, une 
 étude des coûts est faite afin de déterminer lequel des deux est le plus abordable. Pour ce
 faire, une liste détaillée des pièces requises est faite, et le total des coûts est calculé en
-dollars canadiens avant taxes. La table \ref{prix_table} présente les coûts des pièces pour
+dollars canadiens avant taxes. Sauf exception, tous les prix proviennent de Thorlabs \cite{noauthor_thorlabs_2024}. La table \ref{prix_table} présente les coûts des pièces pour
 le système monté sur table optique :
 
 \begin{table}[!ht]
     \centering
-    \caption{Liste des pièces et coûts totaux pour le spectromètre sur table optique}
+    \caption{Liste des pièces et coûts totaux pour le spectromètre sur table optique \cite{noauthor_thorlabs_2024}}
     \begin{tabular}{|l|l|c|r|r|}
     \hline
         ID pièce & Description & Qté & \$ CAD & Total ind. \\ \hline\hline
@@ -453,7 +457,7 @@ le système monté sur table optique :
 
 Quelques points sont à relever pour cette table. La caméra utilisée est maintenant indisponible
 à l'achat sur le site de Thorlabs. Le prix affiché est donc le prix de cette pièce avant
-qu'elle soit enlevée du site en 2021 \textcolor{red}{source A}. Aussi, deux éléments importants
+qu'elle soit enlevée du site en 2021 \cite{noauthor_thorlabs_2021}. Aussi, deux éléments importants
 ont été omis de cette liste. La quincaillerie, soit les vis, les écrous et les 
 rondelles, n'ont pas été comptées car ces derniers sont fréquemment disponibles en vrac dans
 des ateliers, ou ils s'achètent en ensemble à moindre coût. La table pour fixer les éléments 
@@ -470,7 +474,7 @@ La table \ref{prix_3D} montre le calcul des coûts pour le modèle fait par l'im
 
 \begin{table}[!ht]
     \centering
-    \caption{Liste des pièces et coûts totaux pour le spectromètre avec impression 3D}
+    \caption{Liste des pièces et coûts totaux pour le spectromètre avec impression 3D \cite{noauthor_thorlabs_2024} \cite{noauthor_razor_2024}}
     \begin{tabular}{|l|l|c|r|r|}
     \hline
         ID pièce & Description & Qté & \$ CAD & Total ind. \\ \hline\hline
@@ -486,7 +490,7 @@ La table \ref{prix_3D} montre le calcul des coûts pour le modèle fait par l'im
 \end{table}
 
 Un élément a aussi été exclu de cette liste, soit l'imprimante 3D utilisée pour l'impression.
-Celle utilisée, soit la Original Prusa i3 MK3S+, est disponible pour 899\$ US, ou 1245.21\$ CAD.
+Celle utilisée, soit la Original Prusa i3 MK3S+, est disponible pour 899\$ US, ou 1245.21\$ CAD \cite{prusa_imprimante_2024} .
 Si considéré, ce prix augmente grandement les coûts associé à ce modèle de spectromètre, étant
 plus dispendieux que le total calculé. Toutefois, ce type d'imprimante est facilement accessible
 gratuitement en faisant affaire avec certains ateliers. Aussi, pour de faibles quantités de
@@ -497,13 +501,13 @@ Il est donc facile de conclure que l'impression 3D est beaucoup plus avantageux 
 Le prix de l'impression sous 10\$ est une très grande économie lorsque comparé aux nombreuses
 pièces servant au montage sur table optique qui ont fortement contribués au coût élevé du
 modèle qui les requiert. L'économie de 975.44\$ en allant avec le modèle imprimé est
-considérable, et appuie le fait que c'est le modèle à préconiser.
+considérable, et étant donné sa performance respectable, c'est le modèle à préconiser.
 
 
 
 % \clearpage
 % \printbibliography
-% \bibliographystyle{unsrtnat}
-% \bibliography{My_Library}
+\bibliographystyle{unsrtnat}
+\bibliography{spectro.bib}
 
 \end{document}
